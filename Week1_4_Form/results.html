@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            body {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            max-width: 800px; 
+            padding: 50px;
+            margin: 0 auto;
+            background-color: slategray; 
+        }
+            div, a{
+            width: 100%; 
+            padding: 50px;
+            margin: 0 auto;
+            background-color: #022140; 
+            }
+            a{
+                text-decoration: none;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div id="results">
+            <h1>Your feedback is recorded. Thank you! </h1>
+                <br><br>
+            <h3>Have a great day!</h3>
+    </div>
+    <div>
+        <a href="Form.html">Back to Survey Form</a>
+    </div>
+    
+    
+<!--script-->
+   <!--
+       const resultsList = document.getElementById('results')
+        new URLSearchParams (window.location.search).forEach((value, name) => {
+        resultsList.append(`${name}: ${value}`)
+        resultsList.append(document.createElement('br'))
+    })
+   --> 
+<!--/script-->
+</body>
+</html>
