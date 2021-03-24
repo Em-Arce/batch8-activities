@@ -2,27 +2,25 @@ body{
     background-image:url("https://images.unsplash.com/photo-1538221566857-f20f826391c6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1051&q=80"); 
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
+    
 }
 .chessboard{
     width: 40vw;
-    height: 40vw;
+    height:40vw;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
-    margin: auto; 
 }
 
 h1, .chessboard {
     text-align: center;
-    position: relative;
-    margin-left: 30vw;
-    margin-right: 30vw;
+    margin: auto;
+    
 }
 
 h1{ 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3.75vw;
-    /* color: #77aca2; */
     color: #58a4b0;
 }
 
@@ -43,3 +41,6 @@ h1{
     background-color: #f4e9cd;
     font-size: 4vw;
 }
+
+
+
