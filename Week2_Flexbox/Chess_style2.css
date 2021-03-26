@@ -21,7 +21,7 @@ h1, .chessboard {
 
 h1{ 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 3.75vw;
+    font-size: calc(3vw);
     color: #58a4b0;
 }
 
