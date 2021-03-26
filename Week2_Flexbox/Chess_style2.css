@@ -3,6 +3,7 @@ body{
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+    margin:0; 
     
 }
 .chessboard{
