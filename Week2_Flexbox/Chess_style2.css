@@ -3,11 +3,12 @@ body{
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
+    margin:0; 
     
 }
 .chessboard{
-    width: 40vw;
-    height:40vw;
+    width: 45vw;
+    height:45vw;
     display: flex;
     flex-direction: column;
 }
@@ -20,7 +21,7 @@ h1, .chessboard {
 
 h1{ 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 3.75vw;
+    font-size: calc(3vw);
     color: #58a4b0;
 }
 
