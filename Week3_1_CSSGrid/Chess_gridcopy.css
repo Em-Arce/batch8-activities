@@ -1,0 +1,174 @@
+/* References:
+1. Animation: https://www.w3schools.com/css/css3_animations.asp 
+2. Particles js: https://vincentgarreau.com/particles.js/
+3. Glass morphism: https://www.youtube.com/watch?v=hv0rNxr1XXk&list=RDCMUCbwXnUipZsLfUckBPsC7Jog&index=17
+4. Idea for fools mate: https://www.thesprucecrafts.com/fools-mate-the-fastest-checkmate-611599
+5. 
+Fair use act for educational purposes*/
+
+/* Lessons learned while coding: 
+Knight move
+1. when horse moves the color of chessboard changes so instead of animating div, put horse inside span
+2. used transform on the tiles where the horse may move 
+Fool's mate demo 
+3. det all the chess pieces their dest ex whitekingsidepawn f3; mark these (tagging appropriate html element in the html use keyframes at first then explore other animation related to change in position */
+
+body{
+    background-color:#201e50; 
+    overflow: hidden;
+    margin: 0;  /*margin makes the whole page move vertically when zooming if it is unspecified default is 7px*/
+    width: 100vw;
+    height: 100vw;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+
+#particles-js{
+    position: absolute;
+    background-color:#201e50;
+    width: 100vw;
+    height: 100vw;
+    z-index: -1;
+}
+
+h1{
+    font-size: calc(3.5vw);
+    color:  #869d96 ;
+    border-radius: 5px;
+    
+}
+
+.chess-grid-container{
+    display: grid;
+    width: 40vw; /*fixed the last row and last column resizing (TT^TT) */
+    margin: 0 auto; /*centers chessboard and boxes*/
+    grid-template: repeat(8, 5vw)/repeat(8, 5vw);
+    /* grid-auto-flow: row; */
+    justify-content:center;
+    align-content: center;
+    /* box-sizing: content-box; use this to prevent chess squares from becoming rectangles when zooming*/
+    /* border: 2px blanchedalmond solid; removed as it makes chessboard move vert and hori when zooming but not the squares do not chnage shape */
+    box-shadow: 10px 10px 10px rgb(250, 249, 249);
+    backdrop-filter:blur(2px);
+    
+}
+
+
+.dark, .light{
+    font-size: calc(3.5vw); 
+    text-align: center; 
+    /* box-shadow: 10px 10px 10px rgb(250, 249, 249); removed as these two are makes the black chess pieces get lost/buried*/
+    /* backdrop-filter:blur(2px);  */
+}
+
+.dark{
+    background-color:#525b76;
+    
+}
+
+.light{
+    background-color:#c4f1be;
+    /* background-color:#31081f; back up color*/
+    
+}
+
+.light-horse-move{
+    position: relative;
+    animation: move 5s forwards;
+ }
+
+@keyframes move {
+  /* keyframes: order: 0-start 100-end; order in % (increasing) is important */
+  0%  { left:0px; top:0px; } 
+  /* 100% { left:275px; top: -550px;} movement changes when I make changes to container or chessboard squares*/
+  100% { left:5vw; top:-10vw;}
+}
+
+
+
+ .dark.dest1, .dark.dest2{  
+     animation: bigger 5s infinite; 
+     
+ }  
+
+ @keyframes bigger{ 
+     /* Try border increase https://stackoverflow.com/questions/48119227/chain-sequence-animation-in-css */
+     from {transform: scale(1.5);  /*box-shadow: 10px 10px 20px rgb(250, 250, 250); */
+        filter:blur(2px);} /*transform:rotate(90deg);   */
+    to { transform: scale(1);}
+    
+}
+
+/* TODO: execute fools mate
+1. White:King's pawn f3 left:0px top: -275px
+2. Black: King's pawn e5 left:0px top: 550px
+3. White:Knight's pawn g4 left:0px top: -550px
+4. Black: Queen h4   left:550px top: -1100px 
+
+try animation delay for each move*/
+
+.WhiteKingSidePawn {
+    position: relative;
+    animation: f3 5s forwards;
+    animation-delay: 5s;
+}
+
+@keyframes f3 {
+    /* TRY: transition/translate, and glow here https://www.youtube.com/watch?v=M421fR3TYxg*/
+  0%  { transform:scale(1.5); left:0px; top:0px;} 
+  100% { left:0px; top:-5vw;}
+}
+
+.BlackKingPawn{
+    position: relative;
+    animation: e5 5s forwards;
+    animation-delay: 10s;
+   
+}
+
+@keyframes e5 {
+  0%  { left:0px; top:0px;} 
+  /* 100% { left:0px; top: 550px;} */
+  100% { left:0px; top: 10vw;}
+}
+
+.WhiteKnightPawn{
+    position: relative;
+    animation: g4 5s forwards;
+    animation-delay: 15s;
+    
+}
+
+@keyframes g4 {
+  0%  { left:0px; top:0px;} 
+  /* 100% { left:0px; top: -550px;} */
+  100% { left:0px; top: -10vw;}
+}
+
+.BlackQueen{
+    position: relative;
+    animation: h4 5s forwards;
+    animation-delay: 20s;
+   
+}
+
+@keyframes h4 {
+  0%  { left:0px; top:0px;} 
+  100% { left:20vw; top: 20vw;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
