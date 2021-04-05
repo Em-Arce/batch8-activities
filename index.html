@@ -2,71 +2,164 @@
 
 <html>
 	<head>
-		<title>Welcome to my Github Page</title>    
-		
-        <style>
-            body{
-                padding: 20px;
-                margin: 50px;
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                justify-content: center;
-                align-items: center;
-                align-content: center;
-                text-align: center;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-            
-            h1{
-                color: steelblue;
-                margin: 50px;
-            }
-
-            #par{
-                margin: 50px;
-                font-size: 20px;
-            }
-		
-	     #output{
-                margin: 20px;
-		color: blue;
-                text-decoration: none;
-                line-height: 25px;
-            }
-
-        </style>
-		
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+		<title>Welcome to my Github Page</title>    	
 	</head>
     <body>
-        <header>
-            <h1> Welcome to my Github Page! </h1>
+        <div >
+            <header>
+                <h1> Welcome to my Github Page! </h1>
 
-            <!--Future Em: For styling, section whole page into divisions then work from out to in-->
-            <div id = "par"> 
-                Hi I am Em, an aspiring software engineer.
-            </div> 
+                <div id = "par"> Hi I am Em, an aspiring software engineer.</div>
 
-            <div id = "par"> 
-                These are the outputs from my web development classes.
-            </div>
-		
-	
-		<dl>
-			<dt><a id="output" href= homework1.html> Web Development Best Practice</a>
-            		</dt>
-			<dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_2_EmailActivity/email_inlinecss.html> Email Activity</a>
-            		</dt>
-			<dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_3_UserStory/UserStory.html> Tribute Page </a>
-            		</dt>
-			<dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_4_Form//Form.html> Survey Form </a>
-            		</dt>
-			<dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week2_Flexbox/Chess2.html> Chessboard </a>
-            		</dt>
-		</dl>
+                <div id = "par"> Web development course activities.</div>
+            </header>
             
-        </header>
-                           
+            
+                
+                    <!-- <dl> 
+                        <dt><a id="output" href= homework1.html> Web Development Best Practice</a>
+                                </dt>
+                        <dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_2_EmailActivity/email_inlinecss.html> Email Activity</a>
+                                </dt>
+                        <dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_3_UserStory/UserStory.html> Tribute Page </a>
+                                </dt>
+                        <dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week1_4_Form//Form.html> Survey Form </a>
+                                </dt>
+                        <dt><a id="output" href= https://em-arce.github.io/batch8-activities/Week2_Flexbox/Chess2.html> Chessboard </a>
+                                </dt>
+                    </dl>-->
+        
+            <section class="container">
+                <div class="box">
+                    <span> </span>
+                    
+                    <div class="content">
+                        <h2>01</h2>
+                        <dl>
+                            <dt> &check; Researched and summarized in own words a Web Development or Software Engineering Best Practice.</dt>
+                            <br>
+                            <dt> &check; Presented best practice into HTML page using HTML and CSS.</dt>
+                            <br>
+                        </dl>
+                        
+                        <a id="output" href= homework1.html> Best Practice</a>
+                    </div>
+                </div>
+
+                <div class="box">
+                    <span> </span>
+
+                    <div class="content">
+                    
+                        <h2>02</h2>
+                        <dl>
+                            <dt> &check; Presented email in HTML page</dt>
+                            <br>
+                            <dt> &check; Applied HTML semantics to get the desired format and presentation.</dt>
+                            <br>
+                        </dl>
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week1_2_EmailActivity/email_inlinecss.html> Email Activity</a>
+                    </div>
+                
+                </div>
+
+                <div class="box">
+                    <span> </span>
+
+                    <div class="content">
+                    
+                        <h2>03</h2>
+                        <dt> &check; Created a tribute page according to given user story specifications.</dt>
+                            <br>
+                            <dt> &check; Initial application of flexbox to enable web page responsiveness.</dt>
+                            <br>
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week1_3_UserStory/UserStory.html> Tribute Page </a>
+                    </div>
+                
+                </div>
+
+                <div class="box">
+                    <span> </span>
+
+                    <div class="content">
+                    
+                        <h2>04</h2>
+                        <dt> &check; Applied HTML form concepts to create web form according to given user story specifications.</dt>
+                            <br>
+                            <dt> &check; Further application of flexbox to enable web page responsiveness.</dt>
+                            <br>
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week1_4_Form//Form.html> Survey Form </a>
+                    </div>
+                
+                </div>
+
+                <div class="box">
+                    <span> </span>
+
+                    <div class="content">
+                    
+                        <h2>05</h2>
+                            <dt> &check; Applied flexbox and web page responsiveness concepts to create chessboard with pieces according to given user story specifications.</dt>
+                            <br>
+                            <dt> &check; Chessboard grids maintain square shape during zoom in/out.</dt>
+                            <br>
+                            <dt> &check; Whole chessboard is visible at all times during zoom in/out.</dt>  
+                            <br>
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week2_Flexbox/Chess2.html> Chessboard </a>
+                    </div>
+                
+                </div>
+               
+                <div class="box"> 
+                    <span> </span>
+
+                    <div class="content">
+                    
+                        <h2>06</h2>
+                            <dt> &check; Created chessboard with pieces according to given user story specifications.</dt>
+                            <br>
+                            <dt> &check; Whole chessboard must be visible at all times and grids maintain square shape during zoom in/out.</dt>
+                            <br>
+                            <dt> &check; Applied css animations(i.e. fool's move). Animation movement is web responsive. </dt>  
+                            <br>
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week2_2_CSSGrid/Chess_gridcopy.html> Yet Another Chessboard</a>
+                    </div>
+                    
+                    
+                    <!-- Copy paste after new content addition <div class="box"> 
+                    <span> </span>
+
+                    <div class="content">
+
+                        Change into previous number + 1
+                        <h2>06</h2>
+                            <dt> &check; Add desc here</dt>
+                            <br>
+                            <dt> &check; Add desc here</dt>
+                            <br>
+                            <dt> &check; Add desc here</dt>  
+                            <br>
+                       
+                            Change the source and description
+                        <a id="output" href= https://em-arce.github.io/batch8-activities/Week1_2_EmailActivity/email_inlinecss.html> Email Activity</a>
+                    </div>-->
+
+                
+                </div>
+
+            </section>
+            <footer>
+                Site is a work in progress and maintained by EJPArce.
+                <span>Glass polymorphism design created by Online Tutorials (https://www.youtube.com/watch?v=M421fR3TYxg).</span>
+            </footer>
+
+		
+        </div>
+       
+                        
     </body>
 	
 </html>
