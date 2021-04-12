@@ -1,0 +1,460 @@
+*{  /* reset spaces due to html elements like p, h, etc */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: slategray; 
+    line-height: 1.6;
+}
+
+body{
+    scroll-behavior: smooth;
+}
+
+
+/* any html element that has sibling before it will have this margin on top */
+/* remo0ved so that the images in product section will be row in wide screen and column in small screen */
+/* .spacing>*+*{ 
+    margin-top: var(--spacer, 2rem);
+}*/
+
+
+/* Styling for header*/
+#header{
+    /* User Story #12: When I click the #submit element, the email is submitted to a static page. */
+    position: fixed;
+    z-index:10000;
+    width: 100%;
+    max-height: 20vh;
+    background: white;
+    /* border: dotted; */
+    /* border-style: 1px dotted gray; */
+}
+
+
+#nav-bar{
+    float: right;
+}
+#nav-section{ 
+    /* remove bullets*/
+    list-style: none; 
+    /* background: white; */
+    display: flex;
+    
+}
+
+/* style for nav section items */
+#nav-section a{ 
+    /* TODO: Arrange the display as it was affected by the reset in boxsizing in the root 
+    DONE; removed height and solved */
+    text-decoration: none;
+    line-height: 1.1rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    /* responsive typography */
+    font-size: clamp(1.5rem, calc(5vw+0.5rem),1.75rem);
+    /* do not remove padding so listed items are not bunched together top/bottom left/right */
+    padding: 2rem 2rem;
+    /* display block applies padding */
+    display: block;
+    color: slategray;
+    text-align: center;
+    
+}
+
+#header-img img{
+    float: left;
+    max-width: 5rem;
+    max-height: 5rem;  
+    background: white;
+}
+
+#nav-section a:hover,
+#nav-section a.active
+{
+    color: white;
+    background:#7d6fa2;
+    border-radius: 1rem;
+}
+
+#menu-toggle{
+    font-size: 1.5rem;  
+    line-height: 1.5rem;
+    padding: 2rem 1.25rem;
+    color:slategray;
+    float: right;
+    cursor: pointer;
+    display: none;
+}
+#nav-toggle{
+    display: none;
+}
+
+/* User Story #14: My product landing page should have at least one media query. */
+
+@media (max-width: 75em) {
+    #nav-toggle-label{
+        /* to tell it to go where we want to */
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-right:7.5%;
+        height: 100%;
+        /* User Story #15: My product landing page should utilize CSS flexbox at least once */
+        display: flex;
+        align-items: center;
+    }
+    #nav-toggle-label span,
+    #nav-toggle-label span::before,
+    #nav-toggle-label span::after{
+        display: block;
+        background: slategray;
+        height: 0.2rem;
+        width: 2rem;
+        border-radius: 0.2rem;
+        /* for span */
+        position: relative;
+
+    }
+    #nav-toggle-label span::before,
+    #nav-toggle-label span::after{
+        content: "";
+        position: absolute;
+    }
+
+    /* the horizontal line above */
+    #nav-toggle-label span::before{
+        bottom: 0.6rem;
+    }
+
+    /* the horizontal line above */
+    #nav-toggle-label span::after{
+        top: 0.6rem;
+    }
+
+    #nav-bar{
+        position: absolute;
+        text-align: center;
+        /* how the nav top is positioned rel to logo */
+        top: 100%;
+        width: 100%;
+        /* display: none; */ /*uncomment once animation is done*/
+        transform:scale(1,0);
+        transform-origin: top;
+        transition: transform 400ms ease-in-out;
+    }
+    #nav-section{
+        /* display: none; */
+        position: absolute;
+        width: 100%;
+        /* vh so that list items will display with background from top to bottom */
+        height: calc(100vh);
+        background: white;
+        top: 110%;
+        left: 0;
+        transition: 0.5s;
+        display: block;
+        text-align: center;
+        /* display: none; */
+    }
+
+
+    #nav-section a:hover,
+    #nav-section a.active{
+    border-radius: 0;
+    }
+
+    #nav-section a.active ~ #nav-bar {
+        display: none;
+        
+    }
+
+    
+    .nav-toggle:checked ~ #nav-bar{
+        /* display: block; */ /*uncomment once animation is done*/
+        transform: scale(1,1);
+        
+    }
+
+
+    #nav-section li{ 
+     border-bottom: 1px dotted slategray;
+     /* box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24); */
+     z-index: 1;
+    }
+       
+}
+
+/* Styling per section */
+section{ 
+    /* /* min height shows the nav items full screen when clicked from header  */
+    min-height: 100vh; 
+    /* border: 1px dotted slategray; */
+}
+
+section{
+    padding: 5em 0;
+}
+
+.section-title{
+    text-align: center;
+    font-size: clamp(1.5rem, calc(5vw+1rem), 2rem);
+    margin-bottom: 5rem;
+}
+
+/* Styling for banner */
+.banner-video{
+    position: relative;
+    z-index: -99;
+    height: 100%;
+    width: 100%;
+    text-align:center;
+    padding: 7em 0 2em 0;
+
+    /* wave */
+} 
+
+
+#banner-video iframe{
+    width: 100%;
+    min-height: 80vh;
+}
+
+
+
+.featured__img,
+.about__img,
+.features__img
+{
+    /* border: 1px dotted slategray; add this to check the actual size of image */
+    max-width: 100%;
+    display: block;
+}
+
+.container
+{
+    /* so the elements have spacing from screen edge regardless of screensize, padding alternative */
+    width: 85%;
+    max-width: 75em;
+    margin: 0 auto;
+}
+
+
+
+/* Styling for products*/
+
+#container-products
+{  
+    /*background: chartreuse;   add this to check alignment of images wrt to container */
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+
+.split{
+    flex: 33.33%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:center;
+    
+    
+}
+
+.split > *{
+    flex-direction: row;
+    flex-basis: 30%;
+    min-width: 15em;
+    
+}
+
+ .featured__item{  
+    display: block;
+    position: relative;
+    transform: scale(0.85);
+    transition: transform 250ms ease-in-out;
+    text-decoration: none;
+    justify-content: space-evenly;
+}
+
+
+.featured__item:hover,
+.featured__item:focus{
+    transform: scale(1);
+}
+
+.featured__item p{
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+/* Styling for two columns for about and features*/
+
+.split-to-two{
+    min-width: 15em;
+    display: flex;
+    /* set this to column and declare media query for large screen next to the text and images are side by side */
+    flex-direction: column;
+    
+}
+
+@media (min-width:1200px){
+    .split-to-two{
+        flex-direction: row;
+    }
+}
+
+/* flex basis: the images want to be max size but flex basis will shrink them to fit into 2 columns
+    syntax meaning: all children of .split-to-two will have this fb value */
+.split-to-two > * {
+    flex-basis: 100%;
+}
+
+
+
+
+
+/* /* syntax meaning for sibling selector: any element that has sibling before it will have this margin */
+.split-to-two > * + *{
+    margin-left: 3rem;
+    
+}
+
+ @media (max-width:75em){  
+    .split-to-two > * + *{
+        margin-left: 0rem;
+        margin-top: 3rem;
+        
+    }
+}
+
+/* Styling for about*/
+
+#about{
+    background: #fddfe6;
+}
+
+
+.about-text 
+{
+    text-align: justify;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    
+}
+
+/* Styling for features*/
+
+
+#features div,
+#features p{
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    
+}
+
+/* Styling for contact*/
+  
+
+#contact{
+    text-align: center;
+    font-size: 1.25rem;
+    background: #fddfe6;
+    
+}
+#contact p{
+    margin-bottom: 1rem;
+}
+
+.container-form div{
+    padding: 0.5rem 0;
+    width: 100%;
+    /* max-width: 100%; */
+    /* height: auto; */
+    color:white;  
+    /* line-height: 1.25em; */
+    
+   }
+
+.container-form{
+    /* background: #7d6fa2; */
+    /* border: 1px dotted #7d6fa2; */
+    padding: 0.5rem 0;
+    margin: auto;
+    width: 100%;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+#email, 
+#comments{
+        /* padding: 1rem 0; */
+        width: 100%;
+        height: 2rem;
+        color:slategray;
+        border: slategray 1px solid;
+        border-radius: 0.5rem;
+}
+
+/* style for textarea button */
+
+#comments{
+    height: 7rem;
+    /* hide vertical scroll */
+    overflow: hidden;
+}
+
+/* style for submit button */
+#submit{
+    
+    background-color:#7d6fa2;
+    width: 100%;
+    height: 3rem;
+    border: slategray 1px solid;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 0.5rem;
+    z-index: 1;
+    color: white;
+}
+
+#submit:hover {
+cursor: pointer;
+transform: scale(1.2);
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}   
+
+footer{
+    
+    padding: 3rem 0;
+    min-height: 10vh;
+    
+    text-decoration: none;
+    text-align: center;
+}
+
+/* TODO 
+1. DONE. video for user story; TODO for extra figure out how to set as background
+2. DONE results.html for user story
+3. DONE btn for the navbar items
+4. label in the code the user story reqs 
+5. cannot w/o JS T.T do navsection disappear upon clicking menu item in small screen
+6. DONEtwo column alternating image and text for about and features section
+7. DONE for ver5 update results .html for newest version of html
+*/
+
+
+/* References
+Generic: W3 Schools
+Header: https://www.youtube.com/watch?v=gt8zOLQ8A0w
+menu toggle using pure css and html https://www.youtube.com/watch?v=8QKOaTYvYUA 
+body:https://www.youtube.com/watch?app=desktop&v=X1dz0xRbSJc&list=PLillGF-RfqbZTASqIqdvm1R5mLrQq79CU&index=52
+2 column image+ text: 
+embed video as background https://www.labnol.org/internet/youtube-video-background/27933/#:~:text=The%20trick%20is%20that%20you,anywhere%20on%20your%20web%20page.*/
+
