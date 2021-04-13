@@ -199,7 +199,7 @@ section{
 
 .section-title{
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-size: clamp(1.5rem, calc(5vw+1rem), 2rem);
     margin-bottom: 5rem;
 }
