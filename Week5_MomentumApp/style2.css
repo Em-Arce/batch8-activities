@@ -1,0 +1,160 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: Playfair Display , serif; /* 'NotoSans' */
+    font-size: 17px;
+    /* color: #a78a4d; */
+    color: #D4AF37;
+    /* color: slategray;  */
+    line-height: 1.6;
+    background-image: url("leone-venter-VieM9BdZKFo-unsplash.jpg");
+    /* background-image:url("https://images.unsplash.com/photo-1518655048521-f130df041f66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");  */
+    background-size: cover;
+    background-attachment: fixed;
+    /* width: 85%; */
+    max-width: 75em;
+    margin: 0 auto;
+    
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+body{
+    scroll-behavior: smooth;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 85%; */
+    
+}
+
+header,
+section{
+     margin: 0.5rem;
+    padding: 0.2rem;
+    border-style: dotted;
+    border: 1px slategray;
+}
+
+/* header{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#focus{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#toDo{
+    position: absolute;
+    top: 0.25em;
+    right: 0.5em;
+}
+
+#quote{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+} */
+
+#currentTime
+{
+    font-size: 5em;
+}
+
+#greet,
+#toDoheader1
+{
+    font-size: 2em;
+
+}
+
+
+
+#focusHeader,
+#focus ul li {
+    font-size: 2em;
+    list-style: none;
+}
+
+
+#toDo ul li{
+    list-style: none;
+    font-size: 1.1em;
+} 
+
+/* When clicked, strike out text and change color */
+#toDo ul li.checked {
+    list-style: none;
+    font-weight: 500;
+    /* color:blue; */
+    text-decoration: line-through;
+  }
+
+#quote{
+    padding-top: 2em;
+    font-style: italic;
+    font-size: 0.5em;
+}
+
+#userName,
+#focusInput,
+#ToDoInput,
+#quoteInput{
+    background: transparent;
+    border: 0;
+    text-align: center;
+    color:inherit;
+    border-bottom: 1px solid currentColor;
+    margin: 1rem;
+    outline: none;
+
+    transition: border-bottom 150ms ease-in;
+}
+
+#userName::placeholder,
+#focusInput::placeholder,
+#ToDoInput::placeholder,
+#quoteInput::placeholder{
+    color:inherit;
+    outline: none;
+
+}
+
+#userName:focus,
+#focusInput:focus,
+#ToDoInput:focus,
+#quoteInput:focus{
+    border-bottom-width: 3px;
+}
+
+#userName:focus::placeholder,
+#focusInput:focus::placeholder,
+#ToDoInput:focus::placeholder,
+#quoteInput:focus::placeholder{
+    opacity: 0.4;
+}
+
+/* @media only screen and (min-width: 774px) {
+    flex-direction: row;
+    
+} */
+
+
+
+  
+        

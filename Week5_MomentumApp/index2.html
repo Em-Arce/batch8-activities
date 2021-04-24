@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <title> Momentum App Project</title>
+        <link rel="stylesheet" href="style2.css">
+        <script defer src="script2.js"></script>
+        
+    </head>
+
+    <body>
+        
+        <header>
+            <!-- display time  -->
+        <p id="currentTime"></p>
+
+        
+        <!-- display greeting based on time with name -->
+        <p id="greet">
+            <!-- ask for user name  -->
+            <form id="userName_form" action="" data_userName_form>
+                <input
+                type="text"
+                id="userName"
+                class="userName"
+                contenteditable="true"
+                data_userName_input
+                placeholder="What is your name?"
+                required
+                />
+                <span id="addNameInput" onclick="greetAndHide();" >+</span>
+            </form>
+        </p>
+        </header>
+        
+        <section id="focus">
+            <!-- <p id="focus">
+            ask for user name  -->
+            <!-- <form action="" data_focusList_form>
+                <input
+                type="text"
+                class="focusList"
+                data_focusList_form
+                placeholder="What is your focus today?"
+                required
+                />
+                <input type="button" value="+" onclick="" />
+            </form>
+        </p> --> 
+
+        <!-- Focus List -->
+
+        <div id="focusInputForm" class="focusInputForm">
+            <h2 id="focusHeader">Today</h2><br>
+            <div id="focusInputContainer">
+                <input type="text" id="focusInput" placeholder="What is your focus?" required>
+                <span id="addFocus"onclick="createFocusAndHide();" >+</span>
+            </div>
+            
+        </div>
+          
+        <ul id="myFocusList" focusListInput>
+            <!-- <li id="focusItem"class="checked">Pay bills</li>
+            <li id="focusItem">Buy groceries</li> -->
+        </ul>
+
+        </section>
+
+        <section id="toDo">
+            <!-- ToDo List -->
+            <h2 id="toDoheader1">Things to complete</h2><br>
+            <!-- <h2 id="toDoheader2">Click item once done</h2> -->
+            <ul id="myToDoList" 
+            ToDoListInput>
+            <!-- <li class="checked">Pay bills</li>
+            <li>Buy groceries</li> -->
+            </ul>
+
+            <div id="ToDoInputForm" class="ToDoInputForm">
+                <!-- <h2">Things to complete</h2><br> -->
+                <div id="ToDoInputContainer">
+                    <input type="text" 
+                    id="ToDoInput" 
+                    placeholder="Add To Do" 
+                    required>
+                    <span id="addTodoList" onclick="createToDoList();" >+</span>
+                </div>
+            </div>
+        
+        </section>
+        
+        <footer id="quote">
+            <!-- Quotation -->
+            <div id="quoteDisplay">
+                <span id=""></span>
+            </div>
+              
+            <div id="quoteInputForm">
+                <input type="text" 
+                id="quoteInput"
+                placeholder="Add quotation">
+                <span id="addQuoteInput" >+</span>
+            </div>
+
+        </footer >
+        
+
+    </body>
+
+</html>
