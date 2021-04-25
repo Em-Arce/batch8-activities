@@ -6,16 +6,14 @@
     box-sizing: border-box;    
     font-family: Playfair Display , serif; /* 'NotoSans' */
     font-size: 17px;
-    /* color: #a78a4d; */
     color: #D4AF37;
-    /* color: slategray;  */
     line-height: 1.6;
     background-image: url("leone-venter-VieM9BdZKFo-unsplash.jpg");
     /* background-image:url("https://images.unsplash.com/photo-1518655048521-f130df041f66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");  */
     background-size: cover;
     background-attachment: fixed;
-    /* width: 85%; */
-    max-width: 75em;
+    /* width: 90%; */
+    max-width: 70em;
     margin: 0 auto;
     
 }
@@ -26,20 +24,29 @@ img{
 }
 
 body{
+    margin-inline: 0.5em;
     scroll-behavior: smooth;
     text-align: center;
     display: flex;
     flex-direction: column;
+
     /* max-width: 85%; */
     
 }
 
+/* @media screen and (max-width:285px) {
+    #userName_form,
+    #focusInputForm,
+    #ToDoInputForm,
+    #quoteInputForm{display: inline-block;}
+} */
+
 header,
 section{
      margin: 0.5rem;
-    padding: 0.2rem;
-    border-style: dotted;
-    border: 1px slategray;
+     padding: 0.2rem;
+    /* border-style: dotted; */
+    /* border: 1px slategray; */
 }
 
 /* header{
@@ -73,29 +80,40 @@ section{
 
 #currentTime
 {
-    font-size: 5em;
+    font-size: clamp(4em, calc(7vw+5em), 5em);
 }
 
 #greet,
-#toDoheader1
-{
-    font-size: 2em;
-
-}
-
-
-
+#toDoheader1,
 #focusHeader,
-#focus ul li {
-    font-size: 2em;
-    list-style: none;
+#focus ul li
+{
+    font-size: clamp(1.5em, calc(7vw+2em), 2em);
 }
 
+@media only screen and (max-width: 455px) {
+#greet,
+#toDoheader1,
+#focusHeader{
+    line-height: 1.1;
+    }
+}
 
 #toDo ul li{
-    list-style: none;
-    font-size: 1.1em;
+    font-size: clamp(0.9em, calc(7vw+1.1em), 1.1em);
 } 
+
+
+#focus ul li,
+#toDo ul li
+{
+    list-style: none;
+}
+
+#toDo ul li:hover{
+    transform: scaleX(1.1);
+}
+
 
 /* When clicked, strike out text and change color */
 #toDo ul li.checked {
@@ -103,12 +121,16 @@ section{
     font-weight: 500;
     /* color:blue; */
     text-decoration: line-through;
+    opacity: 0.5;
+    transition: transform 150ms ease-in-out;
   }
+
 
 #quote{
     padding-top: 2em;
+    padding-bottom: 0;
     font-style: italic;
-    font-size: 0.5em;
+    font-size: clamp(0.4em, calc(7vw+0.5em), 0.5em);
 }
 
 #userName,
@@ -122,7 +144,6 @@ section{
     border-bottom: 1px solid currentColor;
     margin: 1rem;
     outline: none;
-
     transition: border-bottom 150ms ease-in;
 }
 
@@ -132,7 +153,6 @@ section{
 #quoteInput::placeholder{
     color:inherit;
     outline: none;
-
 }
 
 #userName:focus,
@@ -149,10 +169,26 @@ section{
     opacity: 0.4;
 }
 
+#addNameInput,
+#addFocus,
+#addTodoList,
+#addQuoteInput{
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bolder;
+    /* background: #D4AF37; */
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    
+}  
+
 /* @media only screen and (min-width: 774px) {
     flex-direction: row;
     
 } */
+
+
 
 
 
