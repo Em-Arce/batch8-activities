@@ -33,9 +33,9 @@ function displayTime(){
     // return document.getElementById("currentTime").innerHTML = currentHour + ":" + currentMinutes + ":" + currentSeconds
 
 }
-
+setTimeout(displayTime, 500)
 displayTime()
-setTimeout(displayTime, 1000)
+
 
 
 //------Display Current Time End -----//
