@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Tic Tac Toe v4</title>   
+    </head>
+    <body>
+    
+        <table>
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell0" onclick="markCell('cell0')"> </td>
+                <td> <input type ="button" class="gray"   id="cell1" onclick="markCell('cell1')"> </td>
+                <td> <input type ="button" class="gray"   id="cell2" onclick="markCell('cell2')"> </td>
+            </tr>
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell3" onclick="markCell('cell3')"> </td>
+                <td> <input type ="button" class="gray"   id="cell4" onclick="markCell('cell4')"> </td>
+                <td> <input type ="button" class="gray"   id="cell5" onclick="markCell('cell5')"> </td>
+            </tr>
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell6" onclick="markCell('cell6')"> </td>
+                <td> <input type ="button" class="gray"   id="cell7" onclick="markCell('cell7')"> </td>
+                <td> <input type ="button" class="gray"   id="cell8" onclick="markCell('cell8')"> </td>
+            </tr>
+        </table>
+
+        <div>
+            <input type ="button" value ="Previous" class="prevBtn"  id="prevBtn" onclick="previousMove()">
+            <input type ="button" value ="Next"     class="nxtBtn"   id="nxtBtn"  onclick="nextMove()">    
+
+        </div> 
+        </body>
+    
+    <script>
+
+//array1 purpose: store X or O then check element values for winning combi; store the cells into array 1 (1D array with nine elements); this will be the elements for the 2D array; will contain X or O as game 
+//progresses
+let array1 = Array.from(document.querySelectorAll(".gray"));
+
+var h = 0;
+
+// Purpose of ticTacArray: to save moveHistory; Create one dimensional array with 3 undefined elements; 
+var ticTacArray = new Array(3);
+
+//QUESTION FOR S': Why is the array1 elements already showing inside the ticTacArray when I have yet to assign array1 elements to it?
+// console.log(ticTacArray);
+
+// Loop to create 2D array using 1D array
+for (var i = 0; i < ticTacArray.length; i++) {
+    ticTacArray[i] = [];
+    }
+
+// console.log(ticTacArray);
+
+
+
+//DEFAULT AND OPTION TO SWITCH ACTIVE PLAYER (first move only)
+let activePlayer = "X"
+
+//ask player if first move is x or o
+let initialPlayerInput = prompt ("X plays first, change to O? Type y or n");
+
+if (initialPlayerInput == "y"){
+        activePlayer = "O";
+} else{
+        activePlayer = "X";
+    }
+
+var counterTurn = 0;
+let dataForHistory = [];
+let moveHistory = [
+    []
+];
+
+let cloneArray = [];
+
+let prevMoveArray = [];
+let nextMoveArray = [];
+
+//METHOD 2 TO MARK CELLS, ASSIGN VALUE TO TICTACARRAY, CHECK WINNER AND SWITCH TURNS
+function markCell(cellnum){
+    //get DOM element value and store in variable, take in cellnum as argument (target cell)
+    var idCellValue = document.getElementById(cellnum).value;
+
+    //get the last char of id number of clickedcell, should be num
+    let idCell = parseInt(cellnum.substring(4,5));
+    
+    //for saving moves
+    counterTurn ++;
+
+        //as long as value of clicked cell is empty, set value to X or O
+        if(idCellValue == ""){
+
+            //sets the value of clicked cell to X or O
+            document.getElementById(cellnum).value = activePlayer;
+
+            //mark X or O in array 1 for checking winning moves
+            for(var i=0; i<array1.length; i++){
+                if(idCell == i){
+                    array1[i] = activePlayer;
+                }
+                
+            }
+
+        //for next and prev button use: tested and working
+        prevMoveArray.push([cellnum, activePlayer]);
+        
+       
+        //save these data: tested and working
+        saveDataForHistory(counterTurn, idCell, activePlayer);
+        
+        isWinner2(activePlayer);
+        
+
+    } else {
+        alert("Already occupied!" + " " + activePlayer + " " + "lost a turn!");
+        }    
+ 
+    //switch player after active player's turn
+    if (activePlayer === 'X') {
+        activePlayer = 'O';
+        } else if (activePlayer === 'O') {
+        activePlayer = 'X';
+        }
+}
+
+function saveDataForHistory(counterTurn, idCell, activePlayer){
+    //save the data into array
+    dataForHistory.push([counterTurn, idCell, activePlayer]);
+    alert("Move" + " " + counterTurn + " " + "is" + " " + activePlayer + " "+ "at cell" + " " + idCell + "." );
+    
+       
+}
+
+function previousMove(){
+    //get the last move items: tested and working
+    let getPrev = prevMoveArray[prevMoveArray.length-1]; 
+    
+    //remove the last move items may or may not be empty: tested and working
+    prevMoveArray.splice(-1,1); 
+    
+    //add the prev items:tested and working
+    nextMoveArray.splice(-1,0, [getPrev[0],getPrev[1]]);
+    
+    //remove the mark when clicked tested and working
+    document.getElementById(getPrev[0]).value = " ";
+
+    //remove the items so it is always empty when button is clicked: tested and working
+    getPrev.splice(0,2);
+    
+}
+
+
+
+function nextMove(){
+    //get the last move items: 
+    let getNext = nextMoveArray[nextMoveArray.length-1];
+    console.log(getNext);
+    
+    //remove the last move items, may or may not be empty: tested and working
+    nextMoveArray.splice(-1,1); 
+     
+    //remove the mark when clicked:tested and working
+    document.getElementById(getNext[0]).value = getNext[1];
+
+    //remove the items so it is always empty when button is clicked: 
+    getNext.splice(0,2);
+    console.log(getNext);
+
+}
+
+function isWinner2(arg){
+    //compare horizontal cell values
+    if (array1[0] == arg && array1[1] == arg && array1[2] == arg){
+        alert(arg + " " + "wins!")
+    }else if (array1[3] == arg && array1[4] == arg && array1[5] == arg){
+        alert(arg + " " + "wins!")
+    }else if (array1[6] == arg && array1[7] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!")
+
+    //compare vertical cell values
+    }else if (array1[0] == arg && array1[3] == arg && array1[6] == arg){
+        alert(arg + " " + "wins!")
+    }else if (array1[1] == arg && array1[4] == arg && array1[7] == arg){
+        alert(arg + " " + "wins!")
+    }else if (array1[2] == arg && array1[5] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!")
+
+        //compare diagonal cell values
+    }else if (array1[0] == arg && array1[4] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!")
+    }else if (array1[2] == arg && array1[4] == arg && array1[6] == arg){
+        alert(arg + " " + "wins!")
+    } 
+}
+
+    </script>
+
+</html>
