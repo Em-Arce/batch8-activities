@@ -184,6 +184,7 @@ function previousMove(){
     //get the last move items: tested and working
     //let getPrev = prevMoveArray[prevMoveArray.length-1]; 
     let getPrev = dataForHistory[dataForHistory.length-1]; 
+    console.log("Previous move data set");
     console.log(getPrev);
     
     //remove the last move items, arr may or may not be empty at any given time: tested and working
@@ -225,6 +226,7 @@ function previousMove(){
 function nextMove(){
     //get the last move items: 
     let getNext = nextMoveArray[nextMoveArray.length-1];
+    console.log("Next move data set");
     console.log(getNext);
     //remove the last move items, may or may not be empty: tested and working
     nextMoveArray.splice(-1,1); 
