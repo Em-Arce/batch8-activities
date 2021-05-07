@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: slategray; 
+    line-height: 1.6;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.board{
+    width: 45vw;
+    height:45vw;
+    display: flex; 
+    flex-direction: column; 
+}
+
+h1,
+.board,
+.btn{
+    text-align: center;
+    align-items: center;
+    margin:auto;    
+}
+
+/* for cells */
+.gray {
+    cursor: pointer;
+    border: none;
+    background: #58a4b0;
+    width: 13vw;
+    height: 13vw;
+    font-size: 5rem;
+    color: ivory;
+
+}
+
+#prevBtn,
+#nxtBtn,
+#resetBtn {
+    z-index: 5;
+    background-color: #7d6fa2;
+    outline: none;
+    width: 7vw;
+    height: 3rem;
+    font-size: 1rem;
+    color: ivory;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 0.8rem;
+    margin-inline: 1.5rem; 
+}
+
+h1{
+    font-size: 3vw;
+    margin-block: 0.5rem;
+}

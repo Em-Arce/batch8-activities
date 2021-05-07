@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="tictactoe6.css">
+        <title> Tic Tac Toe v4</title>   
+    </head>
+    <body>
+    
+        <h1>Tic Tac Toe</h1>
+
+    
+        <table class="board" id="board">
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell0" onclick="markCell('cell0')"> </td>
+                <td> <input type ="button" class="gray"   id="cell1" onclick="markCell('cell1')"> </td>
+                <td> <input type ="button" class="gray"   id="cell2" onclick="markCell('cell2')"> </td>
+            </tr>
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell3" onclick="markCell('cell3')"> </td>
+                <td> <input type ="button" class="gray"   id="cell4" onclick="markCell('cell4')"> </td>
+                <td> <input type ="button" class="gray"   id="cell5" onclick="markCell('cell5')"> </td>
+            </tr>
+            <tr>
+                <td> <input type ="button" class="gray"   id="cell6" onclick="markCell('cell6')"> </td>
+                <td> <input type ="button" class="gray"   id="cell7" onclick="markCell('cell7')"> </td>
+                <td> <input type ="button" class="gray"   id="cell8" onclick="markCell('cell8')"> </td>
+            </tr>
+        </table>
+
+        <div class="btn" id="btn">
+            <input type ="button" value ="Previous" class="prevBtn"  id="prevBtn" onclick="previousMove()">
+            <input type ="button" value ="Next"     class="nxtBtn"   id="nxtBtn"  onclick="nextMove()">   
+            <input type ="button" value ="Reset"    class="resetBtn"  id="resetBtn" onclick="resetGame()"> 
+
+        </div> 
+        </body>
+    
+    <script>
+
+//tested and working
+let prevBtn = document.getElementById("prevBtn");
+
+//tested and working
+let nxtBtn = document.getElementById("nxtBtn");
+
+//tested and working
+let resetBtn = document.getElementById("resetBtn");
+
+//array1 purpose: store X or O then check element values for winning combi; store the cells into array 1 (1D array with nine elements); this will be the elements for the 2D array; will contain X or O as game 
+//progresses
+let array1 = Array.from(document.querySelectorAll(".gray"));
+
+var h = 0;
+
+// Purpose of ticTacArray: to save moveHistory; Create one dimensional array with 3 undefined elements; 
+var ticTacArray = new Array(3);
+
+//QUESTION FOR S': Why is the array1 elements already showing inside the ticTacArray when I have yet to assign array1 elements to it?
+// console.log(ticTacArray);
+
+// Loop to create 2D array using 1D array
+for (var i = 0; i < ticTacArray.length; i++){
+    ticTacArray[i] = [];
+}
+
+
+
+//DEFAULT AND OPTION TO SWITCH ACTIVE PLAYER (first move only)
+let activePlayer = "X"
+
+//ask player if first move is x or o
+let initialPlayerInput = prompt ("X plays first, change to O? Type y or n");
+
+if (initialPlayerInput == "y"){
+        activePlayer = "O";
+} else{
+        activePlayer = "X";
+    }
+//counts number turn 1-9
+var counterTurn = 0;
+//consist of counter turn, cellid# and X or O
+let dataForHistory = [];
+//storage for moves 1-9 
+let moveHistory = [[]];
+//for prevBtn
+let prevMoveArray = [];
+// for nxtBtn
+let nextMoveArray = [];
+// for resetBtn
+let resetArray = [];
+// tempArray
+let cloneTicTacArray = [];
+
+function hideBtn(){
+    prevBtn.style.visibility = "hidden";
+    nxtBtn.style.visibility = "hidden";
+    resetBtn.style.visibility = "hidden";
+}
+
+hideBtn(); 
+
+function showBtn(){
+    prevBtn.style.visibility = "visible";
+    nxtBtn.style.visibility = "visible";
+    resetBtn.style.visibility = "visible";
+}
+
+//METHOD 2 TO MARK CELLS, ASSIGN VALUE TO TICTACARRAY, CHECK WINNER AND SWITCH TURNS
+function markCell(cellnum){
+    //get DOM element value and store in variable, take in cellnum as argument (target cell)
+    var idCellValue = document.getElementById(cellnum).value;
+
+    //get the last char of id number of clickedcell, should be num
+    let idCell = parseInt(cellnum.substring(4,5));
+    
+    //for saving moves
+    counterTurn ++;
+
+        //as long as value of clicked cell is empty, set value to X or O
+        if(idCellValue == ""){
+
+            //sets the value of clicked cell to X or O
+            document.getElementById(cellnum).value = activePlayer;
+
+            //mark X or O in array 1 for checking winning moves
+            for(var i=0; i<array1.length; i++){
+                if(idCell == i){
+                    array1[i] = activePlayer;
+                }  
+            }
+            
+            // Loop to initialize/assign 2D array elements using array1 elements:tested and working
+            //remove this if moveHistory is not working
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    ticTacArray[i][j] = array1[h++];
+                }
+            }
+
+        //for next and prev button use(prev, next, next): tested and working
+        prevMoveArray.push([cellnum, activePlayer, idCell]);
+        
+        //for resetBtn
+        resetArray.push(cellnum);
+        
+        //save these data: tested and working
+        saveDataForHistory(counterTurn, idCell, activePlayer);
+        
+        isWinner2(activePlayer, counterTurn);
+        
+        //counterTurn, idCell, activePlayer
+        //saveMoveHistory(counterTurn, idCell, activePlayer);
+
+    } else {
+        alert("Already occupied!" + " " + activePlayer + " " + "lost a turn!");
+        }    
+ 
+    //switch player after active player's turn
+    if (activePlayer === 'X') {
+        activePlayer = 'O';
+        } else if (activePlayer === 'O') {
+        activePlayer = 'X';
+        }
+}
+
+//tried to use this data for saveMoveHistory by the X or O mark is undefined when I fetch it
+function saveDataForHistory(counterTurn, idCell, activePlayer){
+    //console.log(toString(activePlayer)); returned as object undefined
+
+    //save the data into array
+    dataForHistory.push([counterTurn, idCell, activePlayer]);
+    alert("Move" + " " + counterTurn + " " + "is" + " " + activePlayer + " "+ "at cell" + " " + idCell + "." );       
+}
+
+let forNxtBtn = [];
+let forPrevBtn = [];
+
+function previousMove(){
+    //get the last move items: tested and working
+    let getPrev = prevMoveArray[prevMoveArray.length-1]; 
+    
+    //remove the last move items, arr may or may not be empty at any given time: tested and working
+    prevMoveArray.splice(-1,1); 
+    
+    //add the prev items:tested and working
+    //nextMoveArray.splice(-1,0, [getPrev[0],getPrev[1]]);
+    nextMoveArray.push([getPrev[0],getPrev[1]]);
+    
+    //remove the mark in the board: tested and working
+    document.getElementById(getPrev[0]).value = " ";
+
+    //get last element (counterTurn, idCell, X or O mark):tested and working
+    let getPrevHistory = dataForHistory[dataForHistory.length-1]; 
+    console.log(getPrevHistory);
+
+    //for use in next button
+    forNxtBtn.push(getPrevHistory[0],getPrevHistory[1],getPrevHistory[2]);
+    //console.log(forNxtBtn);
+    
+    //display moveHistory
+    //console.log(dataForHistory); //complete move history
+    dataForHistory.splice(-1,1); 
+    //display moveHistory spliced
+    console.log(dataForHistory); //move history-1
+
+    getPrevHistory.splice(0,3);
+
+    //remove the items so it is always empty when button is clicked: tested and working
+    getPrev.splice(0,2);
+
+    //remove prevBtn when no more prev moves:tested and working; flawless when used consecutively
+    if (!prevMoveArray.length){
+        prevBtn.style.visibility = "hidden";
+        alert("No more previous move!");
+    }
+}
+
+function nextMove(){
+    //get the last move items: 
+    let getNext = nextMoveArray[nextMoveArray.length-1];
+    
+    //remove the last move items, may or may not be empty: tested and working
+    nextMoveArray.splice(-1,1); 
+     
+    //add the mark in html when clicked:tested and working
+    document.getElementById(getNext[0]).value = getNext[1];
+
+    //remove the items so it is always empty when button is clicked: tested and working
+    getNext.splice(0,2);
+
+    //console.log(forNxtBtn);
+    //get last element (counterTurn, idCell, X or O mark):tested and working
+    let getNextHistory = forNxtBtn; 
+    
+    //test that getNextHistory captured correct items
+    //console.log(getNextHistory);
+
+    //test the remaining items in dataForHistory
+    //console.log(dataForHistory); //move history -1
+
+    //add the removed last item back to dataForHistory
+    dataForHistory.push([getNextHistory[0],getNextHistory[1],getNextHistory[2]]);
+    
+    //display moveHistory+1
+    console.log(dataForHistory); //move history +1
+
+    getNextHistory.splice(0,3);
+    //test that getNextHistory is emptied
+    //console.log(getNextHistory);
+
+
+    //remove nxtBtn when no more prev moves: tested and working; flawless when used consecutively
+    if (!nextMoveArray.length){
+        nxtBtn.style.visibility = "hidden";
+        alert("No more next move!");
+    };
+}
+
+function isWinner2(arg, arg1){
+    //compare horizontal cell values
+    if (array1[0] == arg && array1[1] == arg && array1[2] == arg){
+        alert(arg + " " + "wins!");
+        //display moveHistory
+        console.log(dataForHistory); //moveHistory complete
+        //show prev and nxt buttons
+        showBtn();
+    }else if (array1[3] == arg && array1[4] == arg && array1[5] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+    }else if (array1[6] == arg && array1[7] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+
+    //compare vertical cell values
+    }else if (array1[0] == arg && array1[3] == arg && array1[6] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+    }else if (array1[1] == arg && array1[4] == arg && array1[7] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+    }else if (array1[2] == arg && array1[5] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+
+        //compare diagonal cell values
+    }else if (array1[0] == arg && array1[4] == arg && array1[8] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+    }else if (array1[2] == arg && array1[4] == arg && array1[6] == arg){
+        alert(arg + " " + "wins!");
+        console.log(dataForHistory); //moveHistory complete
+        showBtn();
+    } else{
+        isDraw(arg1);
+    }
+};
+
+function isDraw(arg1){
+    //show reset btn when there is no winner and all cells are occupied: tested and working
+    if(arg1 == 9){
+        resetBtn.style.visibility = "visible";
+    }
+}
+
+function resetGame(){
+    console.log(resetArray);
+    //restarts html cells: tested and working
+    for(var i = 0; i < resetArray.length ; i++){
+        let cell = document.getElementById(resetArray[i]);
+        cell.value = "";   
+    }
+
+    //restarts array1: tested and working
+    for(var i = 0; i < array1.length ; i++){
+        array1[i] = " ";   
+    }
+    
+    //hides next and prev buttons
+    hideBtn();
+
+    //clears move history (dataForMoveHistory in this code)
+    for(var i = 0; i < dataForHistory.length ; i++){
+        dataForHistory[i] = " ";   
+    }
+
+};
+    </script>
+
+</html>
