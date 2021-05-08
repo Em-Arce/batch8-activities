@@ -316,12 +316,14 @@ function isDraw(arg1){
 }
 
 function resetGame(){
-    console.log(resetArray);
+    
     //restarts html cells: tested and working
     for(var i = 0; i < resetArray.length ; i++){
         let cell = document.getElementById(resetArray[i]);
         cell.value = "";   
     }
+    console.log("Reset the board");
+    console.log(resetArray);
 
     //restarts array1: tested and working
     for(var i = 0; i < array1.length ; i++){
@@ -335,6 +337,8 @@ function resetGame(){
     for(var i = 0; i < dataForHistory.length ; i++){
         dataForHistory[i] = " ";   
     }
+    console.log("Reset the data move history");
+    console.log(dataForHistory);
 
 };
     </script>
