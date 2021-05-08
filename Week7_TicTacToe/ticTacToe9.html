@@ -217,7 +217,7 @@ function previousMove(){
     getPrev.splice(0,2);
 
     //remove prevBtn when no more prev moves:tested and working; flawless when used consecutively
-    if (!prevMoveArray.length){
+    if (!getPrev.length){
         prevBtn.style.visibility = "hidden";
         alert("No more previous move!");
     }
