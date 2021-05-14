@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="tictactoe6.css">
+        <title> 12 May 2021 Coding Challenge </title>   
+    </head>
+    <body>
+        
+    </body>
+
+    <script>
+        function Store (name, inventoryList, earnings){
+            this.name = name; //store name
+            this.inventoryList = inventoryList; //collection of stuff to sell
+            this.earnings = earnings;//PHP
+        };
+
+        let store = new Store("Saoirse's Reads", {}, 0);
+
+        function Book  (title, quantity, value){
+            this.title = title;
+            this.quantity = quantity;
+            this.value = value;
+        };
+
+        //add book array to inventory list 
+        store.inventoryList = { 
+            book:[]
+        };
+
+        //function addBook
+        store.addToBooklist = function addBook(title, quantity, value){
+            let book = new Book(title, quantity, value);
+            store.inventoryList.book.push(book);
+        };
+
+        //store.addToBooklist("Introduction to Javascript", 10, 1250);
+        store.addToBooklist("Introduction to Density Functional Theory", 20, 1500);
+
+        store.manageBookStock = function restockBook(title, quantity){
+            var i;
+
+            for(i=0; i < store.inventoryList.book.length; i++){
+                // if book title exists, add the corresponding book to the inventory
+                if (store.inventoryList.book[i].title === title){
+                    let newQuantity = store.inventoryList.book[i].quantity;
+                    store.inventoryList.book[i].quantity += quantity;
+                    console.log(`Successfully updated inventory count from ${store.inventoryList.book[i].quantity} to ${newQuantity}.`);
+                } else {
+                    //else restock should not push through
+                    console.log("Restock error: This book is not in the inventory list.");
+                }
+            } 
+        };
+
+        //TEST FOR MANAGEBOOKSTOCK
+
+        //1. Title not in inventory: should show error message: tested and working (make sure at least 1 title is in inventory!)
+        //store.manageBookStock("How do you measure your life?", 100); 
+
+        //2. Title in inventory, quantity must be 120 tested and working 
+        //store.manageBookStock("Introduction to Density Functional Theory", 100); 
+    
+        store.manageSales = function sellBook(title, quantity){
+            //search for title, deduct quantity, add earnings
+            
+            
+            //if sell successful print successful transaction!
+            var i;
+
+            for(i=0; i<store.inventoryList.book.length; i++){
+                //if title dne: title out of stock
+                if (store.inventoryList.book[i].title != title){
+                    console.log(`${title} out of stock!`);
+
+                    //if q<inventory: trans fails and message shows only {qty} stocks left
+                } else if(store.inventoryList.book[i].quantity < quantity){
+                    console.log(`Only ${store.inventoryList.book[i].quantity} stocks left.`);
+                
+                    //check that title exists and stock is >= quantity
+                    //used && but returned undefined
+                } else if (store.inventoryList.book[i].title === title && store.inventoryList.book[i].quantity >= quantity){
+                    let currentValue = store.inventoryList.book[i].value;
+
+                    store.inventoryList.book[i].quantity -= quantity;
+                    store.earnings += (quantity * currentValue);
+                    console.log(`Successful transaction!`);
+                }
+            }
+        
+        };
+        //console.log (store.inventoryList.book[1].title,store.inventoryList.book[1].quantity);
+        //TEST SCENARIOS:
+        //1. Should be Success: tested and working
+        //store.manageSales("Introduction to Density Functional Theory", 10);
+        
+        //2. Should be Fail and show only -- left (with title but qty > inventory): also shows the message for first else if :((
+        //store.manageSales("Introduction to Density Functional Theory", 21); 
+
+        //3. Fail(without title in stock): tested and working
+        //store.manageSales("How do you measure your life?", 1);
+
+
+        //TESTED by uncommenting test 1 scenario for managesales and working
+        store.displayTotalEarnings = function totalEarnings (){
+            console.log(`${this.name}'s total earnings is Php ${this.earnings}.`);
+        }
+
+        //uncomment during presentation
+        //store.displayTotalEarnings();
+
+        store.displayInventoryList = function listInventory(){
+            console.log(`${this.name}'s inventory:`)
+            console.table (store.inventoryList.book);
+        };
+
+        //uncomment during presentation
+        //store.displayInventoryList();
+        //to review from S' Martney: https://pastebin.com/0n6J5kpx
+    </script>
+
+    
+
+</html>
