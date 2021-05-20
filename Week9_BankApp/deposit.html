@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="updateBalance.css">
+        <title>Bank App</title>   
+    </head>
+    <body>
+        <div id="updateBalancePage">
+            <div>
+                <h2>Omega Bank Management System</h2>
+                <h3 id="transTypeHeader">Deposit Section</h3>
+            </div>
+            <div id="transactionSection">
+                <form id="transactionForm" >
+                    <!-- <div id="transactionSection" class="transactionSection">
+                        <select name="transactionType" id="transactionType" class="transactionType">
+                            <option value="chooseType">Choose Type</option>
+                            <option value="Deposit">Deposit</option>
+                            <option value="Withdraw">Withdraw</option>
+                            <option value="Send">Send</option>
+                        </select>
+                    </div> -->
+                    <div id="depWithSection"> 
+                        <!-- SHOW DURING WITHDRAW/DEPOSIT -->
+                        <label for="Amount" >Amount</label>
+                        <br>
+                        <input type="number" 
+                        id="transactionAmount" 
+                        class="transactionAmount"  
+                        minimum = "0" 
+                        placeholder="Php" 
+                        required 
+                        autofocus>
+                        <br>
+                        <label for="accountName">Account Name</label>
+                        <br>
+                        <input id="accountName" 
+                        class="accountName"   
+                        type="text" 
+                        placeholder="Account Name" 
+                        required autofocus> 
+                        <br>
+                    </div>
+                    <div id="sendSection">
+                        
+                        <label for="senderName">Sender Name</label>
+                        <br>
+                        <input id="senderName" 
+                        class="senderName"   type="text" placeholder="Sender Name" autofocus> 
+                        <br>
+                        <label for="senderAccountNumber"> Sender Account Number</label>
+                        <br>
+                        <input id="senderAccountNumber" 
+                        class="senderAccountNumber"   type="number" placeholder="Account Number" autofocus> 
+                        <br>
+                        <label for="receiverName">Receiver Name</label>
+                        <br>
+                        <input id="receiverName" 
+                        class="receiverName"   type="text" placeholder="Receiver Name" autofocus> 
+                        <br>
+                        <label for="receiverAccountNumber">Receiver Account Number</label>
+                        <br>
+                        <input id="receiverAccountNumber" 
+                        class="receiverAccountNumber"   type="number" placeholder="Account Number" autofocus> 
+                        <br>
+                    </div>
+                        <input type="button" value="Submit" id="submitBtn" form="transaction_form" class="submitBtn">
+                        <input type="button" value="Back to Main Page" id="backBtn" form="transaction_form" class="backBtn">
+                    
+                </form>
+
+            </div>
+            <div id="depWithTableContainer">
+                <p id="depWithAccountName"> Account Name:</p>
+                <p id="depWithcurrentBalance"> Current Balance:</p>
+                <table id="depWithTable">
+                    <tr class="topOfTable">
+                        <th>Transaction Type</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="senderTableContainer">
+                <p id="senderTableName"> Sender Account Name:</p>
+                <p id="senderTableCurrentBalance"> Current Balance:</p>
+                <table id="senderTable">
+                    <tr class="topOfTable">
+                        <th>Transaction Type</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="receiverTableContainer">
+                <p id="receiverTableName"> Receiver Account Name:</p>
+                <p id="receiverTableCurrentBalance"> Current Balance:</p>
+                <table id="receiverTable">
+                    <tr class="topOfTable">
+                        <th>Transaction Type</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </table>
+            </div> 
+            <div id="modal-container1" class="modal-container">
+                <div id="startWithNum" class="modal">
+                    <h2 id="h2Modal">Error: Please enter valid name that starts with a letter.</h2>
+                    <button id="okBtn1">OK</button>
+                </div>
+            </div>
+
+            <div id="modal-container2" class="modal-container">
+                <div id="negativeNum" class="modal">
+                    <h2 id="h2Modal">Error: Deposit cannot be a negative number.</h2>
+                    <button id="okBtn2">OK</button>
+                </div>
+            </div>
+
+            <div id="modal-container3" class="modal-container">
+                <div id="existsNot" class="modal">
+                    <h2 id="h2Modal">Error: Account does not exist!</h2>
+                    <button id="okBtn3">OK</button>
+                </div>
+            </div>
+              
+            <div id="modal-container4" class="modal-container">
+                <div id="successful" class="modal">
+                    <h2 id="h2Modal">Deposit success!</h2>
+                    <button id="okBtn4">OK</button>
+                </div>
+
+            </div>
+                
+        </div>
+
+        <!-- THIS IS FOR TESTING PURPOSES ONLY START HERE -->
+
+            <!-- <div id="testOnly">
+                Buttons below are for testing purposes only
+           
+            <div>
+                <button id="retrieveButton">Display Account Details</button>
+            </div>
+            
+            
+            <div id="retrieve"></div>
+                <label for="key"></label>
+                <br>
+                <input id="key" type="text" placeholder="Account Name" required autofocus>
+                <br>
+                <button id="removeButton">Remove account from local storage</button>
+                <br>
+                <button id="clearButton">Clear all accounts from local storage</button>
+            
+            </div> -->
+        <!-- THIS IS FOR TESTING PURPOSES ONLY END HERE -->
+        
+    </body>
+    <script>
+        //GLOBAL VARIABLES
+        let bankAccountList;
+        let transactionList;
+        var transTypeHeader         = document.getElementById("transTypeHeader");
+        var accountName             = document.getElementById("accountName");
+        var transactionForm         = document.querySelector("form")
+                                    ? document.querySelector("form")
+                                    : " ";
+        var transactionAmount       = document.getElementById("transactionAmount");
+        var depWithSection          = document.getElementById("depWithSection");
+        var sendSection             = document.getElementById("sendSection");
+        var senderName              = document.getElementById("senderName");
+        var senderAccountNumber     = document.getElementById("senderAccountNumber");
+        var receiverName            = document.getElementById("receiverName");
+        var receiverAccountNumber   = document.getElementById("receiverAccountNumber");
+        var transactionType         = document.getElementById("transactionType");
+        var submitBtn               = document.getElementById("submitBtn");
+        var backBtn                 = document.getElementById("backBtn");
+        var depWithTableContainer   = document.getElementById("depWithTableContainer");
+        var depWithAccountName      = document.getElementById("depWithAccountName");
+        var depWithCurrentBalance   = document.getElementById("depWithcurrentBalance");
+        var depWithTable            = document.getElementById("depWithTable");
+
+        var senderContainer         = document.getElementById("senderTableContainer");
+        var senderAccountName       = document.getElementById("senderAccountName");
+        var senderCurrentBalance    = document.getElementById("senderCurrentBalance");
+        var senderWithTable         = document.getElementById("senderTable");
+
+        var receiverContainer       = document.getElementById("receiverTableContainer");
+        var receiverAccountName     = document.getElementById("receiverAccountName");
+        var receiverCurrentBalance  = document.getElementById("receiverCurrentBalance");
+        var receiverWithTable       = document.getElementById("receiverTable");
+        
+        var startWithNumModal       = document.getElementById("modal-container1");
+        var negativeNumModal        = document.getElementById("modal-container2");   
+        var existsNotModal          = document.getElementById("modal-container3");
+        //var successModal        = document.getElementById("modal-container4");
+        var okBtn1                  = document.getElementById("okBtn1");
+        var okBtn2                  = document.getElementById("okBtn2");
+        var okBtn3                  = document.getElementById("okBtn3");
+        //var okBtn4              = document.getElementById("okBtn4");
+
+
+        //notes on duplicate empty objects in LS upon loading and submission of forms 
+        //from S' martney place in function then invoke it para hindi kada load ng page ay gagawa siya ng object: NOT WORKING
+        //from Edwin add function to prevent form from loading after form submission: https://www.youtube.com/watch?v=NxVCq4p0Kb0&t=319s
+        //https://eloquentjavascript.net/2nd_edition/18_forms.html: WORKING
+
+        //!!!!IMPORTANT DONT FORGET THIS IN EVERY PAGE!!!!
+        //get bankAccountList from local storage if bank is not yet in LS, create new object
+        function getOrCreateBankAccountList(){
+            bankAccountList =  JSON.parse(localStorage.getItem("bankAccountList"))
+                ? JSON.parse(localStorage.getItem("bankAccountList"))
+                : [];
+        }
+
+        getOrCreateBankAccountList();
+
+        function getOrCreateTransactionList(){
+            transactionList = JSON.parse(localStorage.getItem("transactionList"))
+                            ? JSON.parse(localStorage.getItem("transactionList"))
+                            : [];
+        }
+
+        getOrCreateTransactionList();
+
+        function convertToInt(){
+            var i;
+
+            for(i=0; i < bankAccountList.length; i++){
+                bankAccountList[i].accountBalance = parseInt(bankAccountList[i].accountBalance)
+            }
+        }
+
+        //1. CREATE BANK CONSTRUCTOR
+        function Bank(name, accountList, transactionList){
+            this.bankName           = name;
+            this.bankAccountList    = accountList;
+            this.transactionList    = transactionList;
+        }
+
+         //2. CREATE BANK INSTANCE 
+        let bank = new Bank("Omega Bank", bankAccountList, transactionList);
+
+        console.log(bank);
+
+        //ADD DEPOSIT, WITHDRAW AND SEND TO BANK ACCOUNT LIST OBJECT
+        bank.deposit = function deposit(user, amount){
+
+            getOrCreateTransactionList();
+            convertToInt();
+
+            let date                  = new Date(); 
+            //find user in account list and store in this variable
+            //find if the input name already exists in local storage; if there is no existing name in LS return as empty to prevent error
+            let change_AccountDetails = bank.bankAccountList.find(Account => Account.accountName === user)
+                                      ? bankAccountList.find(account => account.accountName === user)
+                                      : " ";
+            
+            //find user's index in account list and store in this variable
+            let change_AccountDetailsIndex = bank.bankAccountList.findIndex(Account => Account.accountName === user);
+            
+            //check if name starts with num
+            if(user.match(/^\d/)){
+                alert(`${user} starts with a number! Please enter valid name that starts with a letter.`)
+                startWithNumModal.style.display = "block";
+            }else if( amount < 0){
+                alert(`Deposit amount cannot be negative! Please enter a number equal to or greater than 0.`)
+                negativeNumModal.style.display = "block";
+            } else if(change_AccountDetails.accountName !== user){
+                alert(`Account does not exist!`) 
+                // existsNotModal.style.display = "block";
+            } else{
+                //add amount to account balance
+                change_AccountDetails.accountBalance += amount;
+                
+                //show dep is successful
+                alert(`Deposit successful! ${change_AccountDetails.accountName} new balance is Php ${change_AccountDetails.accountBalance}.`);
+                // successModal.style.display = "block";
+
+                //add the account changes to bankAcctList array
+                bank.bankAccountList.splice(change_AccountDetailsIndex, 1, change_AccountDetails);
+                
+                //save changes to bank object to the local Storage
+                localStorage.setItem("bankAccountList", JSON.stringify(bankAccountList));
+
+                //create transaction record and push to transactionList
+                transaction = {
+                        accountNumber   :  Date.now(),
+                        accountName     :  `${change_AccountDetails.accountName}`,
+                        Date            : `${date}`,
+                        Type            : `Deposit`,
+                        Description     : `Deposit of Php ${amount}.`,
+                        Amount          : `${amount}`,
+                        CurrentBalance  : `${change_AccountDetails.accountBalance}`
+                    }
+                
+                transactionList.push(transaction);
+                
+                //save changes to bank object to the local Storage
+                localStorage.setItem("transactionList", JSON.stringify(transactionList)); 
+                
+                
+                }
+
+                clearForm();
+            }
+        
+        //5.A TEST CASES
+        //5.A1. name exists and amount is >100: working
+        //bank.deposit("Jose", 1000);
+        //5.A2. name exists and amount is <100: working
+        //bank.deposit("Jose", 50);
+        //5.A3. name exists and amount is <0: WORKING==> fixed by placing all error catcher logical statements before the logical statement that returns true
+        //bank.deposit("Jose", -50);
+        //5.A4. Name cannot start with a number: 
+        //bank.deposit("3aria Santos", 1000);
+        
+        //EVENTLISTENER/HANDLER
+        //prevent form from submitting and from creating empty object
+        //on submit (the event itself, prevent submission and creation of empty accountowner object)
+        transactionForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+        });
+
+        submitBtn.addEventListener("click", doTransaction);
+        backBtn.addEventListener("click", function(){
+            location.replace("mainPage.html");
+        });
+        
+        okBtn1.addEventListener("click", returnToDepositPage);
+        okBtn2.addEventListener("click", returnToDepositPage);
+        okBtn3.addEventListener("click", returnToDepositPage);
+
+        function returnToDepositPage(){
+            window.location.reload();
+            
+        }
+
+
+        window.onload = function(){ 
+            document.getElementById("transactionForm").onsubmit = doTransaction;
+
+        }
+
+        function showTransTypeHeader(){
+            transTypeHeader.innerHTML = "Deposit Section";
+            
+        }
+
+        showTransTypeHeader();
+
+        function doTransaction() {
+            if(accountName.value.match(/^\d/)){
+                alert(`${accountName.value} starts with a number! Please enter valid name that starts with a letter.`)
+                startWithNumModal.style.display = "block";
+            } else if(accountName.value === "" || accountName.value === undefined || accountName.value === null){
+                alert(`Please enter valid name that starts with a letter.`);
+                
+            } else if (parseInt(transactionAmount.value) < 0){
+                alert(`Please enter a number equal to or greater than 0.`);
+                negativeNumModal.style.display = "block";
+            } else {
+                showBalance(accountName.value);
+                bank.deposit(accountName.value, parseInt(transactionAmount.value));
+                
+            }
+            clearForm();
+        }
+
+        function showBalance(user){
+            convertToInt();
+            
+            let targetUser = bank.bankAccountList.find(Account => Account.accountName === user);
+            if(targetUser === null || targetUser === undefined){
+                // alert(`${user} does not exist.`); 
+                existsNotModal.style.display = "block";
+            } else{
+                depWithAccountName.textContent = `Account Name: ${targetUser.accountName}`
+                depWithcurrentBalance.textContent = `Account Name: Php ${targetUser.accountBalance}`
+                printAnotherTable(targetUser.accountName);
+                
+
+            }
+        }
+
+        // function printTable(user){
+        //     getOrCreateTransactionList();
+        //         let newRow   = depWithTable.insertRow(-1);
+        //         let newCell1 = newRow.insertCell(0);
+        //         let newCell2 = newRow.insertCell(1);
+        //         let newCell3 = newRow.insertCell(2);
+        //         let newCell4 = newRow.insertCell(3);
+
+        //     for(transaction of transactionList){
+        //         if(user === transaction.accountName)
+        //         newCell1.innerHTML = transaction.Type;
+        //         newCell2.innerHTML = transaction.Description;
+        //         newCell3.innerHTML = parseInt(transaction.Amount);
+        //         newCell4.innerHTML = parseInt(transaction.CurrentBalance);
+        //     }
+        // }
+
+        function printAnotherTable(user){
+            // showBalance(user);
+            getOrCreateTransactionList();
+
+            let newRow   = depWithTable.insertRow(-1);
+            let newCell1 = newRow.insertCell(0);
+            let newCell2 = newRow.insertCell(1);
+            let newCell3 = newRow.insertCell(2);
+            let newCell4 = newRow.insertCell(3);
+
+            for(transaction of transactionList){
+            if(user === transaction.accountName)
+            newCell1.innerHTML = transaction.Type;
+            newCell2.innerHTML = transaction.Description;
+            newCell3.innerHTML = parseInt(transaction.Amount);
+            newCell4.innerHTML = parseInt(transaction.CurrentBalance);
+            }
+
+            /*var previousTransaction = '<table>'+
+            '<tr>'+
+            '<th>Transaction Type</th>'+
+            '<th>Description</th>'+
+            '<th>Amount</th>'+
+            '<th>Balance</th>'+
+            '</tr>';
+
+            for(var i = 0; i < transactionList.length; i++){
+                if(transactionList[i].accountName === user){
+                    previousTransaction += '<tr>'+
+                    '<td>'+transactionList[i].Type+'</td>'+
+                    '<td>'+transactionList[i].Description+'</tD>'+
+                    '<td>'+parseInt(transactionList[i].Amount)+'</th>'+
+                    '<td>'+parseInt(transactionList[i].CurrentBalance)+'</th>'+
+                    '</tr>' 
+                }
+            }
+            previousTransaction += '</table>';
+            console.log(previousTransaction);
+            depWithTable.innerHTML = previousTransaction;*/
+        }
+
+        // printAnotherTable("Lestat");
+
+        function clearForm(){
+            //erases inputs after submission
+            transactionForm.reset();
+        }
+
+             //localStorage.clear();
+             //console.log("clear records");
+        function hideModals(){
+            //QUESTION HOW TO TRIGGER MODAL IN MY SET UP?
+            successModal.style.display = "none";
+            startWithNumModal.style.display = "none";
+            negativeNumModal.style.display = "none";
+            existsModal.style.display = "none";
+        }
+
+
+
+</script>
+</html>
