@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="login.css">
+        <title>Bank App</title>   
+    </head>
+    <body>
+        <div id="formDiv">
+            <h1>Omega Bank Management System</h1>
+            <form id="loginForm" >
+                <div>
+                    <label for="loginName" >Login Name</label>
+                    <br>
+                    <input  id="loginName" type="text" placeholder="Name" value="admin" autofocus>
+                    <br>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <br>
+                    <input id="password" type="password" placeholder="Password"  value="abcde1"autofocus> 
+                    <br>
+                </div>
+                <div>
+                    <button id ="loginBtn" class="btn" type="submit">Login</button>
+                </div>
+            </form>
+
+            <div id="modal-container1" class="modal-container">
+                <div id="invalidLogin" class="modal">
+                    <h2 id="h2Modal">Error: Invalid username or password.</h2>
+                    <button id="okBtn1" class="btn">OK</button>
+                </div>
+            </div>
+            <div id="modal-container4" class="modal-container">
+                <div id="successful" class="modal">
+                    <h2 id="h2Modal">Welcome to Omega Bank Management System</h2>
+                    <button id="okBtn4" class="btn">OK</button>
+                </div>
+            </div>
+
+        </div> 
+        
+    </body>
+    <script>
+        //GLOBAL VARIABLES
+        let bankAccountList;
+        let admin;
+        var loginForm     = document.querySelector("form")
+                          ? document.querySelector("form")
+                          : " ";
+        var loginName     = document.getElementById("loginName");
+        var password      = document.getElementById("password");
+        var loginBtn      = document.getElementById("loginBtn");
+        var invalidModal  = document.getElementById("modal-container1");
+        var successModal  = document.getElementById("modal-container4");
+        var okBtn1        = document.getElementById("okBtn1");
+        var okBtn4        = document.getElementById("okBtn4");
+
+        //notes on duplicate empty objects in LS upon loading and submission of forms 
+        //from S' martney place in function then invoke it para hindi kada load ng page ay gagawa siya ng object: NOT WORKING
+        //from Edwin add function to prevent form from loading after form submission: https://www.youtube.com/watch?v=NxVCq4p0Kb0&t=319s
+        //https://eloquentjavascript.net/2nd_edition/18_forms.html: WORKING
+
+        //LOCAL STORAGE STUFF
+        //!!!!IMPORTANT DONT FORGET THIS IN EVERY PAGE!!!!
+        //1.get bankAccountList from local storage if bank is not yet in LS, create new object
+        function getOrCreateBankAccountList(){
+            bankAccountList =  JSON.parse(localStorage.getItem("bankAccountList"))
+                ? JSON.parse(localStorage.getItem("bankAccountList"))
+                : [];
+        }
+
+        //2.initialize admin credential and save to Local Storage
+        admin = {
+                    Name: "admin", 
+                    Password:"abcde1", 
+                    loggedin: false
+                };
+        localStorage.setItem("adminCredentials", JSON.stringify(admin));
+
+        //console.log(admin);
+            
+        //EVENTLISTENER/HANDLER
+        //1. prevent form from submitting
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+        });
+
+        //2. upon click check admin cred against details saved in admin object taken from Local storage
+        loginBtn.addEventListener("click",checkAdminCred);
+
+        password.addEventListener("change", checkAdminCred);
+
+        okBtn1.addEventListener("click", function(){
+            //show next page
+            window.location.reload();
+        })
+
+        okBtn4.addEventListener("click", function(){
+            window.location.replace("mainPage.html");
+            hideModals();
+        })
+
+        //ADD FUNCTION TO LIST USERS
+        function list_user(){
+            getOrCreateBankAccountList();
+            console.log(`Account list as of ${ new Date()}:`)
+            console.table(bankAccountList);
+        }
+
+        //ADD FUNCTION TO CHECK LOGIN CREDENTIALS
+        function checkAdminCred(){
+
+            if(loginName.value === admin.Name && password.value === admin.Password){
+                admin.loggedin = true;
+
+                //save changes to admin object to the local Storage
+                localStorage.setItem("adminCredentials", JSON.stringify(admin));
+
+                //confirm deposit successful via message prompt
+                // alert(`Welcome to Omega Bank Management System.`);
+                successModal.style.backgroundColor = "transparent";
+                successModal.style.display = "block";
+
+            } else{
+                //confirm deposit successful via message prompt
+                // alert(`Error: Invalid username or password.`);
+                invalidModal.style.display = "block";   
+            } 
+        }
+
+        //ensures the page is loaded before functions are executed.
+        window.onload =function(){ 
+            //hideModals();
+            document.getElementById("loginForm").onsubmit = checkAdminCred;
+
+        }
+
+        function hideModals(){
+            successModal.style.display = "none";
+        }
+
+</script>
+</html>

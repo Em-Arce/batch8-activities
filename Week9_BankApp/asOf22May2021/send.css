@@ -1,0 +1,252 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: "Barlow Semi Condensed", sans-serif; 
+    font-size: 17px;
+    color: white; /*#ffcb08 */
+    background-color: #0018A8;
+
+}
+
+/* Styling for header*/
+#header{
+    position: fixed;
+    width: 100%;
+    max-height: 20vh;
+    /* border: 1px dotted; */
+} 
+
+#navBar{
+    float: right;
+}
+
+#navSection{
+    list-style: none;
+    display: flex;
+}
+
+#navSection li{
+    /* to spread the list items apart */
+    margin: 1.5rem;
+    /* padding: 1rem; */
+    text-decoration: none;
+    line-height: 1.1rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    /* responsive typography */
+    font-size: clamp(1.25rem, calc(5vw+0.5rem),1.5rem);
+    /* do not remove padding so listed items are not bunched together top/bottom left/right */
+    padding: 1rem;
+    /* display block applies padding */
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#navSection li:hover,
+#navSection li:active{
+    /* opacity: 60%; */
+    background-color:#009b9d;
+    border-radius: 0.5rem;
+}
+
+
+body{
+    scroll-behavior: smooth;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+
+div{
+    padding-top: 3vh;
+}
+
+h1{
+    font-size: clamp(2em, calc(2em + 5vw), 3em);
+    line-height: clamp(6vw, calc(6vw + 5vw), 8vw);
+    padding-top: 10vh;
+
+}
+
+h2{ font-size: clamp(1.5em, calc(1.5em + 5vw), 2em);
+    line-height: clamp(6vw, calc(6vw + 5vw), 8vw);
+    padding-top: 0.5vh;
+}
+
+#h2Modal{
+    font-size: clamp(2em, calc(2em + 5vw), 3em);
+    line-height: clamp(2vw, calc(2vw + 3vw), 4vw);
+    padding-block: 2vw;
+    opacity: 60%;
+}
+
+label{
+    font-size: 1.5em;
+    opacity: 60%;
+}
+
+p{
+    font-size: 2rem;
+}
+
+/* style for input fields */
+#accountName,
+#transactionAmount,
+#senderName,
+#senderAccountNumber,
+#receiverName,
+#receiverAccountNumber,
+#transactionType{
+    background: transparent;
+    border: white 1px solid;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid currentColor;
+    /* outline: inherit; */
+    text-align: center;
+    color:inherit;
+    opacity: 60%;
+    font-size: 1em;
+    margin: 1rem;
+    transition: border-bottom 150ms ease-in;
+    width: 30%;
+    height: 2rem;
+}
+
+/* style for placeholders */
+
+#accountName::placeholder,
+#transactionAmount::placeholder,
+#senderName::placeholder,
+#senderAccountNumber::placeholder,
+#receiverName::placeholder,
+#receiverAccountNumber::placeholder,
+#transactionType::placeholder{
+    color:inherit;
+    outline: none;
+}
+
+#accountName:focus,
+#transactionAmount:focus,
+#senderName:focus,
+#senderAccountNumber:focus,
+#receiverName:focus,
+#receiverAccountNumber:focus,
+#transactionType:focus{
+    border-width: 2px;
+}
+
+#accountName:focus::placeholder,
+#accountName:focus::placeholder,
+#transactionAmount:focus::placeholder,
+#senderName:focus::placeholder,
+#senderAccountNumber:focus::placeholder,
+#receiverName:focus::placeholder,
+#receiverAccountNumber:focus::placeholder,
+#transactionType:focus::placeholder{
+    opacity: 0.4;
+}
+
+#transactionType{
+    position: relative;
+}
+
+/* #submitBtn,
+#mainPageBtn,
+#backBtn,
+#okBtn1,
+#okBtn2,
+#okBtn3,
+#okBtn4,
+#okBtn5,
+#okBtn6,
+#okBtn7,
+#okBtn8{ */
+.btn{
+     text-decoration: none;
+     font-size: 1.25rem;
+     color: white;
+     background: #009b9d;
+     padding: 0.25rem;
+     border-radius: 0.5rem;
+     width: 35%;
+     height: 3rem;
+     border: #009b9d 1px solid;
+     box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+     transform: scale(0.85);
+}
+
+/* #submitBtn:hover,
+#mainPageBtn:hover,
+#backBtn:hover,
+#okBtn1:hover,
+#okBtn2:hover,
+#okBtn3:hover,
+#okBtn4:hover */
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
+table{
+    border-collapse: separate;
+    border: solid slategray 1px;
+    border-radius: 0.5rem;
+    width: 90%;
+    margin-left: 1.5rem;
+}
+
+td, th {
+    border-left:solid slategray 1px;
+    border-top:solid slategray 1px;
+    padding: 0.5rem;
+    
+}
+
+th {
+    background-color: transparent;
+    border-top: none;
+}
+
+td:first-child, th:first-child {
+     border-left: none;
+}
+
+.modal-container{
+    line-height: 5vw;
+    display: none;  /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #fefefe;
+}
+
+
+.modal{
+    background-color: #0018A8; /*#fefefe*/
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 2rem;
+    width: 50%; /* Could be more or less, depending on screen size */
+    color:white;
+}
+
+/* HIDE  */
+#depWithSection,
+#senderTableContainer,
+#receiverTableContainer,
+#depWithTableContainer{
+    display: none;
+}
+

@@ -1,0 +1,135 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: "Barlow Semi Condensed", sans-serif; 
+    font-size: 17px;
+    color: white; /*#ffcb08 */
+    background-color: #0018A8;
+
+}
+
+body{
+    scroll-behavior: smooth;
+    text-align: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+
+div{
+    padding-top: 2rem;
+}
+
+h1{
+    font-size: clamp(2em, calc(2em + 5vw), 3em);
+    line-height: clamp(6vw, calc(6vw + 5vw), 8vw);
+    padding-top: 10vh;
+
+}
+
+#h2Modal{
+    font-size: clamp(2em, calc(2em + 5vw), 3em);
+    line-height: clamp(2vw, calc(2vw + 3vw), 4vw);
+    padding-block: 2vw;
+    opacity: 60%;
+}
+
+label{
+    font-size: 1.5em;
+    opacity: 60%;
+}
+
+
+
+/* style for input fields */
+#loginName,
+#password{
+    background: transparent;
+    border: white 1px solid;
+    border-radius: 0.5rem;
+    border-bottom: 1px solid currentColor;
+    /* outline: inherit; */
+    text-align: center;
+    color:inherit;
+    opacity: 60%;
+    font-size: 1em;
+    margin: 1rem;
+    transition: border-bottom 150ms ease-in;
+    width: 30%;
+    height: 2rem;
+}
+
+/* style for placeholders */
+
+#loginName::placeholder,
+#password::placeholder{
+    color:inherit;
+    outline: none;
+}
+
+#loginName:focus,
+#password:focus{
+    border-width: 2px;
+}
+
+#loginName:focus::placeholder,
+#password:focus::placeholder{
+    opacity: 0.4;
+}
+
+/* #loginBtn,
+#okBtn1,
+#okBtn2, */
+.btn{
+     text-decoration: none;
+     font-size: 1.5rem;
+     color: white;
+     background: #009b9d;
+     /* padding: 0.25rem; */
+     /* margin-block: 0.25rem; */
+     border-radius: 0.5rem;
+     height: 4rem;
+     width: 7rem;
+     border: #009b9d 1px solid;
+     box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+     transform: scale(0.85);
+}
+
+/* #loginBtn:hover,
+#okBtn1:hover,
+#okBtn2:hover, */
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}  
+
+.modal-container{
+    line-height: 5vw;
+    display: none;  /*Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #fefefe;
+}
+
+.modal{
+    background-color: #0018A8; /*#fefefe*/
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 2rem;
+    width: 50%; /* Could be more or less, depending on screen size */
+    color:white;
+}
+
+
+
