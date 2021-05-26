@@ -1,0 +1,229 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: Playfair Display , serif; /* 'NotoSans' */
+    background-color: #F5F6FC;
+    fill-opacity:50%;
+
+    /* background-color: lightgray; #E5E6F1; lightgrey */
+    font-size: 17px;
+    color: slategray;
+    line-height: 1.6;
+    max-width: 75em;
+    /* width: 98%; */
+    margin: 0 auto;
+}
+
+html{
+    height: 100%;              /* for the page to take full window height */
+    box-sizing: border-box;    /* to have the footer displayed at the bottom of the page without scrolling */
+}
+
+body{
+    position: relative;        /* for the footer to move with the page size */
+    min-height: 100%;          /* for the footer to be at the bottom */
+    padding-bottom: 4rem;      /* Space available between last element and bottom border of the page */
+}
+
+
+#navBar{
+    /*  default, uncomment when designing nav */
+    display: flex;
+}
+
+section,
+div{
+    padding-top: 0.5rem;
+    z-index: 5;
+}
+
+
+#budgetLeftSection{
+    /* background-image: linear-gradient(to top, #fedbe8, #e4a0c9, #bb69b7, #8239ad, #0018a8); */
+    background-image: linear-gradient(to right top, #fedbe8, #eed2f3, #caceff, #90cfff, #45cff0, #35c2e2, #22b5d5, #00a8c7, #008ccc, #006ece, #004bc4, #0018a8);
+    height: 30vh;
+    display: flex;
+    flex-flow: column wrap;
+    align-items:center;
+    border-radius: 0.25rem;
+}
+
+#statSection{
+    height: 20vh;
+    align-content: space-around;
+    justify-content: space-around;
+    /* border: 1px solid violet; */
+    
+}
+
+.splitToTwo{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 50%;
+    justify-content:space-around;
+    /* border: 1px dotted blue; */
+
+}
+
+.splitToTwo > *{
+    width: 45vw;
+    flex-flow: column wrap;
+    justify-content:space-between;
+    align-items: baseline;
+}
+
+#category{
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    /* flex: 20%; */
+    justify-content:space-around;
+    border: 1px solid pink;
+}
+
+.categoryList{
+    width: 30vw;
+    max-height: 10vh;
+    display: flex;
+    flex-flow: column wrap;
+    /* flex-basis: 0 0 20%; */
+    justify-content:space-evenly;
+    border: 1px dotted blue;
+
+}
+
+table{
+    border-collapse: separate;
+    border: solid slategray 1px;
+    border-radius: 0.5rem;
+    width: 90%;
+    margin-left: 1.5rem;
+}
+
+td, th {
+    border-left:solid slategray 1px;
+    border-top:solid slategray 1px;
+    padding: 0.5rem;
+    
+}
+
+th {
+    background-color: transparent;
+    border-top: none;
+}
+
+#edit{
+    height: 8vh;
+    width: 100%;
+    display: block;
+    align-items: center;
+
+}
+
+footer{
+    position: absolute;
+    /* position: static; fixed the overlap with edit budget */
+    bottom: 0;
+    height: 10vh;
+    width: 100%;
+    /* border: 1px dotted blue; */
+    display: flex;
+    flex-direction: row wrap;
+}
+
+footer ul{
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row wrap;
+    flex: 20%;
+    border: 1px dotted black;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#footerContainer li{
+    /* border: 1px dotted green; */
+    list-style: none;
+    /* display: block; */
+    display: flex;
+    flex-direction: row wrap;
+    width: 20vw;
+    height: 100%;
+    text-align: center;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 1rem;
+    font-size: 0.8em;
+}
+
+#add{
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    
+    background-color: #00C9B7;
+    font-weight: 900;
+}
+
+@media (min-width:370px) {
+    #add{
+        border-radius: 1em; /*border radius for larger screens*/
+    }
+}
+
+/* FONT */
+section,
+h1{
+    text-align: center;
+}
+.textWht{
+    color: white;
+}
+
+.textVerySmall{
+    font-size: 0.25em;
+
+}
+
+.textSmall{
+    font-size: 0.5em;
+}
+
+.textMed{
+    font-size: 0.5em;
+}
+
+.textBig{
+    font-size: 1.25em;
+}
+
+/* edges */
+.veryRoundEdge{
+    border-radius: 3rem;
+    padding: 0.25rem;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+}
+
+.roundEdge{
+    border-radius: 1rem;
+    padding: 0.25rem;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+
+}
+
+/* background color */
+.bgTransparent{
+    background-color:transparent;
+}
+
+.bgWhite{
+    background-color:white;
+}
