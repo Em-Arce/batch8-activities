@@ -168,10 +168,11 @@ footer ul{
     width: 10vw;
     height: 10vw;
     border-radius: 50%;
-    
     background-color: #00C9B7;
     font-weight: 900;
 }
+
+
 
 @media (min-width:370px) {
     #add{
@@ -205,6 +206,10 @@ h1{
     font-size: 1.25em;
 }
 
+.textXtraBig{
+    font-size: 2.5em;
+}
+
 /* edges */
 .veryRoundEdge{
     border-radius: 3rem;
@@ -227,3 +232,70 @@ h1{
 .bgWhite{
     background-color:white;
 }
+
+/* ADD NEW EXPENSE OR BUDGET MODAL */
+.headerModal{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.modalContainer{
+    line-height: 5vw;
+    /* display: none;  Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: inherit;
+    
+}
+
+.modal{
+    background-color: #fefefe;  
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 2rem;
+    width: 90%; /* Could be more or less, depending on screen size */
+    color:white;
+}
+
+.close{
+    color: black;
+}
+
+#close{
+    float: left;
+}
+
+form{
+    border: 1px dotted;
+    background-color: #fefefe;
+    
+}
+
+input,
+label,
+select{
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    /* text-indent: 20%; */
+}
+
+input{
+    width: 100%;
+}
+
+
+.btn{
+    background-color:#00C9B7;
+    width: 100%;
+    z-index: 5;
+    /* position: absolute; */
+    margin-top: 3rem;
+    text-align: center;
+}
+
