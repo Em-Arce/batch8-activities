@@ -241,7 +241,7 @@ h1{
 
 .modalContainer{
     line-height: 5vw;
-    /* display: none;  Hidden by default */
+    display: none;  /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
     left: 0;
