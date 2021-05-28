@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+        <title> BudgetApp_AddNew</title>
+        <link rel="stylesheet" href="budget.css">
+        
+    </head>
+    <body>  
+        <div id="modalContainer" class="modalContainer">
+
+            <div class="modal">
+
+        
+            <div id="navBar" class="navBar hidden bgWhite">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 225.4 225.4" preserveAspectRatio="xMidYMid meet"version="1.1" class="navBar bgWhite">
+                    <defs>
+                    <clipPath id="clip1">
+                      <path d="M 102 112 L 113 112 L 113 225.398438 L 102 225.398438 Z M 102 112 "/>
+                    </clipPath>
+                    <clipPath id="clip2">
+                      <path d="M 112 112 L 124 112 L 124 225.398438 L 112 225.398438 Z M 112 112 "/>
+                    </clipPath>
+                    <clipPath id="clip3">
+                      <path d="M 112 102 L 225.398438 102 L 225.398438 113 L 112 113 Z M 112 102 "/>
+                    </clipPath>
+                    <clipPath id="clip4">
+                      <path d="M 112 112 L 225.398438 112 L 225.398438 124 L 112 124 Z M 112 112 "/>
+                    </clipPath>
+                    </defs>
+                    <g id="surface1">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 163.992188 163.898438 L 123.171875 131.226563 L 112.738281 112.644531 Z M 163.992188 163.898438 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 102.304688 94.058594 L 63.164063 62.738281 L 61.480469 61.386719 L 112.738281 112.644531 Z M 102.304688 94.058594 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 112.738281 112.644531 L 112.738281 -0.0546875 L 102.304688 94.058594 Z M 112.738281 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 102.304688 131.226563 L 112.738281 112.644531 L 61.484375 163.894531 L 61.480469 163.902344 L 64.945313 161.128906 Z M 102.304688 131.226563 "/>
+                    <g clip-path="url(#clip1)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 225.332031 L 102.304688 131.226563 L 112.738281 112.644531 Z M 112.738281 225.332031 "/>
+                    </g>
+                    <g clip-path="url(#clip2)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 123.171875 131.226563 L 112.738281 112.644531 L 112.738281 225.339844 L 112.972656 223.230469 Z M 123.171875 131.226563 "/>
+                    </g>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 123.171875 94.058594 L 163.996094 61.382813 L 163.996094 61.386719 L 112.738281 112.644531 Z M 123.171875 94.058594 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 112.644531 L 112.738281 -0.046875 L 113.527344 7.058594 L 123.171875 94.058594 Z M 112.738281 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 61.484375 163.894531 L 94.15625 123.078125 L 112.734375 112.644531 Z M 61.484375 163.894531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 131.320313 102.207031 L 162.644531 63.074219 L 163.996094 61.386719 L 112.738281 112.644531 Z M 131.320313 102.207031 "/>
+                    <g clip-path="url(#clip3)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 112.738281 112.644531 L 225.425781 112.644531 L 225.4375 112.640625 L 131.320313 102.207031 Z M 112.738281 112.644531 "/>
+                    </g>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 94.15625 102.210938 L 112.738281 112.644531 L 112.738281 112.640625 L 61.484375 61.390625 L 61.476563 61.382813 L 64.253906 64.851563 Z M 94.15625 102.210938 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0.046875 112.644531 L 94.152344 102.210938 L 112.738281 112.644531 Z M 0.046875 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 94.15625 123.078125 L 112.734375 112.644531 L 112.738281 112.644531 L 0.0390625 112.644531 L 2.148438 112.878906 Z M 94.15625 123.078125 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 131.320313 123.078125 L 163.996094 163.902344 L 112.738281 112.644531 Z M 131.320313 123.078125 "/>
+                    <g clip-path="url(#clip4)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 112.644531 L 225.425781 112.644531 L 218.320313 113.429688 L 131.320313 123.078125 Z M 112.738281 112.644531 "/>
+                    </g>
+                    </g>
+                </svg> 
+            </div>
+        
+            <div id="headerModal" class="headerModal bgWhite">
+                <button id="close" class="close addNew bgWhite">X</button> 
+                <span id="addExpOrBdgItem" class="close addExpOrBdgItem addNew bgWhite">ADD EXPENSE</span> 
+            </div>
+           
+            <div id="formContainer" class="formContainer bgWhite">
+
+                <form id="newExpenseOrBudget " class="newExpenseOrBudget bgWhite">
+                    <input type="number" id = "amount"class="amount addNew bgWhite currency  textBig onclickAddZIndextextXtraBig roundEdge" placeholder= "&#8369 0" min="0" required>
+                    <label for="categoryName" class ="categoryName addNew bgWhite"> Category </label>
+                    <select name="categoryName" id="categoryName" class ="categoryName addNew bgWhite roundEdge" form="newExpense"> 
+                        <option value="" class ="categoryName addNew bgWhite roundEdge"></option>
+                        <option value="Food" class ="categoryName addNew bgWhite roundEdge">Food</option>
+                        <option value="Groceries" class ="categoryName addNew bgWhite roundEdge">Groceries</option>
+                        <option value="Coffee" class ="categoryName addNew bgWhite roundEdge">Coffee</option>
+                        <option value="Restaurant" class ="categoryName addNew bgWhite roundEdge">Restaurant</option>
+                        <option value="Drinks" class ="categoryName addNew bgWhite roundEdge">Drinks</option>
+                        <option value="Electricity" class ="categoryName addNew bgWhite roundEdge" >Electricity</option>
+                        <option value="Rent" class ="categoryName addNew bgWhite roundEdge">Rent</option>
+                        <option value="Insurance" class ="categoryName addNew bgWhite roundEdge">Insurance</option>
+                        <option value="Internet" class ="categoryName addNew bgWhite roundEdge">Internet</option>
+                        <option value="Amortization" class ="categoryName addNew bgWhite roundEdge">Amortization</option>
+                        <option value="Water" class ="categoryName addNew bgWhite roundEdge">Water</option>
+                        <option value="Postpaid Plan" class ="categoryName addNew bgWhite roundEdge">Postpaid Plan</option>
+                        <option value="Doctor" class ="categoryName addNew bgWhite roundEdge">Doctor</option>
+                        <option value="Dentist" class ="categoryName addNew bgWhite roundEdge">Dentist</option>
+                        <option value="Dermatologist" class ="categoryName addNew bgWhite roundEdge">Dermatologist</option>
+                        <option value="Gym" class ="categoryName addNew bgWhite roundEdge">Gym</option>
+                        <option value="Health Insurance" class ="categoryName addNew bgWhite roundEdge">Health Insurance</option>
+                        <option value="Vacation" class ="categoryName addNew bgWhite roundEdge">Vacation</option>
+                        <option value="Subscription" class ="categoryName addNew bgWhite roundEdge">Subscription</option>
+                        <option value="Gift" class ="categoryName addNew bgWhite roundEdge">Gift</option>
+                        <option value="Pharmacy" class ="categoryName addNew bgWhite roundEdge">Pharmacy</option>
+                        <option value="Pet" class ="categoryName addNew bgWhite roundEdge">Pet</option>
+                        <option value="Car Insurance" class ="categoryName addNew bgWhite roundEdge">Car Insurance</option>
+                        <option value="Car Loan" class ="categoryName addNew bgWhite roundEdge">Car Loan</option>
+                        <option value="Flight" class ="categoryName addNew bgWhite roundEdge">Flight</option>
+                        <option value="Gas" class ="categoryName addNew bgWhite roundEdge">Gas</option>
+                        <option value="Parking" class ="categoryName addNew bgWhite roundEdge">Parking</option>
+                        <option value="Public Transport" class ="categoryName addNew bgWhite roundEdge">Public Transport</option>
+                        <option value="Repair" class ="categoryName addNew bgWhite roundEdge">Repair</option>
+                        <option value="Taxi" class ="categoryName addNew bgWhite roundEdge">Taxi</option>
+                        <option value="Miscellaneous" class ="categoryName addNew bgWhite roundEdge">Miscellaneous</option>
+                    </select>
+                    
+                    <label for="date" class ="date addNew bgWhite"> Date </label>
+                    <input id ="date" class ="date addNew roundEdge bgWhite" type="date" required> 
+                    
+                    <button type="submit" value = "SAVE" form ="newExpenseOrBudget" id="save" class="save addNew btn upperCase textWht veryRoundEdge">SAVE </button>
+
+                    <button type="submit" value = "REFRESH" form ="newExpenseOrBudget" id="refresh" class="refresh addNew btn upperCase textWht veryRoundEdge">REFRESH </button>
+
+                    <button type="submit" value = "CLEAR" form ="newExpenseOrBudget" id="clear" class="clear addNew btn upperCase textWht veryRoundEdge">CLEAR </button>
+
+                </form>
+            </div>
+        
+        </div>
+        
+    </body>
+    <script src="accounting.js">
+    </script>
+    <script src="budgetAddExpense.js">
+    </script>
+</html>
