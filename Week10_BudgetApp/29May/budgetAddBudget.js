@@ -52,6 +52,8 @@ class HandleLocalStorage{
         console.log(budgetItems);
 
         budgetItems.push(budget);
+        
+        alert("Add budget item success!");
 
         console.log(budgetItems);
 
@@ -119,7 +121,6 @@ close.addEventListener("click",() =>{
 //reload page to make sure that the latest input is saved to LS else it will save the 2nd to the last input(if form is not reset or worse if form is reset it will save empty object) 
 refreshBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    
     window.location.reload();
 })
 
