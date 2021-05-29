@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+        <title> BudgetApp_EditBudgetPage</title>
+        <link rel="stylesheet" href="budget.css">
+        
+    </head>
+    <body>  
+        <header>
+            <div id="navBar" class="navBar hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50px" height="50px" viewBox="0 0 225.4 225.4" preserveAspectRatio="xMidYMid meet"version="1.1">
+                    <defs>
+                    <clipPath id="clip1">
+                      <path d="M 102 112 L 113 112 L 113 225.398438 L 102 225.398438 Z M 102 112 "/>
+                    </clipPath>
+                    <clipPath id="clip2">
+                      <path d="M 112 112 L 124 112 L 124 225.398438 L 112 225.398438 Z M 112 112 "/>
+                    </clipPath>
+                    <clipPath id="clip3">
+                      <path d="M 112 102 L 225.398438 102 L 225.398438 113 L 112 113 Z M 112 102 "/>
+                    </clipPath>
+                    <clipPath id="clip4">
+                      <path d="M 112 112 L 225.398438 112 L 225.398438 124 L 112 124 Z M 112 112 "/>
+                    </clipPath>
+                    </defs>
+                    <g id="surface1">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 163.992188 163.898438 L 123.171875 131.226563 L 112.738281 112.644531 Z M 163.992188 163.898438 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 102.304688 94.058594 L 63.164063 62.738281 L 61.480469 61.386719 L 112.738281 112.644531 Z M 102.304688 94.058594 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 112.738281 112.644531 L 112.738281 -0.0546875 L 102.304688 94.058594 Z M 112.738281 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 102.304688 131.226563 L 112.738281 112.644531 L 61.484375 163.894531 L 61.480469 163.902344 L 64.945313 161.128906 Z M 102.304688 131.226563 "/>
+                    <g clip-path="url(#clip1)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 225.332031 L 102.304688 131.226563 L 112.738281 112.644531 Z M 112.738281 225.332031 "/>
+                    </g>
+                    <g clip-path="url(#clip2)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 123.171875 131.226563 L 112.738281 112.644531 L 112.738281 225.339844 L 112.972656 223.230469 Z M 123.171875 131.226563 "/>
+                    </g>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 123.171875 94.058594 L 163.996094 61.382813 L 163.996094 61.386719 L 112.738281 112.644531 Z M 123.171875 94.058594 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 112.644531 L 112.738281 -0.046875 L 113.527344 7.058594 L 123.171875 94.058594 Z M 112.738281 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 61.484375 163.894531 L 94.15625 123.078125 L 112.734375 112.644531 Z M 61.484375 163.894531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 131.320313 102.207031 L 162.644531 63.074219 L 163.996094 61.386719 L 112.738281 112.644531 Z M 131.320313 102.207031 "/>
+                    <g clip-path="url(#clip3)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 112.738281 112.644531 L 225.425781 112.644531 L 225.4375 112.640625 L 131.320313 102.207031 Z M 112.738281 112.644531 "/>
+                    </g>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 94.15625 102.210938 L 112.738281 112.644531 L 112.738281 112.640625 L 61.484375 61.390625 L 61.476563 61.382813 L 64.253906 64.851563 Z M 94.15625 102.210938 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0.046875 112.644531 L 94.152344 102.210938 L 112.738281 112.644531 Z M 0.046875 112.644531 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 94.15625 123.078125 L 112.734375 112.644531 L 112.738281 112.644531 L 0.0390625 112.644531 L 2.148438 112.878906 Z M 94.15625 123.078125 "/>
+                    <path style=" stroke:none;fill-rule:evenodd;fill:#0018a8;fill-opacity:1;" d="M 131.320313 123.078125 L 163.996094 163.902344 L 112.738281 112.644531 Z M 131.320313 123.078125 "/>
+                    <g clip-path="url(#clip4)" clip-rule="nonzero">
+                    <path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 112.738281 112.644531 L 225.425781 112.644531 L 218.320313 113.429688 L 131.320313 123.078125 Z M 112.738281 112.644531 "/>
+                    </g>
+                    </g>
+                </svg> 
+            </div>
+        </header>
+        
+        <section id="budgetLeftSection" class="sectionContainer budget bgThreeColorGradient "  >
+            <div id="headerEditBudgetPage" class="headerEditBudgetPage bgTransparent">
+                <button id="close1" class="close1 addNew bgTransparent">X</button> 
+            </div>
+           
+                <h1 id="title" class="title bgTransparent textWht">Budget: Household </h1>
+                <span id="budgetLeftAmt" class="budgetLeftAmt budget bgTransparent currency textBig textWht">&#8369 </span>
+                <span id="budgetLeftText" class="budgetLeftText budget bgTransparent upperCase textSmall textWht">LEFT TO SPEND</span>
+            
+        </section>
+        <!-- <section id="statSection" class="sectionContainer budget bgTransparent"  > 
+            <div id="monthYear"  class="monthmonthYear budget bgWhite textAndNum veryRoundEdge"> May 2021 </div>
+            <div id="stat" class="stat budget splitToTwo bgTransparent ">
+                <div  class="statTotSpentAmt budget  bgWhite currency textBig roundEdge">
+                    <span id="statTotSpentAmt" class="statTotSpentAmt budget bgWhite currency textBig"> &#8369 </span>
+                    <br>
+                    <span id="statTotSpentText" class="statTotSpentText budget bgWhite upperCase textSmall roundEdge">TOTAL SPENT</span>
+                </div>
+                <div id="statdailyBgAmt" class="statdailyBgAmt budget bgWhite currency textBig roundEdge">
+                    <span class="statdailyBgAmt budget bgWhite currency textBig">&#8369 </span>
+                    <br>
+                    <span id="statdailyBgText" class="statdailyBgText budget bgWhite upperCase textSmall roundEdge">DAILY BUDGET</span>
+                </div>
+        </section> -->
+        <section id="categorySection" class="categorySection budget bgWhite">
+            <div id="categoryContainer" class="categoryContainer budget bgWhite">
+                <h1 id="categoryTitle" class="categoryTitle budget bgWhite">Budget Items </h1>
+                <div id="budgetTableContainer" class="expensesTableContainer budget bgWhite">
+                <table id="budgetTable" class="budget bgWhite">
+                    <tr class="budget bgWhite">
+                        <th class="budget bgWhite textSmall">Category</th>
+                        <th class="budget bgWhite textSmall">Allocation</th>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            
+        </section> 
+        <section id="edit" class="sectionContainer budget bgTransparent ">
+            <button type="submit" id="addBudget" class="addBudget budget btn bgWhite upperCase veryRoundEdge "> ADD BUDGET</button>
+        </section>
+        <footer id="footer" class="sectionContainer budget bgWhite">
+            <div id="footerContainer" class="footerContainer budget bgTransparent">
+                <ul class="footerContainer budget bgWhite ">
+                    <li id="profile" class="bgWhite textMed">Profile</li>
+                    <li id="bankAccounts" class="bgWhite textMed">Account</li>
+                    <button type="submit" id="addBtn" class="addBtn btn bgWhite textWht textMed">&#43</button>
+                    <li id="budget" class="bgWhite textMed">Budget</li>
+                    <li id="loginOutSignUp" class="bgWhite textMed">Logout</li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+    <script src="accounting.js"></script>
+    <script src="budgetEditBudgetPage.js"></script>
+    <!-- <script src="budgetAddExpense.js"></script> -->
+    <script>
+        
+    </script>
+</html>
