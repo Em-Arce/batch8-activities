@@ -4,17 +4,17 @@ var budget      = document.getElementById("budget");
 var loginOutSignUp = document.getElementById("loginOutSignUp");
 
 profile.addEventListener("click", ()=>{
-    window.location.replace("../profile.html");
+    window.location.replace("./profile.html");
 });
 
 bankAccounts.addEventListener("click", ()=>{
-    window.location.replace("../account.html");
+    window.location.replace("./account.html");
 });
 
 budget.addEventListener("click", ()=>{
-    window.location.replace("../budget.html");
+    window.location.replace("./budget.html");
 });
 
 loginOutSignUp.addEventListener("click", ()=>{
-    window.location.replace("../login.html");
+    window.location.replace("./login.html");
 });
