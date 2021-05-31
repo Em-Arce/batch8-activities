@@ -184,7 +184,7 @@ function printTable() {
 printTable();
 
 closeBtn1.addEventListener("click", function () {
-    window.location.replace("budget.html");
+    window.location.replace("./budget.html");
 });
 
 
