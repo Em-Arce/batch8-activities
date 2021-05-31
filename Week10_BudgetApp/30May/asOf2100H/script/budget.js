@@ -231,7 +231,7 @@ function getDaysLeftInMonth(){
     var currentYear = dateTodayJSFormat.getFullYear();
     var daysThisMonth = new Date(currentYear, currentMonth, 0).getDate();
     var dateToday = new Date().getDate(); //just the date today in num type
-    daysLeftInMonth = daysThisMonth-dateToday;
+    daysLeftInMonth = (daysThisMonth-dateToday) + 1;
     return daysLeftInMonth;
 }
 
