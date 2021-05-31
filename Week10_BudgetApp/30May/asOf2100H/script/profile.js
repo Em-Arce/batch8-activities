@@ -189,15 +189,42 @@ function showCurrentBudgetTitle() {
 showCurrentBudgetTitle();
 
 function showCurrentBalance() {
+    //get details of logged user
     let loggedUser = isLoggedIn();
+    
+    //getbankAccountList from LS
     getOrCreateBankAccountList();
     convertToInt();
     
+    //compare logged user to the list in bankaccount, return first match
     let userBankDetail = bankAccountList.find(account => account.accountName == loggedUser.accountName);
 
-    userBankDetail.accountBalance = accounting.formatMoney(parseInt(userBankDetail.accountBalance), {symbol: "₱" ,precision: 0, thousand: ",", format: "%s%v"});
+    console.log(userBankDetail.accountBalance)
+  
+    //get list of expenses from LS
+    let expenseList = HandleLocalStorage.getExpenseItems();
+    console.log(expenseList)
 
-    currentBalance.innerText = `Current Balance: ${userBankDetail.accountBalance}`
+    let totalCost = 0;
+    
+    //get sum of all expenses
+    expenseList.forEach(expense => {
+        //show total amount spent
+        totalCost += parseInt(expense.cost);
+        console.log(totalCost)
+    });
+
+    let updatedBalance;
+  
+    //calc difference between accountbalance and total cost
+    updatedBalance = userBankDetail.accountBalance - totalCost;
+
+    console.log(updatedBalance)
+  
+    updatedBalance = accounting.formatMoney(parseInt(updatedBalance), {symbol: "₱" ,precision: 0, thousand: ",", format: "%s%v"});
+    console.log(updatedBalance)
+
+    currentBalance.innerText = `Current Balance: ${updatedBalance}`
 }
 
 showCurrentBalance();
