@@ -9,8 +9,8 @@ var userName            = document.getElementById("userName");
 var currentBalance  = document.getElementById("currentBalance");
 var currentBudgetTitle  = document.getElementById("currentBudgetTitle");
 
-var close3              = document.getElementById("close3")
-                        ? document.getElementById("close3")
+var close2              = document.getElementById("close2")
+                        ? document.getElementById("close2")
                         : "";
 
 var addNewBudgetTitle   = document.getElementById("addNewBudgetTitle");
@@ -235,11 +235,13 @@ saveNewBudget.addEventListener("click", (event)=> {
 });
 
 
-// close3.addEventListener("click", ()=> {
+//close3.addEventListener("click", ()=> {
 //     hideModal();
 // });
 
-
+close2.addEventListener("click", function () {
+    window.location.replace("budget.html");
+});
 
 //FOOTER
 
