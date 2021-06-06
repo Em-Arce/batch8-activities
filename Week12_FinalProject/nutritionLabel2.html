@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet">   
+        <link rel="stylesheet" href="nutritionLabel.css">
+        <title>Nutrition Info</title>   
+    </head>
+    <body>
+        <section id="recipeInputForm"></section>
+        <section id="nutritionInfoContainer"></section>
+        
+    </body>
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <script>
+
+        
+class AnalyzeRecipe{
+            constructor(title, servings, ingredients){
+                this.title = title; //recipe title
+                this.servings = servings;  //how many serving
+                this.ingredients = ingredients; 
+            }
+            
+            //get saved nutrition info from LS
+            static getNutritionInfo(){
+                //get nutritionList from LS, if empty return empty array
+                let nutriList = JSON.parse(localStorage.getItem("nutriList"))
+                              ? JSON.parse(localStorage.getItem("nutriList"))
+                              : [];
+                return nutriList;
+            }
+
+            static addNutritionInfo(recipe){
+                let nutriList = HandleLocalStorage.getNutritionInfo();
+        
+                // console.log(nutriList);
+
+                nutriList.push(recipe);
+
+                localStorage.setItem("nutriList", nutriList);
+                
+                // console.log(nutriList);
+            }
+        }
+
+    
+    let recipe = new AnalyzeRecipe("Avocado Nut Yogurt", 1, "1 cup full fat greek yogurt%201 medium avocado%201/4 cup almond nuts")
+
+    console.log(recipe);
+        
+        function showNutritionTable(){  
+            // let nutritionInfoTable = document.getElementById("nutritionInfoTable");
+            // let calories           = document.getElementById("calories");
+            let caloriesAmount; //    = document.getElementById("caloriesAmount");
+            let totFatAmount;    //   = document.getElementById("totFatAmount");
+            let totFatPercent; //      = document.getElementById("totFatPercent");
+            let satFatAmount;   //    = document.getElementById("satFatAmount");
+            let satFatPercent;  //      = document.getElementById("satFatPercent");
+            let transFatAmount;  //    = document.getElementById("transFatAmount");
+            let transFatPercent;  //  = document.getElementById("transFatPercent");
+            let cholesAmount;     //  = document.getElementById("cholesAmount");
+            let cholesPercent;    //  = document.getElementById("cholesPercent");
+            let sodiumAmount;     //  = document.getElementById("sodiumAmount");
+            let sodiumPercent;    //  = document.getElementById("sodiumPercent");
+            let totCarbAmount;    //  = document.getElementById("totCarbAmount");
+            let totCarbPercent;  //    = document.getElementById("totCarbPercent");
+            let fiberAmount;      //  = document.getElementById("fiberAmount");
+            let fiberPercent;       // = document.getElementById("fiberPercent");
+            let totSugarsAmount;    // = document.getElementById("totSugarsAmount");
+            let addedSugarsAmount;  // = document.getElementById("addedSugarsAmount");
+            let proteinAmount;     //  = document.getElementById("proteinAmount");
+            let proteinPercent;   //   = document.getElementById("proteinPercent");
+            
+
+            let nutrilist = AnalyzeRecipe.getNutritionInfo(); //get not a fxn error when static is not present in AnalyzeRecipe Class 
+            console.log(nutrilist);
+
+            //show calories
+            if (typeof nutrilist.totalNutrients.ENERC_KCAL != "undefined"){
+                caloriesAmount = Math.round(nutrilist.totalNutrients.ENERC_KCAL.quantity);
+            } else {
+                caloriesAmount = "0";
+            }
+
+            //show total fat for amounts: *10/10 for accuracy up to first decimal place
+             if (typeof nutrilist.totalNutrients.FAT != "undefined"){
+                totFatAmount = Math.round(nutrilist.totalNutrients.FAT.quantity*10)/10 + " " + nutrilist.totalNutrients.FAT.unit;
+            } else {
+                totFatAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.FAT != "undefined"){
+                totFatPercent = Math.round(nutrilist.totalDaily.FAT.quantity) + " " + nutrilist.totalDaily.FAT.unit;
+            } else {
+                totFatPercent = "-";
+            }
+
+            //show sat fat
+            if (typeof nutrilist.totalNutrients.FASAT != "undefined"){
+                satFatAmount = Math.round(nutrilist.totalNutrients.FASAT.quantity*10)/10 + " " + nutrilist.totalNutrients.FASAT.unit;
+            } else {
+                satFatAmount = "-";
+            }
+            
+            if (typeof nutrilist.totalDaily.FASAT != "undefined"){
+                satFatPercent = Math.round(nutrilist.totalDaily.FASAT.quantity) + " " + nutrilist.totalDaily.FASAT.unit;
+            } else {
+                satFatPercent = "-";
+            }
+
+            //show trans fat
+            if (typeof nutrilist.totalNutrients.FATRN != "undefined"){
+                transFatAmount = Math.round(nutrilist.totalNutrients.FATRN.quantity*10)/10 + " " + nutrilist.totalNutrients.FATRN.unit;
+            } else {
+                transFatAmount = "-";
+            }
+            
+            if (typeof nutrilist.totalDaily.FATRN != "undefined"){
+                transFatPercent = Math.round(nutrilist.totalDaily.FATRN.quantity) + " " + nutrilist.totalDaily.FATRN.unit;
+            } else {
+                transFatPercent = "-";
+            }
+
+            //show cholesterol
+            if (typeof nutrilist.totalNutrients.CHOLE != "undefined"){
+                cholesAmount = Math.round(nutrilist.totalNutrients.CHOLE.quantity*10)/10 + " " + nutrilist.totalNutrients.CHOLE.unit;
+            } else {
+                cholesAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.CHOLE != "undefined"){
+                cholesPercent = Math.round(nutrilist.totalDaily.CHOLE.quantity) + " " + nutrilist.totalDaily.CHOLE.unit;
+            } else {
+                cholesPercent = "-";
+            }
+
+            //show sodium
+            if (typeof nutrilist.totalNutrients.NA != "undefined"){
+                sodiumAmount = Math.round(nutrilist.totalNutrients.NA.quantity*10)/10 + " " + nutrilist.totalNutrients.NA.unit;
+            } else {
+                sodiumAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.NA != "undefined"){
+                sodiumPercent = Math.round(nutrilist.totalDaily.NA.quantity) + " " + nutrilist.totalDaily.NA.unit;
+            } else {
+                sodiumPercent = "-";
+            }
+        
+            //show total carb
+           if (typeof nutrilist.totalNutrients.CHOCDF != "undefined"){
+                totCarbAmount = Math.round(nutrilist.totalNutrients.CHOCDF.quantity*10)/10 + " " + nutrilist.totalNutrients.CHOCDF.unit;
+            } else {
+                totCarbAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.CHOCDF != "undefined"){
+                totCarbPercent = Math.round(nutrilist.totalDaily.CHOCDF.quantity) + " " + nutrilist.totalDaily.CHOCDF.unit;
+            } else {
+                totCarbPercent = "-";
+            }
+
+            //show fiber content
+            if (typeof nutrilist.totalNutrients.FIBTG != "undefined"){
+                fiberAmount = Math.round(nutrilist.totalNutrients.FIBTG.quantity*10)/10 + " " + nutrilist.totalNutrients.FIBTG.unit;
+            } else {
+                fiberAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.FIBTG != "undefined"){
+                fiberPercent = Math.round(nutrilist.totalDaily.FIBTG.quantity) + " " + nutrilist.totalDaily.FIBTG.unit;
+            } else {
+                fiberPercent = "-";
+            }
+
+            //show total sugars (both from natural carb source and added sugars)
+           if (typeof nutrilist.totalNutrients.SUGAR != "undefined"){
+                totSugarsAmount = Math.round(nutrilist.totalNutrients.SUGAR.quantity*10)/10 + " " + nutrilist.totalNutrients.SUGAR.unit;
+            } else {
+                totSugarsAmount = "-";
+            }
+
+            //show added sugars i.e. cane, honey, agave syrup, monkfruit etc
+            if (typeof nutrilist.totalNutrients.SUGARadded != "undefined"){
+                addedSugarsAmount = Math.round(nutrilist.totalNutrients.SUGARadded.quantity*10)/10 + " " + nutrilist.totalNutrients.SUGARadded.unit;
+            } else {
+                addedSugarsAmount = "0";
+            }
+
+            //show protein  
+             if (typeof nutrilist.totalNutrients.PROCNT != "undefined"){
+                proteinAmount = Math.round(nutrilist.totalNutrients.PROCNT.quantity*10)/10 + " " + nutrilist.totalNutrients.PROCNT.unit;
+            } else {
+                proteinAmount = "-";
+            }
+
+            if (typeof nutrilist.totalDaily.PROCNT != "undefined"){
+                proteinPercent = Math.round(nutrilist.totalDaily.PROCNT.quantity) + " " + nutrilist.totalDaily.PROCNT.unit;
+            } else {
+                proteinPercent = "-";
+            }
+
+            //generate nutrition label
+            nutritionInfo = 
+                    '<div id="nutritionInfoHeaderContainer" class="nutritionInfoHeaderContainer">'
+                +       '<h1 id = "nutritionInfoTitle" class="nutritionInfoTitle ">Nutrition Facts</h1>'
+                +   '</div>'
+                +   '<table id="nutritionInfoTable" >' 
+                +       '<thead class="nutritionInfoTableTheadContainer ">'
+                +           '<tr>'
+                +               '<th id="amtPerServing" class="amtPerServing smallText" colspan="3">Amount per serving</th>'
+                +           '</tr>'
+                +       '</thead>'
+                +       '<tbody>'
+                +       '<tr>'
+                +           '<th id="calories" class="calories" colspan="2"><b>Calories</b></th>'
+                +           '<td id="caloriesAmount" class="calories">'+ caloriesAmount +'</td>'
+                +        '</tr>'
+                +       '<tr class="thickBlackTopBorder">'
+                +           '<td id="dailyValPercent" class = "dailyValPercent smallText" colspan="3"><b>% Daily Value*</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +            '<th id="totFatAmount" colspan="2"><b>Total Fat</b>' + ' ' + totFatAmount + '</th>'
+                +            '<td id="totFatPercent"><b>'+ ' ' +totFatPercent+ '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +           '<th id="satFatAmount"><b>Saturated Fat</b>'+ ' '  + satFatAmount + '</th>'
+                +           '<td id="satFatPercent"><b>'+ ' '  + satFatPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +           '<th id="transFatAmount"><b>Trans Fat</b>' + ' '  + transFatAmount + '</th>'
+                +           '<td id="transFatPercent"><b>' + ' ' + transFatPercent + '</b></td>'
+                +        '</tr>'
+                +       '<tr>'
+                +           '<th id="cholesAmount" colspan="2"><b>Cholesterol</b>'+ ' '  + cholesAmount + '</th>'
+                +           '<td id="cholesPercent"><b>'+ ' '  + cholesPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +            '<th id="sodiumAmount" colspan="2"><b>Sodium</b>' + ' '  + sodiumAmount +  '</th>'
+                +            '<td id="sodiumPercent"><b>'+ ' '  + sodiumPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +             '<th id="totCarbAmount" colspan="2"><b>Total Carbohydrate</b>' + ' '  + totCarbAmount +  '</th>'
+                +             '<td id="totCarbPercent"><b>'+ ' '  + totCarbPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="fiberAmount" ><b>Dietary Fiber</b>' + ' '  + fiberAmount +  '</th>'
+                +             '<td id="fiberPercent"><b>'+ ' '  + fiberPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +              '<td class="blankCell"></td>'
+                +              '<th id="totSugarsAmount"><b>Total Sugars<b>' + ' '+ totSugarsAmount +'</th>'
+                +               '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="addedSugarsAmount">Includes'+' '+ addedSugarsAmount + ' '+'Added Sugars</th>'
+                +               '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +       '<th id="proteinAmount" colspan="2">Protein'+ ' '  + proteinAmount +  '</th>'
+                +       '<td id="proteinPercent"><b>'+ ' '  + proteinPercent + '</b></td>'
+                +       '</tr>'
+                +       '</tbody>'
+                +    '</table>'    
+                +    '<p class ="smallText">*Daily values are based on a 2000 calorie diet</p>'
+                +    '<div id="edamam-badge" data-color="white"></div>'               
+            
+            nutritionInfoContainer.innerHTML = nutritionInfo;
+
+        }
+
+        showNutritionTable();
+
+        var str = 'It iS a 5r&e@@t Day.'
+        var array = str.split(/\n|\r/);
+        console.log(array);
+
+var str = 'It iS a 5r&e@@t Day.'
+var array = str.split(" ",2);
+console.log(array);
+
+    </script>
+
+</html>
+

@@ -1,0 +1,102 @@
+body {
+    font-size: small;
+    line-height: 1.4;
+  }
+  
+p {
+    margin: 0;
+}
+
+#nutritionInfoContainer{
+    border: 1px solid black;
+	margin: 20px auto;  /* auto makes it centered*/
+	width: 280px;
+	padding: 0.5rem;
+	color: #000;
+}
+
+#nutritionInfoContainer table{
+    border-collapse: collapse;
+}
+
+#nutritionInfoTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 38px;
+    margin: 0 0 0.25rem 0;
+}
+
+#nutritionInfoHeaderContainer{
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+}
+
+#nutritionInfoTable{
+    width: 100%;
+}
+
+#nutritionInfoTable thead th tr{
+    border: 0;
+}
+
+#nutritionInfoTable th, 
+#nutritionInfoTable td{
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+#nutritionInfoTable td:last-child{
+    text-align: right;
+}
+
+#nutritionInfoTable .blankCell{
+    width: 1rem;
+    border-top: none;
+}
+#nutritionInfoTable .thickBlackTopBorder th,
+#nutritionInfoTable .thickBlackTopBorder td{
+    border-top-width: 5px;
+}
+
+#nutritionInfoTable .smallText {
+    font-size: 0.7rem;
+  }
+
+/* to remove border top due to line 47 */
+#nutritionInfoTable #amtPerServing,
+#nutritionInfoTable .calories{
+    border-top: none !important;
+}
+
+#nutritionInfoTable #amtPerServing{
+    font-size: 16px;
+	font-weight: bold !important;
+	margin: 0 -200px -10px 0 !important;
+	display: block;
+}
+
+#nutritionInfoTable #calories{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* check for alignment */
+/* #edamam-badge{
+    box-sizing: border-box;
+    border: 1px dotted pink;
+} */
+
+
+
+
+
+
+
+
+
+
+
