@@ -1,0 +1,168 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: "PT Sans Narrow", sans-serif;
+    font-size: 17px;
+    color: black;
+    line-height: 1.4;
+    max-width: 75em;
+    margin: 0 auto;
+    
+}
+
+html{
+    height: 100%;              /* for the page to take full window height */
+    box-sizing: border-box;    /* to have the footer displayed at the bottom of the page without scrolling */
+    border: 1px solid black;
+}
+
+body {
+    position: relative;        /* for the footer to move with the page size */
+    min-height: 100%;          /* for the footer to be at the bottom */
+    padding-bottom: 4rem;      /* Space available between last element and bottom border of the page */
+}
+  
+p {
+    margin: 0;
+}
+
+#recipeInputForm{
+    border: 1px dotted pink;
+    width: 280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#ingredient{
+    margin: auto;
+    width: 280px;
+    height: 50%;
+}
+
+.btn {
+    background-color:#00C9B7;
+    width: 80%;
+    margin-top: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    border: transparent;
+    border-radius: 0.25rem;
+    box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+    transform: scale(0.9);
+    color: white;
+
+}
+
+.btn:hover,
+#amount:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
+/* style for nutrition label */
+#nutritionInfoContainer{
+    border: 1px solid black;
+	margin: auto;  /* auto makes it centered*/
+	width: 280px;
+	padding: 0.5rem;
+	color: #000;
+    display: none;
+    border: 1px solid violet;
+}
+
+#nutritionInfoContainer table{
+    border-collapse: collapse;
+}
+
+#nutritionInfoTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0 0 0.25rem 0;
+}
+
+#nutritionInfoHeaderContainer{
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+}
+
+#nutritionInfoTable{
+    width: 100%;
+}
+
+#nutritionInfoTable thead th tr{
+    border: 0;
+}
+
+#nutritionInfoTable th, 
+#nutritionInfoTable td{
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+#nutritionInfoTable td:last-child{
+    text-align: right;
+}
+
+#nutritionInfoTable .blankCell{
+    width: 1rem;
+    border-top: none;
+}
+#nutritionInfoTable .thickBlackTopBorder th,
+#nutritionInfoTable .thickBlackTopBorder td{
+    border-top-width: 5px;
+}
+
+#nutritionInfoTable .smallText {
+    font-size: 0.7rem;
+  }
+
+/* to remove border top due to line 47 */
+#nutritionInfoTable #amtPerServing,
+#nutritionInfoTable .calories{
+    border-top: none !important;
+}
+
+#nutritionInfoTable #amtPerServing{
+    font-size: 1em;
+	font-weight: bold !important;
+	margin: 0 -200px -10px 0 !important;
+	display: block;
+}
+
+#nutritionInfoTable #calories{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* check for alignment */
+/* #edamam-badge{
+    box-sizing: border-box;
+    border: 1px dotted pink;
+} */
+
+
+footer, #edamam-badge{
+    width: 280px;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
