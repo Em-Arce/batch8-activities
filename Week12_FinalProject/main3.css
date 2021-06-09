@@ -1,0 +1,326 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    padding: 0;
+    box-sizing: border-box;    
+    font-family: "PT Sans Narrow", sans-serif;
+    background-color: #F5F6FC;
+    fill-opacity:30%;
+    font-size: 17px;
+    color: slategray;
+    line-height: 1.4;
+    max-width: 75em;
+    margin: 0 auto;
+    
+}
+
+:root{
+    --primaryColor: #71b155;
+    --neutralColor: #F5F6FC;
+    --darkColor: black;
+    --lightColor:white;
+    --accentColor1:#ff698a;
+    --boxShadowDark: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+}
+
+html{
+    min-height: 100vh;              
+    box-sizing: border-box;    
+    border: 1px solid black;
+}
+
+body {
+    scroll-behavior: smooth;
+    position: relative;        
+    min-height: 100vh;          
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+p {
+    margin: 0;
+}
+
+#navBarContainer, 
+#navBar,
+#navBar ul,
+#navBar ul li{
+    /* border: 1px dotted violet; */
+    background-color: var(--primaryColor);
+    width:280px;
+}
+
+#navBar{
+    position: absolute;
+    left: 0;
+    box-shadow: var(--boxShadowDark);
+    transform: translateX(-100%);
+    transition: transform 400ms cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+#navList{
+    list-style: none;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    padding-top: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.navItem{
+    margin-bottom: 1rem;
+}
+
+.navLink{
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: 400;
+    color: var(--neutralColor);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.5rem;
+}
+
+.navLink:hover,
+.navLink:active{
+    background-color: var(--accentColor1);
+    border-radius: 0.25rem;
+
+}
+
+#navToggle{
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    right: 0;
+    /* top:1rem; */
+    transform: translateX(100%);
+    background: var(--primaryColor);
+    padding: 1rem 0.5rem;
+    border: transparent;
+    /*  border-radius: 0.25rem; */
+}
+
+/* style for the button containing hamburger */
+button{
+    border: none;
+    background-color: transparent;
+}
+
+/* hamburger */
+.hamburgerOrX{
+    display: block;
+    /* will use pseudo elements with absolute positioning to make sure they will stick together */
+    position: relative;
+}
+
+.hamburgerOrX,
+.hamburgerOrX::before,
+.hamburgerOrX::after{
+    width: 1em;
+    height: 2px;
+    background-color: var(--neutralColor);
+    opacity: 80%;
+    border-radius: 0.35em;
+    transition: transform 350ms ease-in-out, opacity 200ms linear;
+}
+
+.hamburgerOrX::before,
+.hamburgerOrX::after{
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.hamburgerOrX::before{
+    bottom: 6px;
+}
+
+.hamburgerOrX::after{
+    top: 6px;
+}
+
+/* Menu open style */
+.navBarOpen #navBar{
+    transform: translateX(0);
+}
+
+.navBarOpen .hamburgerOrX{
+    transform: rotate(45deg);
+}
+
+/* remove one of the line when nav opens */
+.navBarOpen .hamburgerOrX::before{
+    opacity: 0;
+} 
+
+/* adjust line position so it intersects the other */
+.navBarOpen .hamburgerOrX::after{
+    transform: rotate(90deg) translate(-6px);
+} 
+
+section{
+    min-height: 60vh;
+}
+
+#recipeInputForm{
+    padding-top: 2rem;
+    border: 1px dotted pink;
+    width: 280px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#ingredient{
+    margin: auto;
+    width: 280px;
+    height: 50%;
+}
+
+#buttonContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-around;
+    flex: 50%;
+}
+
+.btn{
+    background-color:#ff698a;  /*00C9B7 */
+    width: 18vw;  
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    border: transparent;
+    border-radius: 1em;
+    box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+    transform: scale(0.9);
+    color: white;
+
+}
+
+@media (min-width:773px) {
+    #newRecipe{
+        margin-top: 0 !important;
+    }
+} 
+
+
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
+/* style for nutrition label */
+#nutritionInfoContainer{
+    border: 1px solid black;
+	margin: auto;  /* auto makes it centered*/
+	width: 280px;
+	padding: 0.5rem;
+	color: #000;
+    display: none;
+    border: 1px solid violet;
+}
+
+#nutritionInfoContainer table{
+    border-collapse: collapse;
+}
+
+#nutritionInfoTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    margin: 0 0 0.25rem 0;
+}
+
+#nutritionInfoHeaderContainer{
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+}
+
+#nutritionInfoTable{
+    width: 100%;
+}
+
+#nutritionInfoTable thead th tr{
+    border: 0;
+}
+
+#nutritionInfoTable th, 
+#nutritionInfoTable td{
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+#nutritionInfoTable td:last-child{
+    text-align: right;
+}
+
+#nutritionInfoTable .blankCell{
+    width: 1rem;
+    border-top: none;
+}
+#nutritionInfoTable .thickBlackTopBorder th,
+#nutritionInfoTable .thickBlackTopBorder td{
+    border-top-width: 5px;
+}
+
+#nutritionInfoTable .smallText {
+    font-size: 0.7rem;
+  }
+
+/* to remove border top due to line 47 */
+#nutritionInfoTable #amtPerServing,
+#nutritionInfoTable .calories{
+    border-top: none !important;
+}
+
+#nutritionInfoTable #amtPerServing{
+    font-size: 1em;
+	font-weight: bold !important;
+	margin: 0 -200px -10px 0 !important;
+	display: block;
+}
+
+#nutritionInfoTable #calories{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* check for alignment */
+/* #edamam-badge{
+    box-sizing: border-box;
+    border: 1px dotted pink;
+} */
+
+
+footer, #edamam-badge{
+    width: 280px;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
