@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">   
+        <link rel="stylesheet" href="main2.css">
+        <title>Nutrition Info</title>   
+    </head>
+    <body>
+        <header id="navBarContainer">
+            <nav id="navBar" class="navBar">
+                <button id="navToggle"class="navToggle">
+                    <span class="hamburgerOrX"></span>
+                </button>
+                <ul id="navList" class="navList">
+                    <li class="navItem"><a href="#recipeInputForm" class="navLink">Analyze</a></li>
+                    <li class="navItem"><a href="#nutritionInfoContainer" class="navLink">Nutrition Info</a></li>
+                    <li class="navItem"><a href="#aboutContainer" class="navLink">About</a></li>
+                    <li class="navItem"><a href="#readsContainer" class="navLink">Read</a></li>
+                </ul>
+            </nav>
+            
+        </header>
+        <section id="recipeInputForm">
+            <h1 class="sectionTitle">Analyze</h1>
+            <textarea id="ingredient" rows="15" cols="50"></textarea>
+            <div id="buttonContainer">
+            <button id= "showNutriInfo" type="button" class="btn">Evaluate</button>
+            <button id= "newRecipe" type="button" class="btn">New</button>
+            </div>
+            
+        </section>
+        <section id="nutritionInfoContainer">
+            <h1 id="nutritionInfoTitle" class="sectionTitle">Nutrition Info</h1>
+        </section>
+        <section id="aboutContainer">
+            <h1 class="sectionTitle">About</h1>
+        </section>
+        <section id="readsContainer">
+            <h1 class="sectionTitle">Reads</h1>
+        </section>
+        <footer>
+            <div id="edamam-badge" data-color="white"></div>
+        </footer>
+    </body>
+
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
+    <script>
+
+        const navToggle = document.getElementById("navToggle");
+        navToggle.addEventListener("click", () => {
+            document.body.classList.toggle("navBarOpen");
+        })
+        
+        class AnalyzeRecipe{
+            constructor(ingredients){
+                this.ingredients = ingredients; 
+            }
+            
+            //get saved nutrition info from LS
+            static getNutritionInfo(){
+                //get nutritionList from LS, if empty return empty array
+                let nutriList = JSON.parse(localStorage.getItem("nutriList"))
+                              ? JSON.parse(localStorage.getItem("nutriList"))
+                              : [];
+                return nutriList;
+            }
+
+            static addNutritionInfo(recipe){
+                let nutriList = AnalyzeRecipe.getNutritionInfo();
+        
+                // console.log(nutriList);
+
+                nutriList.push(recipe);
+
+                localStorage.setItem("nutriList", nutriList);
+                
+                // console.log(nutriList);
+            }
+        }
+
+        let showNutriInfo = document.getElementById("showNutriInfo");
+
+        //uncomment for live demo
+        // showNutriInfo.addEventListener("click", () => {
+        //     getNutriInfo();
+        // })
+
+        function getNutriInfo(){
+
+            let app_id = "8458cc5f";
+            let app_key = "4794cbd8d4435d7324ce1a7e387c5d82"; 
+            var url = 'https://api.edamam.com/api/nutrition-details?app_id=' + app_id + '&app_key=' + app_key;
+            console.log(url);
+
+            let ingr = document.getElementById("ingredient");
+            console.log(ingr);
+            
+            //format ingr accdg to API reqt: {"ingr":["1/2 cup full fat greek yogurt","1 tsp raw cacao powder","1 cup water"]}
+            let arr = {
+                "ingr": ingr.value.split(/\n|\r/) 
+                }
+            console.log(JSON.stringify(arr));
+
+            let options = {
+                method: "POST",
+                body: JSON.stringify(arr),
+                headers:{
+                    "Content-Type":"application/json",
+                }
+            }
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    //get list from LS if no list yet return empty array
+                    let nutriList = AnalyzeRecipe.getNutritionInfo();
+            
+                    nutriList.push(data);
+                    console.log(nutriList);
+                    localStorage.setItem("nutriList", JSON.stringify(nutriList));
+                    // return data;
+                    renderNutriInfo();
+                })
+                .catch (error => {
+                alert(error);
+                })
+            
+        }
+
+        function renderNutriInfo(){
+            let caloriesAmount; //    = document.getElementById("caloriesAmount");
+            let totFatAmount;    //   = document.getElementById("totFatAmount");
+            let totFatPercent; //      = document.getElementById("totFatPercent");
+            let satFatAmount;   //    = document.getElementById("satFatAmount");
+            let satFatPercent;  //      = document.getElementById("satFatPercent");
+            let transFatAmount;  //    = document.getElementById("transFatAmount");
+            let transFatPercent;  //  = document.getElementById("transFatPercent");
+            let cholesAmount;     //  = document.getElementById("cholesAmount");
+            let cholesPercent;    //  = document.getElementById("cholesPercent");
+            let sodiumAmount;     //  = document.getElementById("sodiumAmount");
+            let sodiumPercent;    //  = document.getElementById("sodiumPercent");
+            let totCarbAmount;    //  = document.getElementById("totCarbAmount");
+            let totCarbPercent;  //    = document.getElementById("totCarbPercent");
+            let fiberAmount;      //  = document.getElementById("fiberAmount");
+            let fiberPercent;       // = document.getElementById("fiberPercent");
+            let totSugarsAmount;    // = document.getElementById("totSugarsAmount");
+            let addedSugarsAmount;  // = document.getElementById("addedSugarsAmount");
+            let proteinAmount;     //  = document.getElementById("proteinAmount");
+            let proteinPercent;   //   = document.getElementById("proteinPercent");
+            
+
+            let nutriList = AnalyzeRecipe.getNutritionInfo(); //get not a fxn error when static is not present in AnalyzeRecipe Class 
+            console.log(nutriList[nutriList.length-1]);
+
+            //show calories
+            if (typeof nutriList[nutriList.length-1].totalNutrients.ENERC_KCAL != "undefined"){
+                caloriesAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.ENERC_KCAL.quantity);
+            } else {
+                caloriesAmount = "0";
+            }
+
+            //show total fat for amounts: *10/10 for accuracy up to first decimal place
+             if (typeof nutriList[nutriList.length-1].totalNutrients.FAT != "undefined"){
+                totFatAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.FAT.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.FAT.unit;
+            } else {
+                totFatAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.FAT != "undefined"){
+                totFatPercent = Math.round(nutriList[nutriList.length-1].totalDaily.FAT.quantity) + " " + nutriList[nutriList.length-1].totalDaily.FAT.unit;
+            } else {
+                totFatPercent = "-";
+            }
+
+            //show sat fat
+            if (typeof nutriList[nutriList.length-1].totalNutrients.FASAT != "undefined"){
+                satFatAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.FASAT.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.FASAT.unit;
+            } else {
+                satFatAmount = "-";
+            }
+            
+            if (typeof nutriList[nutriList.length-1].totalDaily.FASAT != "undefined"){
+                satFatPercent = Math.round(nutriList[nutriList.length-1].totalDaily.FASAT.quantity) + " " + nutriList[nutriList.length-1].totalDaily.FASAT.unit;
+            } else {
+                satFatPercent = "-";
+            }
+
+            //show trans fat
+            if (typeof nutriList[nutriList.length-1].totalNutrients.FATRN != "undefined"){
+                transFatAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.FATRN.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.FATRN.unit;
+            } else {
+                transFatAmount = "-";
+            }
+            
+            if (typeof nutriList[nutriList.length-1].totalDaily.FATRN != "undefined"){
+                transFatPercent = Math.round(nutriList[nutriList.length-1].totalDaily.FATRN.quantity) + " " + nutriList[nutriList.length-1].totalDaily.FATRN.unit;
+            } else {
+                transFatPercent = "-";
+            }
+
+            //show cholesterol
+            if (typeof nutriList[nutriList.length-1].totalNutrients.CHOLE != "undefined"){
+                cholesAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.CHOLE.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.CHOLE.unit;
+            } else {
+                cholesAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.CHOLE != "undefined"){
+                cholesPercent = Math.round(nutriList[nutriList.length-1].totalDaily.CHOLE.quantity) + " " + nutriList[nutriList.length-1].totalDaily.CHOLE.unit;
+            } else {
+                cholesPercent = "-";
+            }
+
+            //show sodium
+            if (typeof nutriList[nutriList.length-1].totalNutrients.NA != "undefined"){
+                sodiumAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.NA.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.NA.unit;
+            } else {
+                sodiumAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.NA != "undefined"){
+                sodiumPercent = Math.round(nutriList[nutriList.length-1].totalDaily.NA.quantity) + " " + nutriList[nutriList.length-1].totalDaily.NA.unit;
+            } else {
+                sodiumPercent = "-";
+            }
+        
+            //show total carb
+           if (typeof nutriList[nutriList.length-1].totalNutrients.CHOCDF != "undefined"){
+                totCarbAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.CHOCDF.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.CHOCDF.unit;
+            } else {
+                totCarbAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.CHOCDF != "undefined"){
+                totCarbPercent = Math.round(nutriList[nutriList.length-1].totalDaily.CHOCDF.quantity) + " " + nutriList[nutriList.length-1].totalDaily.CHOCDF.unit;
+            } else {
+                totCarbPercent = "-";
+            }
+
+            //show fiber content
+            if (typeof nutriList[nutriList.length-1].totalNutrients.FIBTG != "undefined"){
+                fiberAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.FIBTG.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.FIBTG.unit;
+            } else {
+                fiberAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.FIBTG != "undefined"){
+                fiberPercent = Math.round(nutriList[nutriList.length-1].totalDaily.FIBTG.quantity) + " " + nutriList[nutriList.length-1].totalDaily.FIBTG.unit;
+            } else {
+                fiberPercent = "-";
+            }
+
+            //show total sugars (both from natural carb source and added sugars)
+           if (typeof nutriList[nutriList.length-1].totalNutrients.SUGAR != "undefined"){
+                totSugarsAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.SUGAR.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.SUGAR.unit;
+            } else {
+                totSugarsAmount = "-";
+            }
+
+            //show added sugars i.e. cane, honey, agave syrup, monkfruit etc
+            if (typeof nutriList[nutriList.length-1].totalNutrients.SUGARadded != "undefined"){
+                addedSugarsAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.SUGARadded.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.SUGARadded.unit;
+            } else {
+                addedSugarsAmount = "0";
+            }
+
+            //show protein  
+            if (typeof nutriList[nutriList.length-1].totalNutrients.PROCNT != "undefined"){
+                proteinAmount = Math.round(nutriList[nutriList.length-1].totalNutrients.PROCNT.quantity*10)/10 + " " + nutriList[nutriList.length-1].totalNutrients.PROCNT.unit;
+            } else {
+                proteinAmount = "-";
+            }
+
+            if (typeof nutriList[nutriList.length-1].totalDaily.PROCNT != "undefined"){
+                proteinPercent = Math.round(nutriList[nutriList.length-1].totalDaily.PROCNT.quantity) + " " + nutriList[nutriList.length-1].totalDaily.PROCNT.unit;
+            } else {
+                proteinPercent = "-";
+            }
+
+            //generate nutrition label
+            nutritionInfo = 
+                    '<div id="nutritionInfoHeaderContainer" class="nutritionInfoHeaderContainer">'
+                +       '<h1 id = "nutritionInfoTitle" class="nutritionInfoTitle ">Nutrition Facts</h1>'
+                +   '</div>'
+                +   '<table id="nutritionInfoTable" >' 
+                +       '<thead class="nutritionInfoTableTheadContainer ">'
+                +           '<tr>'
+                +               '<th id="amtPerServing" class="amtPerServing smallText" colspan="3">Amount per serving</th>'
+                +           '</tr>'
+                +       '</thead>'
+                +       '<tbody>'
+                +       '<tr>'
+                +           '<th id="calories" class="calories" colspan="2"><b>Calories</b></th>'
+                +           '<td id="caloriesAmount" class="calories">'+ caloriesAmount +'</td>'
+                +        '</tr>'
+                +       '<tr class="thickBlackTopBorder">'
+                +           '<td id="dailyValPercent" class = "dailyValPercent smallText" colspan="3"><b>% Daily Value*</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +            '<th id="totFatAmount" colspan="2"><b>Total Fat</b>' + ' ' + totFatAmount + '</th>'
+                +            '<td id="totFatPercent"><b>'+ ' ' +totFatPercent+ '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +           '<th id="satFatAmount"><b>Saturated Fat</b>'+ ' '  + satFatAmount + '</th>'
+                +           '<td id="satFatPercent"><b>'+ ' '  + satFatPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +           '<th id="transFatAmount"><b>Trans Fat</b>' + ' '  + transFatAmount + '</th>'
+                +           '<td id="transFatPercent"><b>' + ' ' + transFatPercent + '</b></td>'
+                +        '</tr>'
+                +       '<tr>'
+                +           '<th id="cholesAmount" colspan="2"><b>Cholesterol</b>'+ ' '  + cholesAmount + '</th>'
+                +           '<td id="cholesPercent"><b>'+ ' '  + cholesPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +            '<th id="sodiumAmount" colspan="2"><b>Sodium</b>' + ' '  + sodiumAmount +  '</th>'
+                +            '<td id="sodiumPercent"><b>'+ ' '  + sodiumPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +             '<th id="totCarbAmount" colspan="2"><b>Total Carbohydrate</b>' + ' '  + totCarbAmount +  '</th>'
+                +             '<td id="totCarbPercent"><b>'+ ' '  + totCarbPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="fiberAmount" ><b>Dietary Fiber</b>' + ' '  + fiberAmount +  '</th>'
+                +             '<td id="fiberPercent"><b>'+ ' '  + fiberPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +              '<td class="blankCell"></td>'
+                +              '<th id="totSugarsAmount"><b>Total Sugars<b>' + ' '+ totSugarsAmount +'</th>'
+                +               '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="addedSugarsAmount">Includes'+' '+ addedSugarsAmount + ' '+'Added Sugars</th>'
+                +               '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +       '<th id="proteinAmount" colspan="2"><b>Protein</b>'+ ' '  + proteinAmount +  '</th>'
+                +       '<td id="proteinPercent"><b>'+ ' '  + proteinPercent + '</b></td>'
+                +       '</tr>'
+                +       '</tbody>'
+                +    '</table>'    
+                +    '<p class ="smallText">*Daily values are based on a 2000 calorie diet</p>'
+                               
+            
+            nutritionInfoContainer.innerHTML = nutritionInfo;
+            nutritionInfoContainer.style.display = "block";
+
+        }
+
+    </script>
+    
+<!-- REFERENCES
+1. Navigation: https://www.youtube.com/watch?v=b3OKONiAA80 -->
+</html>
