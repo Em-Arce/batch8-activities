@@ -237,7 +237,6 @@ input:focus::placeholder,
 
 /* div display setting */
 .splitToTwo{
-    padding: 1rem;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
