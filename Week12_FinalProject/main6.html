@@ -131,16 +131,104 @@
             static addNutritionInfo(recipe){
                 let nutriList = AnalyzeRecipe.getNutritionInfo();
         
-                // console.log(nutriList);
+                console.log(nutriList);
 
                 nutriList.push(recipe);
 
-                localStorage.setItem("nutriList", nutriList);
+                localStorage.setItem("nutriList", JSON.stringify(nutriList));
                 
-                // console.log(nutriList);
+                console.log(nutriList);
             }
 
         }
+
+        //create category constructor for Pegan Diet Array of objects
+        //quantity is minimum for comparison
+        function createCategory(label,quantity,unit,frequency,example){
+            this.label = label;
+            this.quantity = quantity;
+            this.unit = unit;
+            this.frequency = frequency;
+            this.example = example;
+        }
+
+        class PeganDiet{
+            constructor(category){
+                 this.category   = category;
+
+            }
+
+            static getFoodList(){
+                let foodList = JSON.parse(localStorage.getItem("foodList"))
+                              ? JSON.parse(localStorage.getItem("foodList"))
+                              : [];
+                return foodList;
+            }
+
+            static addFoodList(category){
+                let foodList = PeganDiet.getFoodList();
+        
+                console.log(foodList);
+
+                if(foodList.category !==category){
+                    foodList.push(category);
+
+                    localStorage.setItem("foodList", JSON.stringify(foodList));
+                    
+                    console.log(foodList);
+                } else{
+                    alert(`${category} already exists!`);
+                }
+
+            }
+
+        }
+
+        //reference: PeganDiet Food Pyramid and Food by Dr. Mark Hyman
+        //per day
+        let healthyFats = new createCategory("healthyFats", 3, "servings", "per day"["avocado oil", "extra virgin olive oil", "virgin organic coconut oil", "grass fed butter", "grass fed ghee"]);
+        
+        //per meal
+        let protein = new createCategory("protein", 4, "oz", "per meal",["grass fed beef", "grass fed lamb","pasture raised pork", "pasture raised poultry", "pasture raised egg", "wild caught salmon","wild caught sardines", "wild caught mackerel"])
+        
+        
+        let nonStarchyVegetables = new createCategory("nonStarchyVegetables", "unlimited", "serving","per meal" ,["cabbage", "broccoli","frozen sweet peas", "onions", "asparagus", "eggplant", "cauliflower", "organic celery", "organic spinach", "organic tomato", "organic bell peppers","organic cherry tomato","organic cucumber","organic kale","organic collard greens","organic hot peppers", "organic bokchoy", "seaweed", "shitaake", "oyster", "cremini", "herb", "carrot", "beets", "brussel sprouts", "garlic", "shallots", "onion", "zucchini", "okra", "mustard green"]);
+
+        //per day
+        let starchyVegetables = new createCategory("starchyVegetables", 2, "serving","per day", ["pumpkin", "sweet corn", "japanese sweet potato", "parsnip", "cassava", "ube", "potato", "sweet potato"]);
+
+        //per day
+        let lowGlycemicFruits = new createCategory("lowGlycemicFruits", 1, "cup", "per day",["organic blueberry", "organic strawberry","organic apple","organic cherry","organic blackberry", "organic raspberry", "organic plum", "organic peach","organic nectarine", "organic orange", "organic grapefruit ", "organic tangerine","organic lemon", "organic lime", "organic citrus fruit", "pomegranate", "kiwi", "papaya", "goji berry", "acai berry", "gooseberry", "mangosteen", "dragon fruit", "avocado", "coconut", "olive"]);
+
+        //per day
+        let grains = new createCategory("grains", 0.5, "cup", "per day",["whole grain buckwheat", "whole kernel rye", "whole grain amaranth","whole grain millet", "whole grain teff","whole grain sorghum", "black rice","red rice","brown rice","wild rice", "quinoa", "non GMO corn"]);
+
+        //per day
+        let beansAndLegumes = new createCategory("beansAndLegumes",0.5,"cup","per day",["organic and traditional tofu", "organic and traditional tempeh","organic and traditional natto","organic and traditional miso","peas", "lentils", "black bean", "garbanzo", "adzuki", "black eyed peas", "asparagus beans", "edamame", "mung beans"])
+
+        
+        let spicesHerbsAndSalt = new createCategory("spicesAndHerbs", "unlimited" , "serving", "per meal", ["basil", "black pepper", "cayenne", "hot pepper", "cinnamon", "cloves", "coriander", "cilantro", "cumin", "ginger", "oregano", "parsley", "rosemary", "sage", "thyme", "turmeric", "himalayan pink salt", "kosher", "sea salt"]);
+
+        let nutsAndSeeds = new createCategory("nutsAndSeeds", 2, "handful", "per day", ["organic almond", "organic walnut", "organic pecan", "organic hazelnut", "organic brazil nuts", "organic pistachios", "organic macadamia nuts", "organic cashew", "organic pumpkin seeds", "organic chia seeds", "organic ground flaxseeds", "organic hemp seeds", "organic sesame seeds"]);
+
+        let milkAndDairy = new createCategory("milkAndDairy", "no tip" , "no tip", " no tip", ["grass fed whole goat milk", "grass fed whole sheep milk", "grass fed full fat greek yogurt", "grass fed full fat kefir", "grass fed whole cheese", "grass fed ghee", "grass fed butter"]);
+
+        let sugarsAndSweeteners = new createCategory("sugarsAndSweeteners", "no tip" , "no tip", " no tip",["fresh pureed fruit or fruit juice", "molasses", "organic palm sugar", "date sugar", "coconut sugar", "monk fruit", "organic maple syrup", "honey", "stevia", "erythritol"]);
+        
+        console.log(milkAndDairy);
+
+        PeganDiet.addFoodList(healthyFats);
+        PeganDiet.addFoodList(protein);
+        PeganDiet.addFoodList(nonStarchyVegetables);
+        PeganDiet.addFoodList(starchyVegetables);
+        PeganDiet.addFoodList(lowGlycemicFruits);
+        PeganDiet.addFoodList(grains);
+        PeganDiet.addFoodList(beansAndLegumes);
+        PeganDiet.addFoodList(spicesHerbsAndSalt);
+        PeganDiet.addFoodList(nutsAndSeeds);
+        PeganDiet.addFoodList(milkAndDairy);
+        PeganDiet.addFoodList(sugarsAndSweeteners);
+        
 
         let showNutriInfo = document.getElementById("showNutriInfo");
         let newRecipe = document.getElementById("newRecipe");
@@ -183,14 +271,17 @@
                 .then(data => {
                     console.log(data);
                     //get list from LS if no list yet return empty array
-                    let nutriList = AnalyzeRecipe.getNutritionInfo();
+                    //let nutriList = AnalyzeRecipe.getNutritionInfo();
 
-                    let recipe = new AnalyzeRecipe(recipeTitle.value, ingr.value, data);
+                    let recipe1 = new AnalyzeRecipe(recipeTitle.value, ingr.value, data);
                     // console.log(recipe);
             
-                    nutriList.push(recipe);
+                    /*nutriList.push(recipe1);
                     console.log(nutriList);
-                    localStorage.setItem("nutriList", JSON.stringify(nutriList));
+                    localStorage.setItem("nutriList", JSON.stringify(nutriList));*/
+
+                    //FOR TEST;
+                    AnalyzeRecipe.addNutritionInfo(recipe1);
                     // return data;
                     renderNutriInfo(recipeTitle.value);
 
@@ -198,6 +289,8 @@
                 .catch (error => {
                 alert(error);
                 })
+
+            
         }
 
         function renderNutriInfo(recipeTitle){
@@ -365,7 +458,7 @@
                 +   '<table id="nutritionInfoTable" >' 
                 +       '<thead class="nutritionInfoTableTheadContainer ">'
                 +           '<tr>'
-                +               '<th id="amtPerServing" class="amtPerServing smallText" colspan="3">Amount per serving</th>'
+                +               '<th id="amtPerServing" class="amtPerServing smallText" colspan="3"><b>Amount per serving</b></th>'
                 +           '</tr>'
                 +       '</thead>'
                 +       '<tbody>'
@@ -386,7 +479,7 @@
                 +           '<td id="satFatPercent"><b>'+ ' '  + satFatPercent + '</b></td>'
                 +       '</tr>'
                 +       '<tr>'
-                +             '<td class="blankCell"></td>'
+                +           '<td class="blankCell"></td>'
                 +           '<th id="transFatAmount"><b>Trans Fat</b>' + ' '  + transFatAmount + '</th>'
                 +           '<td id="transFatPercent"><b>' + ' ' + transFatPercent + '</b></td>'
                 +        '</tr>'
@@ -434,7 +527,7 @@
         }
 
         //uncomment when testing from LS 
-        //renderNutriInfo("Yogurt with honey");
+        //renderNutriInfo("Choco Zucchini Cake");
 
     </script>
     
