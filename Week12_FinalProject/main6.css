@@ -6,7 +6,7 @@
     font-family:'Lora', serif;;
     background-color: #F5F6FC;
     fill-opacity:30%;
-    font-size: 17px;
+    font-size: 15px;
     color: slategray;
     line-height: 1.4;
     max-width: 100em;
@@ -382,10 +382,12 @@ input:focus::placeholder,
 
 #nutritionInfoTable{
     width: 100%;
+    
 }
 
 #nutritionInfoTable thead th tr{
     border: 0;
+    
 }
 
 #nutritionInfoTable th, 
@@ -411,7 +413,7 @@ input:focus::placeholder,
 }
 
 #nutritionInfoTable .smallText {
-    font-size: 11px;
+    font-size: 10px !important;
   }
 
 /* to remove border top due to line 47 */
@@ -421,15 +423,12 @@ input:focus::placeholder,
 }
 
 #nutritionInfoTable #amtPerServing{
-    font-size: 16px;
-	font-weight: bold !important;
 	margin: 0 -200px -10px 0 !important;
 	display: block;
 }
 
 #nutritionInfoTable #calories{
     font-size: 28px !important;
-    font-weight: bold !important;
 }
 
 /* check for alignment */
