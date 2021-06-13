@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">    -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="main7.css">
+        <title>Nutrition Info</title>   
+    </head>
+    <body>
+        <header id="navBarContainer">
+            <h1 id="logo">Logo</h1>
+            <input type="checkbox" id="navToggle"class="navToggle">
+            <nav id="navBar" class="navBar">  
+                <ul id="navList" class="navList">
+                    <li class="navItem"><a href="#" class="navLink">Home</a></li>
+                    <li class="navItem"><a href="#aboutContainer" class="navLink">About</a></li>
+                    <li class="navItem"><a href="#recipeInputForm" class="navLink">Analyze</a></li>
+                    <li class="navItem"><a href="#peganDietTip" class="navLink">Pegan Diet Tip</a></li>
+                    <li class="navItem"><a href="#readsContainer" class="navLink">Read</a></li>
+                    
+                </ul>
+            </nav>
+            <label for="navToggle" id="navToggleLabel"class="navToggleLabel">
+                <span class="hamburgerOrX"></span>
+            </label>
+            
+            
+        </header>
+        <section id="homeContainer">
+            
+             <div id="homeSplitToTwo" class="splitToTwo bgTransparent">
+                 <div id="homeBlankDiv" class="bgTransparent"></div>
+                <div>
+                    <h1 id="homeTitle" class="home">App Title</h1>
+                </div>
+            </div> 
+        </section>
+        <section id="aboutContainer">
+            <h1 id="about"class="sectionTitle">About</h1>
+            <div id="aboutSplitToTwo" class="splitToTwo">
+                <div id="aboutText" class="sectionText">
+                    Food can be a medicine or a slow poison.
+                    <br>
+                    <br>
+                    In just one step, ___ helps individuals make better food choices.
+                    <br>
+                    <br>
+                    <ul>
+                        <li>&#x2713  Enter ingredient.</li>
+                        <li>&#x2713  Get tips based on Pegan Diet*.</li>
+                        <li>&#x2713 Get nutrition info provided by Edamam.</li>
+                    </ul>
+                </div>
+                <img src="brooke-lark-nTZOILVZuOg-unsplash.jpg" alt="bowls of fruits">
+            </div>
+        </section>
+        
+        <section id="recipeInputForm">
+            <h1 class="sectionTitle bgTransparent">Analyze</h1>
+            <div id="recipeInputInst">
+                <h4>Instructions</h4>
+                <ol>
+                    <li>Add each ingredient as a new line.</li>
+                    <li>Include quantity, size or measure unit and name of ingredient. </li>
+                    <li>Example: 1 medium apple or 1 tsp honey or 10 pcs almond nuts</li>
+                </ol>
+            </div>
+            <br>
+            <label for="recipeTitle">Recipe Title</label>
+            <input type="text" id="recipeTitle">    
+            <label for="ingredient">Ingredient</label>
+            <textarea id="ingredient" rows="15" cols="40"></textarea>
+            <div id="buttonContainer">
+            <button id= "showNutriInfo" type="button" class="btn">Evaluate</button>
+            <button id= "newRecipe" type="button" class="btn">New</button>
+            </div>
+            
+        </section>
+        <section id="peganDietContainer">
+            <h1 id="peganDietTip" class="peganDietRecommendation">Pegan Diet Tip</h1>
+            <div id="peganDietTipSplitToTwo" class="splitToTwo">
+                <div id="protein"></div>
+                <div id="fat"></div>
+                <div id="nutsAndSeeds"></div>
+                <div id="grains"></div>
+                <div id="beansAndLegumes"></div>
+                <div id="spicesAndHerbs"></div>
+                <div id="milkAndDairy"></div>
+                <div id="sugarsAndSweeteners"></div>
+                <!--<div id="lowGlycemicFruits"></div>
+                <div id="nonStarchyVegetables"></div>
+                <div id="starchyVegetables"></div>  -->
+            </div>
+        </section>
+        <section id="nutritionInfoContainer">
+            <h1 id="nutritionInfoTitle" class="sectionTitle">Nutrition Info</h1>
+        </section>
+        <section id="readsContainer">
+            <h1 id="readsTitle"class="sectionTitle">Reads</h1>
+            <div id="readsSplitToTwo"class="splitToTwo">
+                <img src="brenda-godinez-_Zn_7FzoL1w-unsplash.jpg" alt="fruit platter">
+                <div id="readsText" class="sectionText">
+                    <a href="https://www.cdc.gov/diabetes/basics/insulin-resistance.html" target="_blank">Insulin, Blood Sugar, and Type 2 Diabetes</a>
+                    <a href="https://drhyman.com/blog/2020/11/19/bb-ep170/" target="_blank">Blood Sugar, Belly Fat and Chronic Disease</a>
+                    <a href="https://www.levelshealth.com/blog/here-are-foods-unlikely-to-spike-your-blood-sugar?utm_source=drip&utm_medium=email&utm_campaign=Levels+Grocery+Shopping+List" target="_blank">110 Foods unlikely to spike your blood sugar</a>
+                    <a href="https://experiencelife.lifetime.life/article/mark-hyman-peganism/" target="_blank">The 13 Pillars of the Pegan Diet</a>
+                </div>
+            </div>  
+        </section>
+        <footer>
+            <!-- <div id="edamam-badge" data-color="white"></div> -->
+        </footer>
+    </body>
+
+    <!-- <script src="https://developer.edamam.com/attribution/badge.js"></script> -->
+    <script>
+        //GLOBAL VARIABLES
+
+        let showNutriInfo = document.getElementById("showNutriInfo");
+        let newRecipe = document.getElementById("newRecipe");
+
+
+        //EVENT LISTENERS
+
+        //styling for menu and X button animation (header)
+        const navToggle = document.getElementById("navToggle");
+        navToggle.addEventListener("click", () => {
+            document.body.classList.toggle("navBarOpen");
+        })
+
+        //uncomment for live demo
+        showNutriInfo.addEventListener("click", () => {
+            //getNutriInfo();
+            getPeganDietTip();
+        });
+
+        newRecipe.addEventListener("click", () => window.location.reload());
+
+
+        //FUNCTIONS
+        class AnalyzeRecipe{
+            constructor(title, ingredient, data){
+                this.title      = title;
+                this.ingredient = ingredient;
+                this.data       = data;
+            }
+            
+            //get saved nutrition info from LS
+            static getNutritionInfo(){
+                //get nutritionList from LS, if empty return empty array
+                let nutriList = JSON.parse(localStorage.getItem("nutriList"))
+                              ? JSON.parse(localStorage.getItem("nutriList"))
+                              : [];
+                return nutriList;
+            }
+
+            static addNutritionInfo(recipe){
+                let nutriList = AnalyzeRecipe.getNutritionInfo();
+        
+                console.log(nutriList);
+
+                nutriList.push(recipe);
+
+                localStorage.setItem("nutriList", JSON.stringify(nutriList));
+                
+                console.log(nutriList);
+            }
+        }
+
+        //create category constructor for Pegan Diet Array of objects
+        //quantity is minimum for comparison
+        function createCategory(label,quantity,unit,frequency,example){
+            this.label = label;
+            this.quantity = quantity;
+            this.unit = unit;
+            this.frequency = frequency;
+            this.example = example;
+        }
+
+        class PeganDiet{
+            constructor(category){
+                 this.category   = category;
+            }
+
+            static getFoodList(){
+                let foodList = JSON.parse(localStorage.getItem("foodList"))
+                              ? JSON.parse(localStorage.getItem("foodList"))
+                              : [];
+                return foodList;
+            }
+
+            static addFoodList(category){
+                let foodList = PeganDiet.getFoodList();
+
+                foodList.push(category);
+
+                localStorage.setItem("foodList", JSON.stringify(foodList));
+            
+            }
+
+
+        }
+
+        function listCategory(){
+
+            //reference: PeganDiet Food Pyramid and Food by Dr. Mark Hyman
+            let healthyFats = new createCategory("healthyFats", 3, "servings", "per day",
+            ["avocado oil", "extra virgin olive oil", "virgin organic coconut oil", "grass fed butter", "grass fed ghee"]);
+            
+            let protein = new createCategory("protein", 4, "oz", "per meal",
+            ["grass fed beef", "grass fed lamb", "pasture raised pork", "pasture raised poultry", "pasture raised egg", "wild caught salmon", "wild caught sardines", "wild caught mackerel"]);
+        
+            let nonStarchyVegetables = new createCategory("nonStarchyVegetables", "unlimited", "serving","per meal",["cabbage", "broccoli","frozen sweet peas", "onions", "asparagus", "eggplant", "cauliflower", "organic celery", "organic spinach", "organic tomato", "organic bell peppers","organic cherry tomato","organic cucumber","organic kale","organic collard greens","organic hot peppers", "organic bokchoy", "seaweed", "shitaake", "oyster", "cremini", "herb", "carrot", "beets", "brussel sprouts", "garlic", "shallots", "onion", "zucchini", "okra", "mustard green"]);
+
+            let starchyVegetables = new createCategory("starchyVegetables", 2, "serving","per day",
+            ["pumpkin", "sweet corn", "japanese sweet potato", "parsnip", "cassava", "ube", "potato", "sweet potato"]);
+
+            let lowGlycemicFruits = new createCategory("lowGlycemicFruits", 1, "cup", "per day",
+            ["organic blueberry", "organic strawberry","organic apple","organic cherry","organic blackberry", "organic raspberry", "organic plum", "organic peach","organic nectarine", "organic orange", "organic grapefruit ", "organic tangerine","organic lemon", "organic lime", "organic citrus fruit", "pomegranate", "kiwi", "papaya", "goji berry", "acai berry", "gooseberry", "mangosteen", "dragon fruit", "avocado", "coconut", "olive"]);
+
+            let grains = new createCategory("grains", 0.5, "cup", "per day",
+            ["whole grain buckwheat", "whole kernel rye", "whole grain amaranth","whole grain millet", "whole grain teff","whole grain sorghum", "black rice","red rice","brown rice","wild rice", "quinoa", "non GMO corn"]);
+
+            let beansAndLegumes = new createCategory("beansAndLegumes",0.5,"cup","twice per week",
+            ["organic and traditional tofu", "organic and traditional tempeh","organic and traditional natto","organic and traditional miso","peas", "lentils", "black bean", "garbanzo", "adzuki", "black eyed peas", "asparagus beans", "edamame", "mung beans"]);
+
+            let spicesHerbsAndSalt = new createCategory("spicesAndHerbs", "unlimited" , "serving", "per meal", 
+            ["basil", "black pepper", "cayenne", "hot pepper", "cinnamon", "cloves", "coriander", "cilantro", "cumin", "ginger", "oregano", "parsley", "rosemary", "sage", "thyme", "turmeric", "himalayan pink salt", "kosher", "sea salt"]);
+
+            let nutsAndSeeds = new createCategory("nutsAndSeeds", 2, "handful", "per day", 
+            ["organic almond", "organic walnut", "organic pecan", "organic hazelnut", "organic brazil nuts", "organic pistachios", "organic macadamia nuts", "organic cashew", "organic pumpkin seeds", "organic chia seeds", "organic ground flaxseeds", "organic hemp seeds", "organic sesame seeds"]);
+
+            let milkAndDairy = new createCategory("milkAndDairy", "no tip" , "no tip", " no tip", 
+            ["grass fed whole goat milk", "grass fed whole sheep milk", "grass fed full fat greek yogurt", "grass fed full fat kefir", "grass fed whole cheese", "grass fed ghee", "grass fed butter"]);
+
+            let sugarsAndSweeteners = new createCategory("sugarsAndSweeteners", "no tip" , "no tip", " no tip",
+            ["fresh pureed fruit or fruit juice", "molasses", "organic palm sugar", "date sugar", "coconut sugar", "monk fruit", "organic maple syrup", "honey", "stevia", "erythritol"]);
+        
+            //console.log(milkAndDairy);
+
+            PeganDiet.addFoodList(healthyFats);
+            PeganDiet.addFoodList(protein);
+            PeganDiet.addFoodList(nonStarchyVegetables);
+            PeganDiet.addFoodList(starchyVegetables);
+            PeganDiet.addFoodList(lowGlycemicFruits);
+            PeganDiet.addFoodList(grains);
+            PeganDiet.addFoodList(beansAndLegumes);
+            PeganDiet.addFoodList(spicesHerbsAndSalt);
+            PeganDiet.addFoodList(nutsAndSeeds);
+            PeganDiet.addFoodList(milkAndDairy);
+            PeganDiet.addFoodList(sugarsAndSweeteners);
+        
+        }
+
+        //listCategory();
+        
+        function getPeganDietTip(){
+            let ingr = document.getElementById("ingredient");
+            let recipeTitle = document.getElementById("recipeTitle");
+            console.log(ingr.value);
+            console.log(recipeTitle.value);
+            
+            //format ingr accdg to API reqt: {"ingr":["1/2 cup full fat greek yogurt","1 tsp raw cacao powder","1 cup water"]}
+
+            let title = recipeTitle.value.split(/\n|\r/);
+            let ingredient =  ingr.value.split(/\n|\r/);
+
+                /*console.log(title);
+                console.log(ingredient);*/
+
+            let protein = ["meat", "fish"];
+            let fat = ["olive oil"];
+            let nutsAndSeeds =["peanuts"]; 
+            let grains =["white rice"];
+            let beansAndLegumes = ["black beans"];
+            let spicesAndHerbs = ["basil"];
+            let milkAndDairy = ["yogurt"];
+            let sugarsAndSweeteners = ["honey"];
+            
+            ingredient.forEach(element => {
+                if(element == "meat" || element == "fish" || element == "beef" || element == "chicken" || element == "pork" || element == "egg" || element == "salmon" || element == "turkey" || element == "lamb"){
+                    protein.push(element);
+                    console.log(protein);
+                } 
+                
+                if(element == "olive oil" || element == "coconut oil"|| element == "canola oil" || element == "sunflower oil"|| element == "sesame oil" || element == "avocado oil" || element == "ghee" || element == "butter"||element == "soybean oil" || element == "corn oil" || element == "safflower" || element == "vegetable oil" ||element == "vegetable shortening" || element == "shortening" || element == "margarine" || element == "palm oil"){
+                    fat.push(element);
+                    console.log(fat);
+                }
+                
+                //if()
+
+                
+            });
+
+            
+            if(protein.length !==0){ 
+                let foodList = PeganDiet.getFoodList();
+                
+
+                let pgProt = foodList.find(category => category.label == "protein");
+                console.log(pgProt);
+
+                let protHtml = `<div id="proteinContainer">
+                                <h2>Protein</h2>
+                                <div> <b>What to eat:</b> grass fed or pasture raised meats or organic meats or wild caught small fish.
+                                </div> 
+                                <div> <b>Amount:</b> ${pgProt.quantity} to 6 ${pgProt.unit} ${pgProt.frequency}. </div> 
+                                <div> Grass fed or pasture raised meats or wild caught small fish have a healty 1:1 fatty acid ratio of omega 3 (good) and omega 6 (bad). Grain fed meats come with 1:7 unhealthy ratio along with the harmful antibiotic and harmful bacteria that the animal develop under factory farm practices. This practice is also harmful to the animal and the environment.</div> 
+                                <div> Small fishes contain less mercury and other harmful contaminants.</div>
+                            </div> `
+                document.getElementById("protein").innerHTML = protHtml;
+            }
+            
+            if(fat.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgFat = foodList.find(category => category.label == "healthyFats");
+                console.log(pgFat);
+
+                let fatHtml = `<div id="fatContainer">
+                                <h2>Oils and Fats</h2>
+                                <div> <b>What to eat:</b> Extra virgin organic olive oil, organic virgin coconut oil, organic avocado oil, grass fed butter or grass fed. Avoid highly processed or refined vegetable oil. 
+                                </div> 
+                                <div> <b>Amount:</b> ${pgFat.quantity} ${pgFat.unit} ${pgFat.frequency}.</div> 
+                                <div> Eating right fats burn body fat (keeps you full and satiated), boosts metabolism and associated with significantly lower risk of heart disease, diabetes and obesity.</div> 
+                                <div> Highly processed or refined vegetable oils cause inflammation and may increase risk for heart disease, violent behavior etc.</div>
+                            </div> `
+                document.getElementById("fat").innerHTML = fatHtml;
+
+            }
+
+            if(nutsAndSeeds.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgNutsAndSeeds = foodList.find(category => category.label == "nutsAndSeeds");
+                console.log(pgNutsAndSeeds);
+
+                let nutsAndSeedsHtml = `<div id="nutsAndSeedsContainer">
+                                <h2>Nuts and Seeds</h2>
+                                <div> <b>What to eat:</b> Organic and unaldulterated (without sugar, refined oil, artificial flavors and colors or excessive salt amount) nuts and seeds.   
+                                </div> 
+                                <div> <b>Amount:</b> ${pgNutsAndSeeds.quantity} ${pgNutsAndSeeds.unit} ${pgNutsAndSeeds.frequency}.</div> 
+                                <div> All nuts contain antioxidants which are great for preventing cancer and help in weight management.</div> 
+                                <div> To minimize effect of lectins and phytates, soak nuts overnight  and cook before eating. Go easy on nut butters and flours.</div>
+                            </div> `
+                document.getElementById("nutsAndSeeds").innerHTML = nutsAndSeedsHtml;
+
+            }
+
+            if(grains.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgGrains = foodList.find(category => category.label == "grains");
+                console.log(pgGrains);
+
+                let grainsHtml = `<div id="grainsContainer">
+                                <h2>Grains</h2>
+                                <div> <b>What to eat:</b> Whole grain or whole kernel, organic, wild and gluten free grains.
+                                </div>  
+                                <div> <b>Amount:</b> ${pgGrains.quantity} ${pgGrains.unit} ${pgGrains.frequency}.</div> 
+                                <div> Grains are made of starches which has similar structure to sugar. Eating it raises blood sugar which release insulin. Insulin works by storing sugar into fat cells and locks fat from being released from fat cells making fat unavailable to use for energy and males one hungrier. Over reliance on grains for energy increases risk for diabetes, heart disease and obesity.</div> 
+                                <div> Oatmeal spikes blood sugar and makes one hungrier. If consuming grains like white rice, eat it cooled. Cooling develops resistant starch which resists digestion. </div>
+                            </div> `
+                document.getElementById("grains").innerHTML = grainsHtml;
+            }
+
+            if(beansAndLegumes.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgBeansAndLegumes = foodList.find(category => category.label == "beansAndLegumes");
+                console.log(pgBeansAndLegumes);
+
+                let beansAndLegumesHtml = `<div id="beansAndLegumesContainer">
+                                <h2>Beans and Legumes</h2>
+                                <div> <b>What to eat:</b> Organic bean and legumes.
+                                </div>  
+                                <div> <b>Amount:</b> ${pgBeansAndLegumes.quantity} ${pgBeansAndLegumes.unit} ${pgBeansAndLegumes.frequency}.</div> 
+                                <div> If consuming, soak overnight, throw out water and cook with kombu for better digestion. Buy organic, BPA free canned beans.</div> 
+                                <div> Limit consumption as they have same effect in raising blood sugar as grains.  </div>
+                            </div> `
+                document.getElementById("beansAndLegumes").innerHTML = beansAndLegumesHtml;
+            }
+
+            if(spicesAndHerbs.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgSpicesAndHerbs = foodList.find(category => category.label == "spicesAndHerbs");
+                console.log(pgSpicesAndHerbs);
+
+                let spicesAndHerbsHtml = `<div id="spicesAndHerbsContainer">
+                                <h2>Spices And Herbs</h2>
+                                <div> <b>What to eat:</b> Fresh or dried herbs and spices and unrefined salt.
+                                </div>  
+                                <div> <b>Amount:</b> ${pgSpicesAndHerbs.quantity} ${pgSpicesAndHerbs.unit} ${pgSpicesAndHerbs.frequency}.</div> 
+                                <div> Spices and herbs are celebrated for flavors and medicinal powers. Some are anti-inflammatory (ginger and turmeric), antibacterial and antifungal (oregano).</div> 
+                                <div> Salt must be in balance with potassium for optimal health. Choose unrefined salt varieties like himalayan pink salt, kosher and sea salt. </div>
+                            </div> `
+                document.getElementById("spicesAndHerbs").innerHTML = spicesAndHerbsHtml;
+            }
+
+            if(milkAndDairy.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgMilkAndDairy = foodList.find(category => category.label == "milkAndDairy");
+                console.log(pgMilkAndDairy);
+
+                let milkAndDairyHtml = `<div id="milkAndDairyContainer">
+                                <h2>Milk and Dairy</h2>
+                                <div> <b>What to eat:</b> Grass fed milk, cheese or butter that's full fat, additive free and ethically and sustainable produced.
+                                </div>   
+                                <div>Consume dairy only if not lactose intolerant. Get calcium from other sources like sesame seeds, sardines (with bones), tofu, yogurt, etc.</div> 
+                                <div>Dairy products made from industrial or conventional practices are terrible for the environment, animal and consumer. Milk from conventionally raised cows is full of hormones, chemicals and inflammatory compounds.</div>
+                            </div> `
+                document.getElementById("milkAndDairy").innerHTML = milkAndDairyHtml;
+            }
+
+            if(sugarsAndSweeteners.length!=0){
+                let foodList = PeganDiet.getFoodList();
+            
+                let pgSugarsAndSweeteners = foodList.find(category => category.label == "sugarsAndSweeteners");
+                console.log(pgSugarsAndSweeteners);
+
+                let sugarsAndSweetenersHtml = `<div id="sugarsAndSweetenersContainer">
+                                <h2>Sugars And Sweeteners</h2>
+                                <div> <b>What to eat:</b> Use healthier choices like fresh pureed fruit or fruit juice, organic palm sugar, date sugar, coconut sugar, monk fruit, organic maple syrup, honey (Ethical Consumer Guide), stevia (sparingly, brands certified by Rainforest Alliance) and erythritol (sparingly).
+                                </div>  
+                                <div>Sugar is addictive. Use as little as possible due to its effect in raising blood sugar. Stay away from it if you have insulin resistance, diabetes, cancer or autoimmune disease.</div>  
+                            </div> `
+                document.getElementById("sugarsAndSweeteners").innerHTML = sugarsAndSweetenersHtml;
+            }
+
+        }        
+
+        getPeganDietTip();
+
+        function getNutriInfo(){
+
+            let app_id = "8458cc5f";
+            let app_key = "4794cbd8d4435d7324ce1a7e387c5d82"; 
+            var url = 'https://api.edamam.com/api/nutrition-details?app_id=' + app_id + '&app_key=' + app_key;
+            console.log(url);
+
+            let ingr = document.getElementById("ingredient");
+            let recipeTitle = document.getElementById("recipeTitle");
+            console.log(ingr.value);
+            console.log(recipeTitle.value);
+            
+            //format ingr accdg to API reqt: {"ingr":["1/2 cup full fat greek yogurt","1 tsp raw cacao powder","1 cup water"]}
+            let array = {
+                "title": recipeTitle.value.split(/\n|\r/),
+                "ingr":  ingr.value.split(/\n|\r/),
+                }
+
+            console.log(JSON.stringify(array));
+            
+            //store object into options
+            let options = {
+                method: "POST",
+                body: JSON.stringify(array),
+                headers:{
+                    "Content-Type":"application/json",
+                }
+            }
+
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+
+                    let recipe1 = new AnalyzeRecipe(recipeTitle.value, ingr.value, data);
+                    // console.log(recipe);
+
+                    AnalyzeRecipe.addNutritionInfo(recipe1);
+                    // return data;
+                    renderNutriInfo(recipeTitle.value);
+                })
+                .catch (error => {
+                alert(error);
+                })
+
+            
+        }
+
+        function renderNutriInfo(recipeTitle){
+            let caloriesAmount; //    = document.getElementById("caloriesAmount");
+            let totFatAmount;    //   = document.getElementById("totFatAmount");
+            let totFatPercent; //      = document.getElementById("totFatPercent");
+            let satFatAmount;   //    = document.getElementById("satFatAmount");
+            let satFatPercent;  //      = document.getElementById("satFatPercent");
+            let transFatAmount;  //    = document.getElementById("transFatAmount");
+            let transFatPercent;  //  = document.getElementById("transFatPercent");
+            let cholesAmount;     //  = document.getElementById("cholesAmount");
+            let cholesPercent;    //  = document.getElementById("cholesPercent");
+            let sodiumAmount;     //  = document.getElementById("sodiumAmount");
+            let sodiumPercent;    //  = document.getElementById("sodiumPercent");
+            let totCarbAmount;    //  = document.getElementById("totCarbAmount");
+            let totCarbPercent;  //    = document.getElementById("totCarbPercent");
+            let fiberAmount;      //  = document.getElementById("fiberAmount");
+            let fiberPercent;       // = document.getElementById("fiberPercent");
+            let totSugarsAmount;    // = document.getElementById("totSugarsAmount");
+            let addedSugarsAmount;  // = document.getElementById("addedSugarsAmount");
+            let proteinAmount;     //  = document.getElementById("proteinAmount");
+            let proteinPercent;   //   = document.getElementById("proteinPercent");
+            
+
+            let nutriList = AnalyzeRecipe.getNutritionInfo(); //get not a fxn error when static is not present in AnalyzeRecipe Class 
+            console.log(nutriList[0].title);
+            console.log(recipeTitle);
+
+            let recipeMatch = nutriList.find(recipe => recipe.title == recipeTitle);
+            console.log(recipeMatch);
+
+
+            //show calories
+            if (typeof recipeMatch.data.totalNutrients.ENERC_KCAL != "undefined"){
+                caloriesAmount = Math.round(recipeMatch.data.totalNutrients.ENERC_KCAL.quantity);
+            } else {
+                caloriesAmount = "0";
+            }
+
+            //show total fat for amounts: *10/10 for accuracy up to first decimal place
+            if (typeof recipeMatch.data.totalNutrients.FAT != "undefined"){
+                totFatAmount = Math.round(recipeMatch.data.totalNutrients.FAT.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.FAT.unit;
+            } else {
+                totFatAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.FAT != "undefined"){
+                totFatPercent = Math.round(recipeMatch.data.totalDaily.FAT.quantity) + " " + recipeMatch.data.totalDaily.FAT.unit;
+            } else {
+                totFatPercent = "-";
+            }
+
+            //show sat fat
+           if (typeof recipeMatch.data.totalNutrients.FASAT != "undefined"){
+                satFatAmount = Math.round(recipeMatch.data.totalNutrients.FASAT.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.FASAT.unit;
+            } else {
+                satFatAmount = "-";
+            }
+            
+            if (typeof recipeMatch.data.totalDaily.FASAT != "undefined"){
+                satFatPercent = Math.round(recipeMatch.data.totalDaily.FASAT.quantity) + " " + recipeMatch.data.totalDaily.FASAT.unit;
+            } else {
+                satFatPercent = "-";
+            }
+
+            //show trans fat
+            if (typeof recipeMatch.data.totalNutrients.FATRN != "undefined"){
+                transFatAmount = Math.round(recipeMatch.data.totalNutrients.FATRN.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.FATRN.unit;
+            } else {
+                transFatAmount = "-";
+            }
+            
+            if (typeof recipeMatch.data.totalDaily.FATRN != "undefined"){
+                transFatPercent = Math.round(recipeMatch.data.totalDaily.FATRN.quantity) + " " + recipeMatch.data.totalDaily.FATRN.unit;
+            } else {
+                transFatPercent = "-";
+            }
+
+            //show cholesterol
+            if (typeof recipeMatch.data.totalNutrients.CHOLE != "undefined"){
+                cholesAmount = Math.round(recipeMatch.data.totalNutrients.CHOLE.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.CHOLE.unit;
+            } else {
+                cholesAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.CHOLE != "undefined"){
+                cholesPercent = Math.round(recipeMatch.data.totalDaily.CHOLE.quantity) + " " + recipeMatch.data.totalDaily.CHOLE.unit;
+            } else {
+                cholesPercent = "-";
+            }
+
+            //show sodium
+           if (typeof recipeMatch.data.totalNutrients.NA != "undefined"){
+                sodiumAmount = Math.round(recipeMatch.data.totalNutrients.NA.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.NA.unit;
+            } else {
+                sodiumAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.NA != "undefined"){
+                sodiumPercent = Math.round(recipeMatch.data.totalDaily.NA.quantity) + " " + recipeMatch.data.totalDaily.NA.unit;
+            } else {
+                sodiumPercent = "-";
+            }
+        
+            //show total carb
+            if (typeof recipeMatch.data.totalNutrients.CHOCDF != "undefined"){
+                totCarbAmount = Math.round(recipeMatch.data.totalNutrients.CHOCDF.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.CHOCDF.unit;
+            } else {
+                totCarbAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.CHOCDF != "undefined"){
+                totCarbPercent = Math.round(recipeMatch.data.totalDaily.CHOCDF.quantity) + " " + recipeMatch.data.totalDaily.CHOCDF.unit;
+            } else {
+                totCarbPercent = "-";
+            }
+
+            //show fiber content
+            if (typeof recipeMatch.data.totalNutrients.FIBTG != "undefined"){
+                fiberAmount = Math.round(recipeMatch.data.totalNutrients.FIBTG.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.FIBTG.unit;
+            } else {
+                fiberAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.FIBTG != "undefined"){
+                fiberPercent = Math.round(recipeMatch.data.totalDaily.FIBTG.quantity) + " " + recipeMatch.data.totalDaily.FIBTG.unit;
+            } else {
+                fiberPercent = "-";
+            }
+
+            //show total sugars (both from natural carb source and added sugars)
+           if (typeof recipeMatch.data.totalNutrients.SUGAR != "undefined"){
+                totSugarsAmount = Math.round(recipeMatch.data.totalNutrients.SUGAR.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.SUGAR.unit;
+            } else {
+                totSugarsAmount = "-";
+            }
+
+            //show added sugars i.e. cane, honey, agave syrup, monkfruit etc
+            //for some reason the dot notation did not work but bracket notation did; to wit below returned undefined when it is clearly included in object
+            //console.log(recipeMatch.data.totalNutrients.SUGAR.added);
+            if (typeof recipeMatch.data.totalNutrients["SUGAR.added"] != "undefined"){
+                addedSugarsAmount = Math.round(recipeMatch.data.totalNutrients["SUGAR.added"].quantity*10)/10 + " " + recipeMatch.data.totalNutrients["SUGAR.added"].unit;
+            } else {
+                addedSugarsAmount = "0";
+            }
+
+            //show protein  
+            if (typeof recipeMatch.data.totalNutrients.PROCNT != "undefined"){
+                proteinAmount = Math.round(recipeMatch.data.totalNutrients.PROCNT.quantity*10)/10 + " " + recipeMatch.data.totalNutrients.PROCNT.unit;
+            } else {
+                proteinAmount = "-";
+            }
+
+            if (typeof recipeMatch.data.totalDaily.PROCNT != "undefined"){
+                proteinPercent = Math.round(recipeMatch.data.totalDaily.PROCNT.quantity) + " " + recipeMatch.data.totalDaily.PROCNT.unit;
+            } else {
+                proteinPercent = "-";
+            }
+
+            //generate nutrition label
+            nutritionInfo = 
+                    '<div id="nutritionInfoHeaderContainer" class="nutritionInfoHeaderContainer">'
+                +       '<h1 id = "nutritionInfoTitle" class="nutritionInfoTitle ">Nutrition Facts</h1>'
+                +   '</div>'
+                +   '<table id="nutritionInfoTable" >' 
+                +       '<thead class="nutritionInfoTableTheadContainer ">'
+                +           '<tr>'
+                +               '<th id="amtPerServing" class="amtPerServing smallText" colspan="3"><b>Amount per serving</b></th>'
+                +           '</tr>'
+                +       '</thead>'
+                +       '<tbody>'
+                +       '<tr>'
+                +           '<th id="calories" class="calories" colspan="2"><b>Calories</b></th>'
+                +           '<td id="caloriesAmount" class="calories">'+ caloriesAmount +'</td>'
+                +        '</tr>'
+                +       '<tr class="thickBlackTopBorder">'
+                +           '<td id="dailyValPercent" class = "dailyValPercent smallText" colspan="3"><b>% Daily Value*</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +            '<th id="totFatAmount" colspan="2"><b>Total Fat</b>' + ' ' + totFatAmount + '</th>'
+                +            '<td id="totFatPercent"><b>'+ ' ' +totFatPercent+ '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +           '<th id="satFatAmount"><b>Saturated Fat</b>'+ ' '  + satFatAmount + '</th>'
+                +           '<td id="satFatPercent"><b>'+ ' '  + satFatPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +           '<td class="blankCell"></td>'
+                +           '<th id="transFatAmount"><b>Trans Fat</b>' + ' '  + transFatAmount + '</th>'
+                +           '<td id="transFatPercent"><b>' + ' ' + transFatPercent + '</b></td>'
+                +        '</tr>'
+                +       '<tr>'
+                +           '<th id="cholesAmount" colspan="2"><b>Cholesterol</b>'+ ' '  + cholesAmount + '</th>'
+                +           '<td id="cholesPercent"><b>'+ ' '  + cholesPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +            '<th id="sodiumAmount" colspan="2"><b>Sodium</b>' + ' '  + sodiumAmount +  '</th>'
+                +            '<td id="sodiumPercent"><b>'+ ' '  + sodiumPercent + '</b></td>'
+                +        '</tr>'
+                +        '<tr>'
+                +             '<th id="totCarbAmount" colspan="2"><b>Total Carbohydrate</b>' + ' '  + totCarbAmount +  '</th>'
+                +             '<td id="totCarbPercent"><b>'+ ' '  + totCarbPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="fiberAmount" ><b>Dietary Fiber</b>' + ' '  + fiberAmount +  '</th>'
+                +             '<td id="fiberPercent"><b>'+ ' '  + fiberPercent + '</b></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +              '<td class="blankCell"></td>'
+                +              '<th id="totSugarsAmount"><b>Total Sugars</b>' + ' '+ totSugarsAmount +'</th>'
+                +               '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +             '<td class="blankCell"></td>'
+                +             '<th id="addedSugarsAmount">Includes'+' '+ addedSugarsAmount + ' '+'Added Sugars</th>'
+                +              '<td></td>'
+                +       '</tr>'
+                +       '<tr>'
+                +       '<th id="proteinAmount" colspan="2"><b>Protein</b>'+ ' '  + proteinAmount +  '</th>'
+                +       '<td id="proteinPercent"><b>'+ ' '  + proteinPercent + '</b></td>'
+                +       '</tr>'
+                +       '</tbody>'
+                +    '</table>'    
+                +    '<p class ="smallText">*Daily values are based on a 2000 calorie diet</p>'
+                               
+            
+            nutritionInfoContainer.innerHTML = nutritionInfo;
+            nutritionInfoContainer.style.display = "block";
+
+            newRecipe.style.display ="block";
+
+        }
+
+        //uncomment when testing from LS 
+        //renderNutriInfo("Choco Zucchini Cake");
+
+    </script>
+    
+<!-- REFERENCES
+1.  Header menu: https://www.youtube.com/watch?v=8QKOaTYvYUA -->
+</html>
