@@ -1,0 +1,506 @@
+*, 
+*::before,
+*::after{  /* reset spaces due to html elements like p, h, etc */
+    padding: 0;
+    box-sizing: border-box;    
+    font-family:'Lora', serif;;
+    background-color: #F5F6FC;
+    fill-opacity:30%;
+    font-size: 15px;
+    color: slategray;
+    line-height: 1.4;
+    max-width: 100em;
+    margin: 0 auto;
+    
+}
+
+:root{
+    --primaryColor: #71b155;
+    --neutralColor: #F5F6FC;
+    --darkColor: black;
+    --lightColor:white;
+    --accentColor1:#fcc059;/*ff698a*/
+    --boxShadowDark: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+    --textHeader: 34px;
+    --textSectionTitle: 32px;
+}
+
+html{
+    height: 300%;              
+    box-sizing: border-box;    
+    /* border: 1px solid black; */
+}
+
+body {
+    scroll-behavior: smooth;
+    position: relative;        
+    height: 300%;      
+}
+
+#navBarContainer,
+#logo,
+#navBar,
+#navBar #navList,
+#navBar .navItem,
+#navBar .navLink{
+    /* border: 1px dotted blue;   */
+    background: var(--primaryColor); 
+    color: var(--neutralColor);
+}
+
+ #logo{
+    text-align: center;
+    font-size: var(--textHeader);
+    text-transform: uppercase;
+    font-weight: 400;
+} 
+
+#navBarContainer{
+    text-align: center;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+}
+
+#navBar{
+    position: absolute;
+    text-align: left;
+    top:100%;
+    left:0;
+    width: 100%;
+    display: none;
+}
+
+#navBar #navList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#navBar .navItem{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+}
+
+#navBar .navLink{
+    text-decoration: none;
+    font-size: var(--textSectionTitle);
+    text-transform: lowercase;
+    font-weight: 500;
+    color: var(--accentColor1);
+    opacity: 80%;
+}
+
+#navBar .navLink:hover{
+    color: var(--neutralColor);
+}
+
+#navToggle{
+    display: none;
+}
+
+#navToggleLabel{
+    /* border: 1px solid violet; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 3rem; /*same as navBar items*/
+}
+
+#navToggleLabel,
+#logo{
+    height: calc(10vh);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  when clicked looked for nearest nav sibling */
+ #navToggle:checked ~ nav{
+    display: block;
+}
+
+/* remove background so other horizontal line is not shown */
+label{
+    background: transparent;
+}
+
+/* hamburger */
+.hamburgerOrX{
+    display: block;
+    /* use pseudo elements with absolute positioning to make sure they will stick together */
+    position: relative;
+    cursor: pointer;
+}
+
+/* menu icon */
+.hamburgerOrX,
+.hamburgerOrX::before,
+.hamburgerOrX::after{
+    width: 2em;
+    height: 3px;
+    background-color: var(--neutralColor);
+    opacity: 80%;
+    border-radius: 0.35em;
+    transition: transform 350ms ease-in-out, opacity 200ms linear;
+}
+
+.hamburgerOrX::before,
+.hamburgerOrX::after{
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.hamburgerOrX::before{
+    bottom: 6px;
+}
+
+.hamburgerOrX::after{
+    top: 6px;
+}
+
+/* next 3 line for the X appearance when menu is toggled */
+.navBarOpen .hamburgerOrX{
+    transform: rotate(45deg);
+}
+
+/* remove one of the line when nav opens */
+.navBarOpen .hamburgerOrX::before{
+    opacity: 0;
+} 
+
+/* adjust line position so it intersects the other */
+.navBarOpen .hamburgerOrX::after{
+    transform: rotate(90deg) translate(-6px);
+} 
+
+section{
+    border: 1px solid blue;
+    max-width: 100em;
+    min-height: 80vh;
+    /* place display flex here not in body bcoz the header becomes footer when flex display is in body */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+section h1{
+    font-size: var(--textSectionTitle);
+    text-transform: lowercase;
+    color: var(--accentColor1);
+}
+
+#homeContainer{
+    background-image:url("brooke-lark-08bOYnH_r_E-unsplash.jpg"); 
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: calc(15vh);
+    border: 1px dotted red;
+    margin: auto;
+    display: flex;
+}
+
+.bgTransparent{
+    background: transparent;
+}
+
+#recipeInputForm h1{
+    padding-bottom: 1rem;
+}
+
+#recipeInputInst{
+    font-size: 14px;
+    text-align: justify;
+    list-style-position: inside;
+    padding-left: 0;
+    /* border: 1px dotted red; */
+}
+
+#recipeInputInst h4{
+    text-align: center !important;
+}
+
+input{
+    width: 280px;
+    border: 1px solid slategray;
+    border-radius: 0.25em;
+    font-size: clamp(1em calc(1em + 5vw), 1.25em);
+}
+
+
+#recipeInputForm label{
+    font-size: 20px;
+    text-transform: none;
+}
+
+input::placeholder,
+input:focus,
+input:focus::placeholder,
+#ingredient::placeholder,
+#ingredient:focus,
+#ingredient:focus::placeholder{
+    border: 1px solid slategray;
+    opacity: 90%;
+}
+
+/* div display setting */
+.splitToTwo{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 50%;
+    justify-content:space-around;
+    border: 1px dotted blue;
+    
+}
+
+.splitToTwo > *{
+    width: 45vw;
+    flex-flow: column wrap;
+    justify-content:space-between;
+    align-items: baseline;
+    font-size: 1.25em;
+    border: 1px dotted green;
+}
+
+/*  so the two divs dont compress to much in small screens */
+@media(max-width:720px){
+    .splitToTwo > *{
+        width: 100%;
+    }
+} 
+
+#recipeInputForm{
+    border: 1px dotted red;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#ingredient{
+    margin: auto;
+    height: 50%;
+    border-radius: 0.25rem;
+}
+
+@media(max-width:400px){
+    #ingredient{
+        width:280px;
+    }
+}
+
+#buttonContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-around;
+    flex: 50%;
+    /* border: 1px solid slategray; */
+}
+
+.btn{
+    background-color: var(--accentColor1);  /*00C9B7 */
+    width: 18vw;  
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;   
+    border: transparent;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
+    transform: scale(0.9);
+    color: white;
+
+}
+
+/*  dont show refresh button at onload */
+#newRecipe{
+    display: none;
+}
+
+@media (min-width:200em) {
+    #newRecipe{
+        margin-top: 0 !important;
+    }
+} 
+
+/* manage buttons size */
+@media(max-width:600px){
+    #buttonContainer{
+        flex-flow: column;
+        /* flex:none; */
+    }
+    .btn{
+        width:50vw;
+    }
+}
+
+.btn:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+} 
+
+/* style for nutrition label */
+#nutritionInfoContainer{
+    border: 1px solid black;
+	margin: auto;  /* auto makes it centered*/
+	width: 280px;
+	padding: 0.5rem;
+	color: #000;
+    display: none;
+    /* border: 1px solid violet; */
+}
+
+#nutritionInfoContainer table{
+    border-collapse: collapse;
+}
+
+#nutritionInfoTitle{
+    text-align: center;
+    font-weight: bold;
+    font-size: var(--textSectionTitle);
+    margin: 0 0 0.25rem 0;
+}
+
+#nutritionInfoHeaderContainer{
+    border-bottom: 10px solid black;
+    padding: 0 0 0.25rem 0;
+    margin: 0 0 0.5rem 0;
+}
+
+#nutritionInfoTable{
+    width: 100%;
+    
+}
+
+#nutritionInfoTable thead th tr{
+    border: 0;
+    
+}
+
+#nutritionInfoTable th, 
+#nutritionInfoTable td{
+    font-weight: normal;
+    text-align: left;
+    padding: 0.25rem 0;
+    border-top: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+#nutritionInfoTable td:last-child{
+    text-align: right;
+}
+
+#nutritionInfoTable .blankCell{
+    width: 1rem;
+    border-top: none;
+}
+#nutritionInfoTable .thickBlackTopBorder th,
+#nutritionInfoTable .thickBlackTopBorder td{
+    border-top-width: 5px;
+}
+
+#nutritionInfoTable .smallText {
+    font-size: 10px !important;
+  }
+
+/* to remove border top due to line 47 */
+#nutritionInfoTable #amtPerServing,
+#nutritionInfoTable .calories{
+    border-top: none !important;
+}
+
+#nutritionInfoTable #amtPerServing{
+	margin: 0 -200px -10px 0 !important;
+	display: block;
+}
+
+#nutritionInfoTable #calories{
+    font-size: 28px !important;
+}
+
+/* check for alignment */
+/* #edamam-badge{
+    box-sizing: border-box;
+    border: 1px dotted pink;
+} */
+
+/* About section */
+
+.sectionText{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: justify;
+    padding: 1rem;
+    
+}
+
+#aboutContainer,
+#about,
+#aboutSplitToTwo,
+#aboutText,
+#aboutText ul,
+#aboutText ul li{
+    background: var(--lightColor);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li{
+    line-height: 1.8;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* Reads Section */
+
+#readsText a{
+    text-align: justify;
+    font-size: 22px;
+    text-decoration: none;
+    
+}
+
+#readsText a:hover{
+    color: var(--darkColor);
+}
+
+footer, #edamam-badge{
+    width: 280px;
+    margin: auto;
+}
+
+/* Pegan Diet section */
+
+#proteinContainer div,
+#fatContainer div,
+#nutsAndSeedsContainer div,
+#grainsContainer div{
+    text-align: justify;
+    line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
