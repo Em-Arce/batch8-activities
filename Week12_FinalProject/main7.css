@@ -20,6 +20,7 @@
     --darkColor: black;
     --lightColor:white;
     --accentColor1:#fcc059;/*ff698a*/
+    --accentColor1Dark:#ffb639;
     --boxShadowDark: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
     --textHeader: 34px;
     --textSectionTitle: 32px;
@@ -483,14 +484,71 @@ footer, #edamam-badge{
 }
 
 /* Pegan Diet section */
+.bgWhite,
+.peganDietDiv div,
+.peganDietDiv h2,
+.peganDietDiv b,
+.peganDietDiv .splitToTwo{
+    background-color: var(--lightColor);
+}
 
-#proteinContainer div,
-#fatContainer div,
-#nutsAndSeedsContainer div,
-#grainsContainer div{
+.peganDietDiv div{
+    font-size: 17px;
     text-align: justify;
     line-height: 1.6;
+    /*  */
+    padding: 0.25rem 1rem;
+    
 }
+
+.peganDietDiv h2{
+    font-size: 19px;
+    color: var(--accentColor1);
+}
+
+.svgContainer,
+svg{
+    display: flex;
+    align-items: center;
+    padding:1rem;
+    /* border: red 1px dotted; */
+}
+
+svg{
+    height: 100px;
+    width: 100px;
+    /* border:var(--accentColor1Dark) 1.5px solid; */
+     background-color: var(--lightColor);  /*not transparent to maintain the orange filter during hover or active*/
+    fill: none;
+    stroke:  var(--accentColor1Dark);
+    stroke-width: 1.5px;
+    stroke-linejoin: round;
+    
+}
+
+svg:hover,
+svg:focus{
+    filter: invert(18%) sepia(50%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+/* beans, herbs, vegetables*/
+.freepik{
+    stroke-width: 15px;
+}
+
+/* for fats, nuts, grains, milk, sugar,  */
+.freepik1{
+    stroke-width: 11px;
+}
+
+/* for fruits */
+.freepik2{
+    stroke-width: 13px;
+}
+
+
+
+
 
 
 
