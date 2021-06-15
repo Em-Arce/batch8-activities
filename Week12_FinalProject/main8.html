@@ -33,7 +33,7 @@
             
             
         </header>
-        <!-- <section id="homeContainer">
+        <section id="homeContainer">
             
              <div id="homeSplitToTwo" class="splitToTwo bgTransparent">
                  <div id="homeBlankDiv" class="bgTransparent"></div>
@@ -49,7 +49,7 @@
                     Food can be a medicine or a slow poison.
                     <br>
                     <br>
-                    In just one step, ___ helps individuals make better food choices.
+                    In just one step, individuals can make better food choices.
                     <br>
                     <br>
                     <ul>
@@ -61,7 +61,7 @@
                 <img src="brooke-lark-nTZOILVZuOg-unsplash.jpg" alt="bowls of fruits">
             </div>
         </section>
-         -->
+        
         <section id="recipeInputForm">
             <h1 class="sectionTitle bgTransparent">Analyze</h1>
             <div id="recipeInstContainer" >
@@ -88,16 +88,16 @@
         <section id="peganDietContainer" class="bgWhite">
             <h1 id="peganDietTip" class="peganDietRecommendation bgWhite">Pegan Diet Tip</h1>
             <div id="peganDietTipSplitToTwo" class="splitToTwo bgWhite">
-                <div id="protein" class="bgWhite"></div>
-                <div id="fat" class="bgWhite"></div>
-                <div id="nutsAndSeeds" class="bgWhite"></div>
-                <div id="grains" class="bgWhite"></div>
-                <div id="beansAndLegumes" class="bgWhite"></div>
-                <div id="spicesAndHerbs" class="bgWhite"></div>
-                <div id="milkAndDairy" class="bgWhite"></div>
-                <div id="sugarsAndSweeteners" class="bgWhite"></div>
-                <div id="lowGlycemicFruits" class="bgWhite"></div>
-                <div id="vegetables" class="bgWhite"></div>
+                <div id="protein" class="bgWhite hidden"></div>
+                <div id="fat" class="bgWhite hidden"></div>
+                <div id="nutsAndSeeds" class="bgWhite hidden"></div>
+                <div id="grains" class="bgWhite hidden"></div>
+                <div id="beansAndLegumes" class="bgWhite hidden"></div>
+                <div id="spicesAndHerbs" class="bgWhite hidden"></div>
+                <div id="milkAndDairy" class="bgWhite hidden"></div>
+                <div id="sugarsAndSweeteners" class="bgWhite hidden"></div>
+                <div id="lowGlycemicFruits" class="bgWhite hidden"></div>
+                <div id="vegetables" class="bgWhite hidden"></div>
             </div>
         </section>
         <section id="nutritionInfoContainer">
@@ -138,7 +138,7 @@
 
         //uncomment for live demo
         showNutriInfo.addEventListener("click", () => {
-            //getNutriInfo();
+            getNutriInfo();
             getPeganDietTip();
         });
 
@@ -265,11 +265,6 @@
         function getPeganDietTip(){
             let ingr = document.getElementById("ingredient");
             let recipeTitle = document.getElementById("recipeTitle");
-            //containers for categories: render html if not empty
-            //let protein =[];
-            // = [];
-            
-            
             
             //1. get multiple ingredients input, 
             //2. convert multiline input into string or array of string--NO NEED for str match
@@ -284,9 +279,10 @@
             let ing = ingr.value;
             console.log(ing);
 
+            //containers for each ingr category, render html is if array is not empty
             //*in case plural egg input: \b.*\bkeyword means any word/s before the keyword as long as kw is last word is a match
-            let protein = ing.match(/\b.*\bmeat\b|\b.*\bbeef\b|\b.*\bchicken\b|\b.*\bfish\b|\b.*\bsalmon\b|\b.*\bpork\b|\b.*\bpoultry\b|\b.*\bvenison\b|\b.*\bbison\b|\b.*\begg\b|\b.*\beggs\b|\b.*\bsardines\b|\b.*\bmackerel\b|\b.*\bshrimp\b/gi)
-                        ? ing.match(/\b.*\bmeat\b|\b.*\bbeef\b|\b.*\bchicken\b|\b.*\bfish\b|\b.*\bsalmon\b|\b.*\bpork\b|\b.*\bpoultry\b|\b.*\bvenison\b|\b.*\bbison\b|\b.*\begg\b|\b.*\beggs\b|\b.*\bsardines\b|\b.*\bmackerel\b|\b.*\bshrimp\b/gi)
+            let protein = ing.match(/\b.*\bmeat\b|\b.*\bbeef\b|\b.*\bchicken\b|\b.*\bfish\b|\b.*\bsalmon\b|\b.*\bpork\b|\b.*\bpoultry\b|\b.*\bvenison\b|\b.*\bbison\b|\b.*\begg\b|\b.*\beggs\b|\b.*\bsardines\b|\b.*\bmackerel\b|\b.*\bshrimp\b|\b.*\bbacon\b/gi)
+                        ? ing.match(/\b.*\bmeat\b|\b.*\bbeef\b|\b.*\bchicken\b|\b.*\bfish\b|\b.*\bsalmon\b|\b.*\bpork\b|\b.*\bpoultry\b|\b.*\bvenison\b|\b.*\bbison\b|\b.*\begg\b|\b.*\beggs\b|\b.*\bsardines\b|\b.*\bmackerel\b|\b.*\bshrimp\b|\b.*\bbacon\b/gi)
                         :[];
             console.log(`proteins are: ${protein}`);
 
@@ -295,15 +291,15 @@
                     : [];
             console.log(`fat are: ${fat}`);
 
-            //\b.*nut\b --single word ending with nut \b.*\bnut|
+            //\b.*nut\b --single word ending with nut 
             let nutsAndSeeds = ing.match(/\b.*\bseed\b|\b.*\bpecan\b|\b.*\bpecans\b|\b.*\bpistachio\b|\b.*\bpistachios\b|\b.*\bcashew\b|\b.*\bcashews\b|\b.*nut\b|\b.*nuts\b/gi)
                              ? ing.match(/\b.*\bseed\b|\b.*\bpecan\b|\b.*\bpecans\b|\b.*\bpistachio\b|\b.*\bpistachios\b|\b.*\bcashew\b|\b.*\bcashews\b|\b.*nut\b|\b.*nuts\b/gi)
                              : []; 
 
             console.log(`nutsAndSeeds ingr are: ${nutsAndSeeds}`);
 
-            let grains = ing.match(/\b.*\brice\b|\b.*\bcorn\b|\b.*\bquinoa\b|\b.*\bbuckwheat\b|\b.*\brye\b|\b.*\bamaranth\b|\b.*\bmillet\b|\b.*\bteff\b|\b.*\bsorghum\b|\b.*\bpalm\b|\b.*\bcouscous\b/gi)
-                       ? ing.match(/\b.*\brice\b|\b.*\bcorn\b|\b.*\bquinoa\b|\b.*\bbuckwheat\b|\b.*\brye\b|\b.*\bamaranth\b|\b.*\bmillet\b|\b.*\bteff\b|\b.*\bsorghum\b|\b.*\bpalm\b|\b.*\bcouscous\b/gi)
+            let grains = ing.match(/\b.*\brice\b|\b.*\bcorn\b|\b.*\bquinoa\b|\b.*\bbuckwheat\b|\b.*\brye\b|\b.*\bamaranth\b|\b.*\bmillet\b|\b.*\bteff\b|\b.*\bsorghum\b|\b.*\bpalm\b|\b.*\bcouscous\b|\b.*\bflour\b|\b.*\bbaking/gi)
+                       ? ing.match(/\b.*\brice\b|\b.*\bcorn\b|\b.*\bquinoa\b|\b.*\bbuckwheat\b|\b.*\brye\b|\b.*\bamaranth\b|\b.*\bmillet\b|\b.*\bteff\b|\b.*\bsorghum\b|\b.*\bpalm\b|\b.*\bcouscous\b|\b.*\bflour\b|\b.*\bbaking/gi)
                        :[];
             console.log(`grains ingr are: ${grains}`);
 
@@ -327,13 +323,14 @@
                                     ? ing.match(/\b.*\bsugar\b|\b.*\bsweetener\b|\b.*\bhoney\b|\b.*\bsyrup\b|\b.*\bstevia\b|\b.*\berythritol\b/gi)
                                     : [];
             console.log(` ingr are: ${sugarsAndSweeteners}`);     
-            //\b.*nut\b
-            let lowGlycemicFruits = ing.match(/\b.*\bapple\b|\b.*\bpear\b|\b.*\bcitrus\b|\b.*\borange\b|\b.*fruit\b|\b.*\bmandarin\b\b.*\blime\b|\b.*\bpeach\b|\b.*\bplum\b|\b.*\bbanana\b|\b.*\bmango\b|\b.*\bmelon\b|\b.*berry\b|\b.*berries\b|\b.*\btomato\b|\b.*\bavocado\b|\b.*\bcoconut\b/gi)
-                                  ?  ing.match(/\b.*\bapple\b|\b.*\bpear\b|\b.*\bcitrus\b|\b.*\borange\b|\b.*fruit\b|\b.*\bmandarin\b\b.*\blime\b|\b.*\bpeach\b|\b.*\bplum\b|\b.*\bbanana\b|\b.*\bmango\b|\b.*\bmelon\b|\b.*berry\b|\b.*berries\b|\b.*\btomato\b|\b.*\bavocado\b|\b.*\bcoconut\b/gi)
+
+            let lowGlycemicFruits = ing.match(/\b.*\bapple\b|\b.*\bpear\b|\b.*\bcitrus\b|\b.*\borange\b|\b.*fruit\b|\b.*\bmandarin\b\b.*\blime\b|\b.*\bpeach\b|\b.*\bplum\b|\b.*\bbanana\b|\b.*\bmango\b|\b.*\bmelon\b|\b.*berry\b|\b.*berries\b|\b.*\btomato\b|\b.*\btomatoes\b|\b.*\bavocado\b|\b.*\bcoconut\b/gi)
+                                  ?  ing.match(/\b.*\bapple\b|\b.*\bpear\b|\b.*\bcitrus\b|\b.*\borange\b|\b.*fruit\b|\b.*\bmandarin\b\b.*\blime\b|\b.*\bpeach\b|\b.*\bplum\b|\b.*\bbanana\b|\b.*\bmango\b|\b.*\bmelon\b|\b.*berry\b|\b.*berries\b|\b.*\btomato\b|\b.*\btomatoes\b|\b.*\bavocado\b|\b.*\bcoconut\b/gi)
                                   :[];
             console.log(` ingr are: ${lowGlycemicFruits}`);
-            let vegetables = ing.match(/\b.*\blettuce\b|\b.*\bspinach\b|\b.*\bkale\b|\b.*\bpotato\b|\b.*\bcabbage\b|\b.*\bcauliflower\b\b.*\bsprouts\b|\b.*\bbroccoli\b|\b.*\bpumpkin\b|\b.*\bcucumber\b|\b.*\bzucchini\b|\b.*\byam\b|\b.*\bcelery\b\b.*\basparagus\b|\b.*\bonion\b|\b.*\bgarlic\b|\b.*\bshallot\b|\b.*\bokra\b|\b.*\bbeet\b|\b.*\bcarrot\b|\b.*\btops\b/gi)
-                           ? ing.match(/\b.*\blettuce\b|\b.*\bspinach\b|\b.*\bkale\b|\b.*\bpotato\b|\b.*\bcabbage\b|\b.*\bcauliflower\b\b.*\bsprouts\b|\b.*\bbroccoli\b|\b.*\bpumpkin\b|\b.*\bcucumber\b|\b.*\bzucchini\b|\b.*\byam\b|\b.*\bcelery\b\b.*\basparagus\b|\b.*\bonion\b|\b.*\bgarlic\b|\b.*\bshallot\b|\b.*\bokra\b|\b.*\bbeet\b|\b.*\bcarrot\b|\b.*\btops\b/gi)
+
+            let vegetables = ing.match(/\b.*\blettuce\b|\b.*\bspinach\b|\b.*\bkale\b|\b.*\bpotato\b|\b.*\bcabbage\b|\b.*\bcauliflower\b\b.*\bsprouts\b|\b.*\bbroccoli\b|\b.*\bpumpkin\b|\b.*\bcucumber\b|\b.*\bzucchini\b|\b.*\byam\b|\b.*\bcelery\b\b.*\basparagus\b|\b.*\bonion\b|\b.*\bgarlic\b|\b.*\bshallot\b|\b.*\bokra\b|\b.*\bbeet\b|\b.*\bcarrot\b|\b.*\btops\b|\b.*\bjalapeno/gi)
+                           ? ing.match(/\b.*\blettuce\b|\b.*\bspinach\b|\b.*\bkale\b|\b.*\bpotato\b|\b.*\bcabbage\b|\b.*\bcauliflower\b\b.*\bsprouts\b|\b.*\bbroccoli\b|\b.*\bpumpkin\b|\b.*\bcucumber\b|\b.*\bzucchini\b|\b.*\byam\b|\b.*\bcelery\b\b.*\basparagus\b|\b.*\bonion\b|\b.*\bgarlic\b|\b.*\bshallot\b|\b.*\bokra\b|\b.*\bbeet\b|\b.*\bcarrot\b|\b.*\btops\b|\b.*\bjalapeno/gi)
                            :[];
 
             if(protein.length !==0){ 
@@ -359,6 +356,7 @@
                                 <div> Small wild caught fishes contain less mercury and other harmful contaminants.</div>
                             </div> `
                 document.getElementById("protein").innerHTML = protHtml;
+                document.getElementById("protein").style.display = "block";
             }
             
             if(fat.length!=0){
@@ -386,6 +384,7 @@
                                 </div>
                             </div> `
                 document.getElementById("fat").innerHTML = fatHtml;
+                document.getElementById("fat").style.display = "block";
 
             }
 
@@ -416,6 +415,7 @@
                                 </div>
                             </div> `
                 document.getElementById("nutsAndSeeds").innerHTML = nutsAndSeedsHtml;
+                document.getElementById("nutsAndSeeds").style.display = "block";
 
             }
 
@@ -449,6 +449,7 @@
                                 </div>
                             </div> `
                 document.getElementById("grains").innerHTML = grainsHtml;
+                document.getElementById("grains").style.display = "block";
             }
 
             if(beansAndLegumes.length!=0){
@@ -472,6 +473,8 @@
                                 </div>
                             </div> `
                 document.getElementById("beansAndLegumes").innerHTML = beansAndLegumesHtml;
+                document.getElementById("beansAndLegumes").style.display = "block";
+
             }
 
             if(spicesAndHerbs.length!=0){
@@ -525,7 +528,7 @@
                                         </g>
                                     </g>
                                 </div> 
-                                <h2>Spices And Herbs</h2>
+                                <h2>Spices and Herbs</h2>
                                 <div> <b>Ingredient given: </b> ${spicesAndHerbs}.</div>
                                 <div> <b>What to eat:</b> Fresh or dried herbs, spices and unrefined salt.
                                 </div>  
@@ -537,6 +540,7 @@
                                 </div>
                             </div> `
                 document.getElementById("spicesAndHerbs").innerHTML = spicesAndHerbsHtml;
+                document.getElementById("spicesAndHerbs").style.display = "block";
             }
 
             if(milkAndDairy.length!=0){
@@ -559,6 +563,7 @@
                                 </div>
                             </div> `
                 document.getElementById("milkAndDairy").innerHTML = milkAndDairyHtml;
+                document.getElementById("milkAndDairy").style.display = "block";
             }
 
             if(sugarsAndSweeteners.length!=0){
@@ -571,7 +576,7 @@
                                 <div>
                                     <svg class="freepik1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><g><path d="m452.57 26.037c-10.776 0-20.379 5.089-26.553 12.982h-117.863c-4.141 0-7.498 3.357-7.498 7.498s3.357 7.498 7.498 7.498h111.206c-.321 1.864-.497 3.776-.497 5.729 0 2.938.38 5.789 1.09 8.508h-175.433v-14.237h29.477c4.141 0 7.498-3.357 7.498-7.498s-3.356-7.498-7.498-7.498h-29.615c-1.302-12.369-11.792-22.042-24.501-22.042-3.657 0-7.127.807-10.25 2.242-2.476-10.985-12.307-19.219-24.031-19.219-6.657 0-12.702 2.658-17.141 6.964-4.438-4.306-10.483-6.964-17.14-6.964-11.723 0-21.554 8.234-24.03 19.22-3.124-1.435-6.594-2.242-10.25-2.242-13.586 0-24.639 11.052-24.639 24.638v39.036c0 13.585 11.053 24.638 24.639 24.638 3.657 0 7.127-.807 10.25-2.242 2.476 10.987 12.307 19.22 24.031 19.22 6.657 0 12.702-2.658 17.14-6.964 4.438 4.306 10.483 6.964 17.141 6.964 11.724 0 21.555-8.234 24.031-19.22 3.124 1.435 6.594 2.242 10.25 2.242 12.709 0 23.199-9.672 24.501-22.042h184.059c6.127 6.288 14.677 10.204 24.128 10.204 18.587 0 33.707-15.121 33.707-33.707s-15.121-33.708-33.707-33.708zm-325.889 54.615c0 5.317-4.326 9.642-9.643 9.642s-9.643-4.325-9.643-9.642v-39.036c0-5.317 4.326-9.642 9.643-9.642s9.643 4.325 9.643 9.642zm34.281 16.977c0 5.317-4.325 9.643-9.642 9.643h-.001c-5.317 0-9.642-4.326-9.642-9.643v-72.991c0-5.317 4.326-9.643 9.643-9.643s9.642 4.326 9.642 9.643zm34.281 0c0 5.317-4.326 9.643-9.643 9.643s-9.643-4.326-9.643-9.643v-72.991c0-5.317 4.326-9.643 9.643-9.643s9.643 4.326 9.643 9.643zm34.281-16.977c0 5.317-4.326 9.642-9.643 9.642s-9.643-4.325-9.643-9.642v-39.036c0-5.317 4.326-9.642 9.643-9.642s9.643 4.325 9.643 9.642zm223.046-2.196c-10.317 0-18.711-8.394-18.711-18.711s8.394-18.711 18.711-18.711 18.711 8.394 18.711 18.711-8.394 18.711-18.711 18.711z"/><path d="m440.925 431.561-26.24-15.15v-30.335c0-7.823-4.209-15.112-10.984-19.024l-22.775-13.149c-1.306-.754-2.674-1.359-4.078-1.822.785-6.119.982-10.1 1.023-11.199 2.407-25.842-2.547-48.705-14.729-67.954-10.118-15.988-22.809-25.337-29.474-29.488-.766-.477-1.222-1.277-1.222-2.141v-23.389c7.327-1.318 12.908-7.726 12.908-15.427v-32.476c0-8.65-7.037-15.688-15.688-15.688h-255.147c-8.651 0-15.688 7.038-15.688 15.688v32.476c0 7.7 5.581 14.109 12.908 15.427v23.39c0 .864-.457 1.664-1.223 2.141-6.664 4.15-19.355 13.499-29.473 29.487-12.183 19.25-17.138 42.114-14.729 67.957.082 2.131.763 15.602 5.481 34.8.988 4.022 5.048 6.481 9.071 5.491 4.021-.988 6.479-5.049 5.491-9.071-4.626-18.828-5.058-31.786-5.062-31.906-.005-.168-.015-.336-.03-.504-.403-4.245-.552-8.286-.519-12.165h322.692c.034 3.879-.116 7.92-.519 12.165-.016.167-.025.335-.03.504-.003.108-.156 4.71-1.256 12.396-.913.372-1.807.807-2.674 1.307l-22.775 13.149c-6.775 3.912-10.983 11.201-10.983 19.024v30.323l-26.26 15.161c-6.775 3.912-10.984 11.201-10.984 19.024v26.298c0 1.658.2 3.289.562 4.871-7.076 5.523-14.605 10.614-22.597 15.25h-127.659c-37.095-21.52-64.46-52.79-81.353-92.97-1.605-3.818-6.004-5.611-9.818-4.006-3.818 1.605-5.612 6.001-4.007 9.818 18.464 43.917 48.568 77.958 89.477 101.177 1.129.641 2.404.977 3.701.977h131.657c1.297 0 2.573-.337 3.701-.977 9.117-5.175 17.426-10.773 25.016-16.654.731.556 1.498 1.073 2.304 1.538l22.775 13.149c3.388 1.956 7.184 2.934 10.983 2.934 3.798 0 7.596-.978 10.983-2.934l26.251-15.156 26.25 15.156c3.388 1.956 7.186 2.934 10.983 2.934 3.799 0 7.596-.978 10.984-2.934l22.775-13.149c6.774-3.911 10.983-11.2 10.983-19.024v-26.298c.001-7.822-4.208-15.111-10.983-19.022zm-204.261-262.247h93.002c.382 0 .692.311.692.693v32.476c0 .382-.31.693-.692.693h-93.002zm-111.341 0h96.344v82.447c0 6.126-4.984 11.11-11.11 11.11s-11.11-4.984-11.11-11.11v-.177c0-14.31-11.642-25.953-25.953-25.953-14.31 0-25.952 11.642-25.952 25.953v22.921c0 6.126-4.984 11.11-11.11 11.11-6.125 0-11.109-4.984-11.109-11.11zm-51.496.693c0-.382.311-.693.692-.693h35.808v33.861h-35.808c-.382 0-.692-.311-.692-.693zm-31.866 142.529c5.27-33.102 26.187-49.954 36.482-56.366 5.193-3.233 8.292-8.792 8.292-14.87v-23.129h23.592v56.333c0 14.394 11.711 26.105 26.105 26.105s26.106-11.711 26.106-26.105v-22.921c0-6.042 4.916-10.957 10.957-10.957s10.957 4.915 10.957 10.957v.177c0 14.394 11.712 26.105 26.106 26.105s26.106-11.711 26.106-26.105v-33.59h80.786v23.13c0 6.078 3.1 11.637 8.292 14.87 10.296 6.411 31.214 23.264 36.483 56.366zm320.464 168.383-26.241 15.15c-2.15 1.241-4.821 1.241-6.971 0l-22.775-13.149c-2.151-1.241-3.486-3.555-3.486-6.037v-26.298c0-2.483 1.335-4.797 3.486-6.038l26.26-15.161 14.873 8.587 14.854 8.576zm-22.229-64.52v-30.323c0-2.483 1.336-4.796 3.485-6.037l22.775-13.149c2.149-1.241 4.821-1.242 6.972 0l22.775 13.149c2.151 1.241 3.486 3.555 3.486 6.037v30.312l-29.756 17.179zm96.717 60.484c0 2.483-1.336 4.796-3.485 6.037l-22.775 13.149c-2.15 1.24-4.822 1.241-6.972 0l-26.241-15.15v-34.359l29.737-17.168 26.25 15.156c2.15 1.241 3.485 3.555 3.485 6.038v26.297z"/></g></g></svg>
                                 </div>
-                                <h2>Sugars And Sweeteners</h2>
+                                <h2>Sugars and Sweeteners</h2>
                                 <div> <b>Ingredient given: </b> ${sugarsAndSweeteners}.</div>
                                 <div> <b>What to eat:</b> Healthier ones like fresh pureed fruit or fruit juice, organic palm sugar, date sugar, coconut sugar, monk fruit, organic maple syrup, honey (Ethical Consumer Guide), stevia (sparingly, brands certified by Rainforest Alliance) and erythritol (sparingly).
                                 </div> 
@@ -579,6 +584,7 @@
                                 </div>  
                             </div> `
                 document.getElementById("sugarsAndSweeteners").innerHTML = sugarsAndSweetenersHtml;
+                document.getElementById("sugarsAndSweeteners").style.display = "block";
             }
 
             if(lowGlycemicFruits.length!=0){
@@ -702,6 +708,7 @@
                                 <div>Limit consumption if with obesity, diabetes or other blood sugar issues. Stay away from dried, juiced and high glycemic fruits.</div>
                             </div> `
                 document.getElementById("lowGlycemicFruits").innerHTML = lowGlycemicFruitsHtml;
+                document.getElementById("lowGlycemicFruits").style.display = "block";
             }
 
             if(vegetables.length!=0){
@@ -729,9 +736,11 @@
                                 </div>
                             </div> `
                 document.getElementById("vegetables").innerHTML = vegetablesHtml;
+                document.getElementById("vegetables").style.display = "block";
             }
 
         }        
+        
 
         //getPeganDietTip();
 
