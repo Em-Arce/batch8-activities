@@ -441,6 +441,7 @@ input:focus::placeholder,
 /* About section */
 
 .sectionText{
+    font-size: 19px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -464,7 +465,7 @@ ul {
 
 ul li{
     line-height: 1.8;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
 }
 
@@ -472,7 +473,7 @@ ul li{
 
 #readsText a{
     text-align: justify;
-    font-size: 22px;
+    font-size: 19px;
     text-decoration: none;
     
 }
@@ -493,6 +494,10 @@ footer, #edamam-badge{
 .peganDietDiv b,
 .peganDietDiv .splitToTwo{
     background-color: var(--lightColor);
+}
+
+.hidden{
+    display: none;
 }
 
 .peganDietDiv div{
