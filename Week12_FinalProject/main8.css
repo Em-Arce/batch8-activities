@@ -11,7 +11,6 @@
     line-height: 1.4;
     max-width: 100em;
     margin: 0 auto;
-    
 }
 
 :root{
@@ -53,7 +52,7 @@ body {
 #logo,
 #logo a,
 #logo svg{
-    /* border:var(--accentColor1Dark) 1.5px solid; */
+    
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -73,14 +72,14 @@ body {
 }
 
 #logo svg{
-    width: 120px;
-    height: 80px;
+    width: 7em;
     position: absolute;
-    top:-15px;
+    top:0;
     right:-3rem;
     stroke:  var(--neutralColor);
     stroke-width: 10px;
     stroke-linejoin: round;
+    /* border:var(--accentColor1Dark) 1.5px solid; */
 }
 
 @media (max-width:600px) {
@@ -99,6 +98,7 @@ body {
     position: fixed;
     z-index: 1000;
     width: 100%;
+    /* border: 1px solid blue; */
 }
 
 #navBar{
@@ -148,8 +148,9 @@ body {
 }
 
 #navToggleLabel,
-#logo{
-    height: calc(10vh);
+#logo,
+#logo svg{
+    height: calc(13vh);
     display: flex;
     align-items: center;
     justify-content: center;
