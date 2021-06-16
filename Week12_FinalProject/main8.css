@@ -603,8 +603,6 @@ svg:focus{
 }
 
 #edamam-badge{
-    background-color: var(--lightColor);
-    border: 1px solid yellow;
     width: 280px;
     margin: auto;
 }
