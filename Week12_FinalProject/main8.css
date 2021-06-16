@@ -27,7 +27,7 @@
 }
 
 html{
-    height: 300%;              
+    height: 150%;              
     box-sizing: border-box;    
     /* border: 1px solid black; */
 }
@@ -35,11 +35,12 @@ html{
 body {
     scroll-behavior: smooth;
     position: relative;        
-    height: 300%;      
+    height: 100%;      
 }
 
 #navBarContainer,
 #logo,
+#logo a,
 #navBar,
 #navBar #navList,
 #navBar .navItem,
@@ -49,12 +50,49 @@ body {
     color: var(--neutralColor);
 }
 
- #logo{
+#logo,
+#logo a,
+#logo svg{
+    /* border:var(--accentColor1Dark) 1.5px solid; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* style for h1 replaced by #logo a when link was added to h1 */
+#logo a{
+    position: absolute;
+    top:0;
+    right: 3.5rem;
+    text-decoration: none;
+    color: var(--neutralColor) !important;
     text-align: center;
     font-size: var(--textHeader);
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-weight: 400;
-} 
+}
+
+#logo svg{
+    width: 120px;
+    height: 80px;
+    position: absolute;
+    top:-15px;
+    right:-3rem;
+    stroke:  var(--neutralColor);
+    stroke-width: 10px;
+    stroke-linejoin: round;
+}
+
+@media (max-width:600px) {
+    #logo h1{
+        display: none;
+    }
+    #logo svg{
+        align-self: center;
+        justify-content: center;
+        display: block;
+    }
+}
 
 #navBarContainer{
     text-align: center;
@@ -178,7 +216,7 @@ label{
 } 
 
 section{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     max-width: 100em;
     min-height: 80vh;
     /* place display flex here not in body bcoz the header becomes footer when flex display is in body */
@@ -199,20 +237,36 @@ section h1{
     background-size: cover;
     background-attachment: fixed;
     padding-top: calc(15vh);
-    border: 1px dotted red;
+    /* border: 1px dotted red; */
     margin: auto;
     display: flex;
+    align-items: center;
 }
 
-.bgTransparent{
+#homeContainer > *{
+    align-items: center;
+}
+
+.bgTransparent,
+#homeTextSection,
+#homeTextSection > *{
     background: transparent;
 }
 
-#recipeInstContainer{
-    padding: 1rem;
+@media(max-width:720px){
+    #homeTextSection,
+    #homeTextSection > *{
+    background: var(--neutralColor);
+    border-radius: 0.5rem;
+    }
 }
+
 #recipeInputForm h1{
     padding-bottom: 1rem;
+}
+
+#recipeInstContainer{
+    padding-inline: 1rem;
 }
 
 #recipeInputInst{
@@ -236,7 +290,7 @@ input{
 
 
 #recipeInputForm label{
-    font-size: 20px;
+    font-size: 19px;
     text-transform: none;
 }
 
@@ -246,7 +300,7 @@ input:focus::placeholder,
 #ingredient::placeholder,
 #ingredient:focus,
 #ingredient:focus::placeholder{
-    border: 1px solid slategray;
+    border: 0.5px solid slategray;
     opacity: 90%;
 }
 
@@ -258,20 +312,21 @@ input:focus::placeholder,
     flex-flow: row wrap;
     flex: 50%;
     justify-content:space-around;
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     
 }
 
+/* all children of split to two */
 .splitToTwo > *{
     width: 45vw;
     flex-flow: column wrap;
     justify-content:space-between;
     align-items: baseline;
     font-size: 1.25em;
-    border: 1px dotted green;
+    /* border: 1px dotted green; */
 }
 
-/*  so the two divs dont compress to much in small screens */
+/*  so two divs dont compress to much in small screens */
 @media(max-width:720px){
     .splitToTwo > *{
         width: 100%;
@@ -279,7 +334,7 @@ input:focus::placeholder,
 } 
 
 #recipeInputForm{
-    border: 1px dotted red;
+    /* border: 1px dotted red; */
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -322,7 +377,6 @@ input:focus::placeholder,
     box-shadow: 0 10px 20px 0 rgba(204, 200, 200, 0.2), 0 10px 20px 0 rgba(204, 200, 200,0.19);
     transform: scale(0.9);
     color: white;
-
 }
 
 /*  dont show refresh button at onload */
@@ -356,7 +410,7 @@ input:focus::placeholder,
 /* style for nutrition label */
 #nutritionInfoContainer{
     border: 1px solid black;
-	margin: auto;  /* auto makes it centered*/
+	margin: auto;  /* auto makes it centered with respect to x axis*/
 	width: 280px;
 	padding: 0.5rem;
 	color: #000;
@@ -382,13 +436,11 @@ input:focus::placeholder,
 }
 
 #nutritionInfoTable{
-    width: 100%;
-    
+    width: 100%;   
 }
 
 #nutritionInfoTable thead th tr{
     border: 0;
-    
 }
 
 #nutritionInfoTable th, 
@@ -397,7 +449,6 @@ input:focus::placeholder,
     text-align: left;
     padding: 0.25rem 0;
     border-top: 1px solid black;
-    /* white-space: nowrap; */
 }
 
 #nutritionInfoTable td:last-child{
@@ -432,22 +483,14 @@ input:focus::placeholder,
     font-size: 28px !important;
 }
 
-/* check for alignment */
-/* #edamam-badge{
-    box-sizing: border-box;
-    border: 1px dotted pink;
-} */
-
 /* About section */
-
 .sectionText{
     font-size: 19px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     text-align: justify;
-    padding: 1rem;
-    
+    padding: 1rem; 
 }
 
 #aboutContainer,
@@ -479,12 +522,7 @@ ul li{
 }
 
 #readsText a:hover{
-    color: var(--darkColor);
-}
-
-footer, #edamam-badge{
-    width: 280px;
-    margin: auto;
+    color: var(--primaryColor);
 }
 
 /* Pegan Diet section */
@@ -500,13 +538,16 @@ footer, #edamam-badge{
     display: none;
 } 
 
+#peganTipQuote{
+    font-style: italic;
+    padding: 1rem;
+}
+
 .peganDietDiv div{
     font-size: 17px;
     text-align: justify;
     line-height: 1.6;
-    /*  */
     padding: 0.25rem 1rem;
-    
 }
 
 .peganDietDiv h2{
@@ -514,19 +555,19 @@ footer, #edamam-badge{
     color: var(--accentColor1);
 }
 
+
+
 .svgContainer,
 svg{
     display: flex;
     align-items: center;
     padding:1rem;
-    /* border: red 1px dotted; */
 }
 
 svg{
     height: 100px;
     width: 100px;
-    /* border:var(--accentColor1Dark) 1.5px solid; */
-     background-color: var(--lightColor);  /*not transparent to maintain the orange filter during hover or active*/
+    background-color: var(--lightColor);  /*not transparent to maintain the orange filter during hover or active*/
     fill: none;
     stroke:  var(--accentColor1Dark);
     stroke-width: 1.5px;
@@ -552,6 +593,19 @@ svg:focus{
 /* for fruits */
 .freepik2{
     stroke-width: 13px;
+}
+
+/* Footer section */
+#disclaimer{
+    font-size: 12px;
+    text-align: center;
+}
+
+#edamam-badge{
+    background-color: var(--lightColor);
+    border: 1px solid yellow;
+    width: 280px;
+    margin: auto;
 }
 
 
