@@ -52,7 +52,6 @@ body {
 #logo,
 #logo a,
 #logo svg{
-    
     display: inline-flex;
     justify-content: center;
     align-items: center;
