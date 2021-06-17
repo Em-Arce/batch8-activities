@@ -177,7 +177,7 @@
 
         //uncomment for live demo
         showNutriInfo.addEventListener("click", () => {
-            getNutriInfo();
+            //getNutriInfo();
             getPeganDietTip();
         });
 
@@ -291,7 +291,6 @@
             PeganDiet.addFoodList(nutsAndSeeds);
             PeganDiet.addFoodList(milkAndDairy);
             PeganDiet.addFoodList(sugarsAndSweeteners);
-        
         }
 
         //listCategory();
@@ -358,7 +357,6 @@
             if(protein.length !==0){ 
                 let foodList = PeganDiet.getFoodList();
                 
-
                 let pgProt = foodList.find(category => category.label == "protein");
                 //console.log(pgProt);
 
