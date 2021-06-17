@@ -576,7 +576,6 @@ ul li{
 }
 
 svg{
-    border: 1px solid blue;
     height: 100px;
     width: 100px;
     background-color: var(--lightColor);  /*not transparent to maintain the orange filter during hover or active*/
