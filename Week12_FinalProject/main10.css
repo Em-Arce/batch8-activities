@@ -569,8 +569,7 @@ ul li{
     color: var(--accentColor1);
 }
 
-.svgContainer,
-svg{
+.svgContainer{
     display: flex;
     align-items: center;
     padding:1rem;
