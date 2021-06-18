@@ -213,13 +213,13 @@
             static addNutritionInfo(recipe){
                 let nutriList = AnalyzeRecipe.getNutritionInfo();
         
-                console.log(nutriList);
+                //console.log(nutriList);
 
                 nutriList.push(recipe);
 
                 localStorage.setItem("nutriList", JSON.stringify(nutriList));
                 
-                console.log(nutriList);
+                //console.log(nutriList);
             }
         }
 
@@ -776,10 +776,14 @@
         //managePeganDietUI();
 
         async function getNutriInfo(){
+            
             let app_id = "8458cc5f";
             let app_key = "4794cbd8d4435d7324ce1a7e387c5d82"; 
+            //BACK UP KEY IF 400/mo is met
+            //let app_id = "30b22260";
+            //let app_key = "fcfed0e9de53a6bf5727a55dcd1b3fb5"; 
+            
             var url = 'https://api.edamam.com/api/nutrition-details?app_id=' + app_id + '&app_key=' + app_key;
-            console.log(url);
 
             let ingr = document.getElementById("ingredient");
             let recipeTitle = document.getElementById("recipeTitle");
@@ -792,7 +796,7 @@
                 "ingr":  ingr.value.split(/\n|\r/),
                 }
 
-            console.log(JSON.stringify(array));
+            //console.log(JSON.stringify(array));
             
             //store object into options
             let options = {
@@ -806,7 +810,7 @@
             try {
                 let response = await fetch(url, options);
                 let data = await response.json();
-                console.log(data);
+                //console.log(data);
 
                 let recipe1 = new AnalyzeRecipe(recipeTitle.value, ingr.value, data);
                      // console.log(recipe);
@@ -819,21 +823,6 @@
                 alert(error);
             }
 
-            // fetch(url, options)
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         //console.log(data);
-
-            //         let recipe1 = new AnalyzeRecipe(recipeTitle.value, ingr.value, data);
-            //         // console.log(recipe);
-
-            //         AnalyzeRecipe.addNutritionInfo(recipe1);
-            //         // return data;
-            //         renderNutriInfo(recipeTitle.value);
-            //     })
-            //     .catch (error => {
-            //          alert(error);
-            //     })
         }
 
         function renderNutriInfo(recipeTitle){
@@ -1079,5 +1068,6 @@
 
     </script>
 <!-- REFERENCES
-1.  Header menu: https://www.youtube.com/watch?v=8QKOaTYvYUA -->
+1.  Header menu: https://www.youtube.com/watch?v=8QKOaTYvYUA
+2.  -->
 </html>
