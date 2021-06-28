@@ -23,7 +23,7 @@ while true
         puts %(New assumed square root: "#{x.to_f}")
 end
 
-if (root*root).to_f == number.to_f
+if (root.to_f.round(6)*root.to_f.round(6)) == number
         puts %("#{number}" is a perfect square!)
 else
         puts  %("#{number}" is not a perfect square!)
