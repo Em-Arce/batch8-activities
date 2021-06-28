@@ -3,15 +3,15 @@ class Confection
 	def initialize(name)
 		@name = name
 	end
-	
+
 	def prepare
-	  "baking at 350 degrees for 25 minutes"
+		"baking at 350 degrees for 25 minutes"
 	end 
 end
 
 class Banana_Cake < Confection
 	def prepare
-	"#{name.capitalize} is " + super
+		"#{name.capitalize} is " + super
 	end
 end
 
