@@ -80,7 +80,7 @@ class PokemonActivities
 	def say
 		monsters.each do |monster|
 			monster.say
-			end		
+		end		
 	end
 
 	def battle
