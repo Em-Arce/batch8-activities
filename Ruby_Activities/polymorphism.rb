@@ -74,7 +74,7 @@ class PokemonActivities
 	end
 
 	def battle(monster)
-			monster.battle
+		monster.battle
 	end
 end
 
